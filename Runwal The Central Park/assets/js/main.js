@@ -210,6 +210,13 @@
   $('#locTabs').on('click', 'button', function () { locShow(+$(this).data('i')); });
   locShow(0);
 
+  /* ---------- Highlights: point list swaps the feature image ---------- */
+  $('#hlpList').on('mouseenter focusin click', '.hlp__i', function () {
+    var i = +$(this).data('i');
+    $(this).addClass('is-on').siblings().removeClass('is-on');
+    $('#highlights .hlp__img').removeClass('is-on').eq(i).addClass('is-on');
+  });
+
   /* ---------- Reveal + counters ---------- */
   function count(el) {
     var to = +el.getAttribute('data-count'), t0 = null;
@@ -240,7 +247,7 @@
 
   /* ---------- Lead popup ---------- */
   var $modal = $('#leadModal'), $mForm = $modal.find('.lead-form');
-  function title(src) { return /leav/i.test(src) ? 'Before you go — get the price sheet' : /visit/i.test(src) ? 'Book a site visit' : /brochure|list/i.test(src) ? 'Get the brochure' : /unlock|plan/i.test(src) ? 'Unlock floor plans' : /cost|price/i.test(src) ? 'Get the price sheet' : 'Enquire now'; }
+  function title(src) { return /leav/i.test(src) ? 'Before you go — get the price sheet' : /visit/i.test(src) ? 'Book a site visit' : /amenit/i.test(src) ? 'Get the 50+ amenities list' : /layout/i.test(src) ? 'Get the master layout' : /brochure|list/i.test(src) ? 'Download the brochure' : /unlock|plan/i.test(src) ? 'Unlock floor plans' : /cost|price/i.test(src) ? 'Get the price sheet' : 'Enquire now'; }
   function mOpen(src, cfg) {
     if ($menu.hasClass('is-open')) menuClose();
     $mForm.attr('data-source', src || 'Popup Form'); $('#modalTitle').text(title(src || ''));

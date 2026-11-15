@@ -11,7 +11,7 @@ window.SITE = {
     whatsapp: '',               // e.g. '919800000000'  (country code + number, no +)
     whatsappText: "Hi, I'm interested in Runwal The Central Park, Pimpri-Chinchwad. Please share the price sheet & site visit details.",
     cpFirm: '',                 // your channel-partner firm name (required in the Runwal disclaimer)
-    cpRera: ''                  // your channel-partner MahaRERA registration number
+    cpRera: 'A52100020438'                // your channel-partner MahaRERA registration number
   },
 
   /* ---------- Residences (RERA carpet from Tower D3 / D4 booklets; all-inclusive prices for floors G-10, 11-20, 21-30) ---------- */
