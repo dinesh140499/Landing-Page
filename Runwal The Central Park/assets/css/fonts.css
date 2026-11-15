@@ -1,0 +1,7 @@
+/* Self-hosted web fonts (latin + latin-ext) */
+@font-face { font-family: 'Gambetta'; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/gambetta-400-normal-latin.woff2") format("woff2"); }
+@font-face { font-family: 'Gambetta'; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/gambetta-500-normal-latin.woff2") format("woff2"); }
+@font-face { font-family: 'Gambetta'; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/gambetta-600-normal-latin.woff2") format("woff2"); }
+@font-face { font-family: 'Satoshi'; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/satoshi-400-normal-latin.woff2") format("woff2"); }
+@font-face { font-family: 'Satoshi'; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/satoshi-500-normal-latin.woff2") format("woff2"); }
+@font-face { font-family: 'Satoshi'; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/satoshi-700-normal-latin.woff2") format("woff2"); }

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Thank You | Envogue 2.0 by Tayal Corp</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#050505">
+  <link rel="icon" type="image/webp" href="assets/images/brand/brand-favicon.webp">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <style>
+    :root { --pink: #eb008b; --serif: "Crimson Pro", Georgia, serif; --sans: "Montserrat", system-ui, sans-serif; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; min-height: 100svh; display: grid; place-items: center; padding: 24px 16px;
+      font-family: var(--sans); color: #fff; text-align: center;
+      background: url("assets/images/patterns/pattern-black-silk-wave.webp") center bottom / 100% auto no-repeat, #050505; }
+    .ty { max-width: 520px; animation: in .8s cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+    .ty__logo { width: 120px; height: auto; margin: 0 auto 36px; display: block; }
+    .ty__check { width: 72px; height: 72px; margin: 0 auto 24px; border-radius: 50%; background: var(--pink); display: grid; place-content: center; }
+    .ty__check::before { content: ""; width: 26px; height: 13px; border-left: 4px solid #fff; border-bottom: 4px solid #fff; transform: rotate(-45deg) translate(2px, -3px); }
+    h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(34px, 7vw, 48px); line-height: 1.1; margin: 0 0 12px; }
+    p { margin: 0 0 30px; font-size: 15.5px; line-height: 1.7; color: #d6d6d6; }
+    .btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-width: 170px; padding: 15px 22px; border-radius: 12px; color: #fff; text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; transition: transform .3s, opacity .3s; }
+    .btn:hover { transform: translateY(-2px); opacity: .92; }
+    .btn img { width: 18px; height: 18px; }
+    .btn--call { background: var(--pink); }
+    .btn--wa { background: #0f7a3d; }
+    .back { display: inline-block; margin-top: 26px; color: #bdbdbd; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+    .back:hover { color: var(--pink); }
+  </style>
+  <script>
+    // Conversion page: lead event for GTM / Google Ads / Meta pixel
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: 'lead_thank_you' });
+  </script>
+</head>
+<body>
+  <main class="ty">
+    <img class="ty__logo" src="assets/images/brand/brand-logo-tayal-corp.webp" width="440" height="232" alt="Tayal Corp">
+    <div class="ty__check" aria-hidden="true"></div>
+    <h1>Thank you<span id="tyName"></span>!</h1>
+    <p>Your Envogue 2.0 enquiry has been received. Our team will call you shortly.</p>
+    <div class="btns">
+      <a class="btn btn--call" href="tel:+919126264444"><img src="assets/images/icons/icon-phone-white.webp" width="48" height="48" alt=""> Call Now</a>    </div>
+    <a class="back" href="index.html">← Back to website</a>
+  </main>
+  <script>
+    (function () {
+      var q = new URLSearchParams(location.search);
+      var name = (q.get('name') || '').replace(/[<>&"']/g, '').slice(0, 30);
+      if (name) document.getElementById('tyName').textContent = ', ' + name;      try { localStorage.setItem('envogue_lead', '1'); } catch (e) {}
+    })();
+  </script>
+</body>
+</html>

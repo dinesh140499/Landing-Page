@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Thank You | Runwal The Central Park</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#005E51">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="icon" type="image/webp" href="assets/images/brand/brand-favicon.webp">
+  <style>
+    :root{--g:#005E51;--g-9:#00483D;--cream:#FFF6E8;--cream-2:#F7EBD6;--gold:#A9894A;--gold-d:#7A5F2E;--ink:#18231F;--ink-2:#4A5550}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{min-height:100svh;display:flex;flex-direction:column;background:var(--cream);color:var(--ink);font:400 16px/1.6 "Satoshi",system-ui,sans-serif}
+    header{padding:12px 16px}
+    header img{height:80px;width:auto;display:block}
+    main{flex:1;display:grid;place-items:center;padding:32px 16px 48px;text-align:center}
+    .box{max-width:520px;width:100%;background:#fff;border:1px solid rgba(169,137,74,.45);border-radius:22px;padding:44px 28px;box-shadow:0 30px 60px -30px rgba(0,72,61,.25)}
+    .tick{width:72px;height:72px;margin:0 auto 22px;border-radius:50%;background:var(--g);color:var(--cream);display:grid;place-items:center;font-size:34px;line-height:1}
+    h1{font:500 clamp(30px,6vw,42px)/1.1 "Gambetta",Georgia,serif;color:var(--g-9);margin-bottom:12px}
+    p{color:var(--ink-2)}
+    .act{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:28px 0 18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:99px;font-weight:700;font-size:15px;text-decoration:none}
+    .btn img{width:18px;height:18px}
+    .btn--g{background:var(--g);color:var(--cream)}
+    .btn--w{background:#1f8f4e;color:#fff}
+    .back{color:var(--gold-d);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+    footer{background:var(--g-9);color:#efe3c8;font-size:12.5px;line-height:1.6;padding:20px 16px;text-align:center}
+    footer b{color:#fff}
+  </style>
+</head>
+<body>
+  <header><a href="index.html"><img src="assets/images/brand/brand-runwal-preferred-partner-gold.webp" width="900" height="308" alt="Runwal Realty — Preferred Partner"></a></header>
+  <main>
+    <div class="box">
+      <div class="tick" aria-hidden="true">&#10003;</div>
+      <h1 id="ty">Thank you!</h1>
+      <p>Your enquiry for Runwal The Central Park has been received. Our relationship manager will call you shortly.</p>
+      <div class="act">
+        <a class="btn btn--g" href="index.html#contact" data-tel><img src="assets/images/icons/icon-phone-white.webp" alt="">Call Now</a>
+        <a class="btn btn--w" href="index.html#contact" data-wa><img src="assets/images/icons/icon-whatsapp-white.webp" alt="">WhatsApp</a>
+      </div>
+      <a class="back" href="index.html">&larr; Back to website</a>
+    </div>
+  </main>
+  <footer>
+    <p>Project MahaRERA: P52100025260 &amp; P52100032101 · Channel Partner MahaRERA: <span data-cp-rera>—</span></p>
+  </footer>
+  <script src="assets/js/data.js"></script>
+  <script>
+    (function () {
+      var C = (window.SITE || {}).contact || {};
+      var n = new URLSearchParams(location.search).get('name');
+      if (n) { n = n.replace(/[^\p{L} .'-]/gu, '').slice(0, 30); if (n) document.getElementById('ty').textContent = 'Thank you, ' + n + '!'; }
+      if (C.phone) document.querySelectorAll('[data-tel]').forEach(function (a) { a.href = 'tel:' + C.phone; });
+      if (!C.whatsapp) document.querySelectorAll('[data-wa]').forEach(function (a) { a.style.display = 'none'; });
+      if (C.whatsapp) document.querySelectorAll('[data-wa]').forEach(function (a) { a.href = 'https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent(C.whatsappText || ''); a.target = '_blank'; a.rel = 'noopener'; });
+      if (C.cpFirm) document.querySelectorAll('[data-cp-firm]').forEach(function (e) { e.textContent = C.cpFirm; });
+      if (C.cpRera) document.querySelectorAll('[data-cp-rera]').forEach(function (e) { e.textContent = C.cpRera; });
+      try { localStorage.setItem('tcp_lead', '1'); } catch (e) {}
+      window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'lead_thank_you' });
+    })();
+  </script>
+</body>
+</html>

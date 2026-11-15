@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Thank You | Ganga Legends County, Bavdhan</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#2C3D29">
+  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="preload" as="image" type="image/webp" href="assets/images/banner/banner-tower-sunset-lg.webp">
+  <link rel="icon" type="image/webp" href="assets/images/brand/brand-favicon.webp">
+  <style>
+    :root{--forest:#2C3D29;--forest-9:#1E2A1C;--moss:#6F7D4E;--sage:#E8ECE1;--warm:#F6F3EC;--copper:#B4703F;--copper-l:#D9A06A;--sun:#E3B45A;--ink:#1D1F1C;--ink-2:#545A52;--line:rgba(29,31,28,.12);--ease:cubic-bezier(.65,0,.35,1);--gut:clamp(16px,3vw,36px)}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{min-height:100svh;display:flex;flex-direction:column;background:#fff;color:var(--ink);font:400 16px/1.6 "Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%;height:auto}
+    a{color:inherit;text-decoration:none}
+
+    /* header — same white premium bar as the site */
+    .hd{position:relative;height:76px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:0 var(--gut);background:radial-gradient(circle,rgba(180,112,63,.16) 1.2px,transparent 1.8px) 0 0/18px 18px,#fff}
+    .hd::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#fff,rgba(255,255,255,.6) 25%,rgba(255,255,255,.92) 50%,rgba(255,255,255,.6) 75%,#fff)}
+    .hd::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(180,112,63,.55) 30%,rgba(227,180,90,.8) 50%,rgba(180,112,63,.55) 70%,transparent)}
+    .hd>*{position:relative}
+    .hd__logo{display:flex;align-items:center;gap:14px}
+    .hd__logo img{height:36px;width:auto}
+    .hd__logo img+i{width:1px;height:30px;background:var(--line)}
+    .hd__logo .tlb{height:40px}
+    .hd__back{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;padding:10px 18px;border-radius:99px;border:1px solid var(--line);transition:border-color .3s,background .3s}
+    .hd__back:hover{border-color:var(--copper);background:var(--warm)}
+
+    /* split: render left, message right */
+    main{flex:1;display:grid;grid-template-columns:1.05fr 1fr;min-height:0}
+    .media{position:relative;overflow:hidden;background:var(--sage)}
+    .media>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% center;animation:zoom 9s ease-out both}
+    @keyframes zoom{from{transform:scale(1.08)}}
+    .media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,28,18,0) 45%,rgba(20,28,18,.75))}
+    .media__cap{position:absolute;z-index:2;left:clamp(20px,3vw,40px);right:clamp(20px,3vw,40px);bottom:clamp(20px,3vw,40px);color:#fff;display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+    .media__cap img{height:64px;width:auto}
+    .media__cap p{font-size:14px;color:rgba(255,255,255,.85);max-width:30ch;text-align:right}
+    .media__cap p b{display:block;color:#fff;font-size:18px}
+    .disc{position:absolute;z-index:2;right:12px;top:12px;font-size:10.5px;color:#fff;background:rgba(0,0,0,.35);padding:2px 8px;border-radius:99px}
+
+    .msg{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:clamp(40px,7vh,80px) clamp(20px,5vw,80px);background:var(--warm)}
+    .msg::before{content:"";position:absolute;right:-140px;top:-140px;width:420px;height:420px;pointer-events:none;background:radial-gradient(circle,rgba(180,112,63,.3) 1.6px,transparent 2.3px) 0 0/24px 24px,radial-gradient(circle,rgba(111,125,78,.22) 1.6px,transparent 2.3px) 12px 12px/24px 24px;-webkit-mask:radial-gradient(closest-side,#000 20%,transparent);mask:radial-gradient(closest-side,#000 20%,transparent)}
+    .msg>*{position:relative;max-width:520px}
+    .tick{width:76px;height:76px;margin-bottom:26px}
+    .tick circle{fill:var(--forest)}
+    .tick path{fill:none;stroke:var(--sun);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:draw .7s .35s var(--ease) forwards}
+    .tick .ring{fill:none;stroke:var(--copper-l);stroke-width:1.5;opacity:.6;transform-origin:center;animation:ping 2.4s 1s ease-out infinite}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    @keyframes ping{from{transform:scale(1);opacity:.6}to{transform:scale(1.5);opacity:0}}
+    .kicker{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--copper);margin-bottom:10px}
+    h1{font-weight:700;font-size:clamp(34px,4.4vw,56px);line-height:1.02;letter-spacing:-.03em}
+    h1 em{font-style:normal;font-weight:400;color:var(--moss)}
+    .lead{color:var(--ink-2);font-size:clamp(16px,1.2vw,18px);margin-top:16px}
+    .steps{margin-top:30px;display:grid;gap:0;border-top:1px solid var(--line)}
+    .steps li{list-style:none;display:grid;grid-template-columns:54px 1fr;gap:12px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);opacity:0;transform:translateY(12px);animation:up .6s var(--ease) forwards}
+    .steps li:nth-child(1){animation-delay:.6s}.steps li:nth-child(2){animation-delay:.72s}.steps li:nth-child(3){animation-delay:.84s}
+    @keyframes up{to{opacity:1;transform:none}}
+    .steps i{font:200 38px/1 "Montserrat",sans-serif;font-style:normal;color:var(--copper)}
+    .steps b{display:block;font-size:16px}
+    .steps span{font-size:14px;color:var(--ink-2)}
+    .act{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 8px 0 24px;border-radius:99px;font-weight:700;font-size:15px;background:var(--forest);color:#fff;transition:background .3s}
+    .btn i{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#F0CB7C,var(--sun));display:grid;place-items:center}
+    .btn i img{width:16px;height:16px;filter:brightness(0) saturate(100%) invert(14%) sepia(14%) saturate(800%) hue-rotate(60deg)}
+    .btn:hover{background:var(--forest-9)}
+    .btn--line{background:#fff;color:var(--ink);border:1px solid var(--line);padding:0 24px}
+    .btn--line:hover{background:#fff;border-color:var(--copper)}
+
+    footer{background:var(--forest-9);color:rgba(255,255,255,.65);font-size:12.5px;padding:18px var(--gut) calc(18px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;gap:8px 24px;flex-wrap:wrap}
+    footer b{color:#fff;font-weight:600}
+
+    @media (max-width:900px){
+      .hd{height:66px}.hd__logo img{height:28px}.hd__logo .tlb{height:32px}.hd__logo{gap:10px}
+      .hd__back{padding:9px 14px;font-size:13.5px}
+      main{grid-template-columns:1fr}
+      .media{min-height:34svh}
+      .media__cap img{height:48px}.media__cap p{display:none}
+      .msg{padding:36px 16px 44px}
+      .tick{width:64px;height:64px;margin-bottom:20px}
+      .act .btn{flex:1;justify-content:center}
+    }
+    @media (max-width:420px){.hd__back span{display:none}}
+    @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important}}
+  </style>
+</head>
+<body>
+  <header class="hd">
+    <a href="index.html" class="hd__logo" aria-label="Ganga Legends County — home">
+      <img src="assets/images/brand/brand-ggc-logo-dark.webp" width="365" height="160" alt="Goel Ganga Corporation"><i aria-hidden="true"></i>
+      <img class="tlb" src="assets/images/brand/brand-living-blueprint-dark.webp" width="219" height="160" alt="The Living Blueprint">
+    </a>
+    <a class="hd__back" href="index.html">&larr; <span>Back to website</span></a>
+  </header>
+
+  <main>
+    <div class="media">
+      <img src="assets/images/banner/banner-tower-sunset-lg.webp" srcset="assets/images/banner/banner-tower-sunset-sm.webp 800w, assets/images/banner/banner-tower-sunset-lg.webp 1600w" sizes="(max-width: 900px) 100vw, 52vw" width="1600" height="800" alt="Ganga Legends County tower at sunset, Bavdhan">
+      <span class="disc">Artist's Impression</span>
+      <div class="media__cap">
+        <img src="assets/images/brand/brand-living-blueprint-white.webp" width="219" height="160" alt="">
+        <p><b>Ganga Legends County</b>Bavdhan, Off Pashan, Pune</p>
+      </div>
+    </div>
+
+    <section class="msg">
+      <svg class="tick" viewBox="0 0 76 76" aria-hidden="true"><circle class="ring" cx="38" cy="38" r="36"/><circle cx="38" cy="38" r="30"/><path d="M25 39l9 9 17-19"/></svg>
+      <p class="kicker">Enquiry received</p>
+      <h1 id="ty">Thank you<em>.</em></h1>
+      <p class="lead">Your enquiry for Ganga Legends County has reached our team. Here's what happens next:</p>
+      <ol class="steps">
+        <li><i>01</i><div><b>A call from our relationship manager</b><span>Shortly, on the number you shared.</span></div></li>
+        <li><i>02</i><div><b>Your price sheet &amp; floor details</b><span>For Towers B5 &amp; B7, as per your preference.</span></div></li>
+        <li><i>03</i><div><b>A private site visit</b><span>Scheduled at a time that suits you.</span></div></li>
+      </ol>
+      <div class="act">
+        <a class="btn" href="index.html#contact" data-tel>Call us now<i><img src="assets/images/icons/icon-phone-white.webp" width="48" height="48" alt=""></i></a>
+        <a class="btn btn--line" href="index.html">Explore the project</a>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>MahaRERA: <b>P52100076756</b> &amp; <b>P52100076968</b></p><p>Website design by adEstato.com</p></footer>
+
+  <script src="assets/js/data.js"></script>
+  <script>
+    (function () {
+      var C = (window.SITE || {}).contact || {};
+      var n = new URLSearchParams(location.search).get('name');
+      if (n) { n = n.replace(/[^\p{L} .'-]/gu, '').slice(0, 30); if (n) document.getElementById('ty').innerHTML = 'Thank you, <em>' + n.replace(/[&<>"]/g, '') + '.</em>'; }
+      if (C.phone) document.querySelectorAll('[data-tel]').forEach(function (a) { a.href = 'tel:' + C.phone; });
+      try { localStorage.setItem('glc_lead', '1'); } catch (e) {}
+      window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'lead_thank_you' });
+    })();
+  </script>
+</body>
+</html>
