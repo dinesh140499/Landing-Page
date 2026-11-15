@@ -102,14 +102,13 @@
     $('#rvBands').html(['G – 10', '11 – 20', '21 – 30'].map(function (b, k) { return '<li><span>Floors ' + b + '</span><i></i><b>₹' + r.bands[k] + ' Cr</b></li>'; }).join(''));
     $('#rvUnlock').attr({ 'data-enquire': 'Unlock Plan — ' + r.tab, 'data-config': cfg });
     $('#rvCost').attr({ 'data-enquire': 'Cost Sheet — ' + r.tab, 'data-config': cfg });
-    $('#rvView').toggleClass('is-locked', !isLead());
+    $('#rvView').addClass('is-locked'); /* floor plans always stay blurred */
     if (hasGsap && !reduce && !instant) {
       gsap.fromTo('#rvImg', { clipPath: 'inset(0 0 0 100%)', scale: 1.08 }, { clipPath: 'inset(0 0 0 0%)', scale: 1, duration: .9, ease: 'power3.inOut' });
       gsap.from('#rxType, .rx__area, #rvBands li', { y: 18, opacity: 0, duration: .55, stagger: .06, ease: 'power3.out' });
     }
   }
   $('#rvList').on('click', '.rx__tab', function () { var i = +$(this).data('i'); if (i !== rIdx) rShow(i); });
-  $('#rvPlan').on('click', '#rvImg', function () { if (!isLead()) return; var r = D.residences[rIdx]; lbOpen([{ src: img(r.img, 'lg'), title: r.tab + ' — ' + r.area + ' sq ft' }], 0); });
   rShow(0, true);
 
   /* ---------- Amenities: lift ride (G -> Club -> 45th-floor Skydeck) ---------- */
@@ -285,7 +284,7 @@
         Name: v('name'), Phone: chk.phone, Country: chk.country, Email: v('email'), Message: v('message'), 'Lead Source': src, Page: location.href,
         'Submitted At': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) }, utm)) })
       .done(function () {
-        store.set('tcp_lead', '1'); $('#rvView').removeClass('is-locked');
+        store.set('tcp_lead', '1');
         window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'lead_submit', lead_source: src });
         if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
         setTimeout(function () { location.href = 'thank-you.html?name=' + encodeURIComponent(v('name').split(' ')[0]); }, 300);
