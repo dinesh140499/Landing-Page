@@ -95,7 +95,8 @@
   function fa(a) { return typeof a === 'number' ? a.toLocaleString('en-IN') : a; }
   function rShow(i, instant) {
     rIdx = i; var r = D.residences[i], cfg = r.tab + ' — ' + r.area + ' sq ft';
-    $('#rvList .rx__tab').removeClass('is-on').eq(i).addClass('is-on');
+    var $t = $('#rvList .rx__tab').removeClass('is-on').eq(i).addClass('is-on'), lst = $('#rvList')[0];
+    if (lst.scrollWidth > lst.clientWidth) lst.scrollTo({ left: $t[0].offsetLeft - 16, behavior: instant ? 'auto' : 'smooth' });
     $('#rvImg').attr({ src: img(r.img, 'sm'), srcset: img(r.img, 'sm') + ' 760w, ' + img(r.img, 'lg') + ' 1400w', sizes: '(max-width: 1100px) 92vw, 50vw', alt: r.tab + ' floor plan, ' + r.area + ' sq ft RERA carpet — Runwal The Central Park' });
     $('#rxTwr').text(r.tower + ' · Residence 0' + (i + 1));
     $('#rxType').text(r.tab);
