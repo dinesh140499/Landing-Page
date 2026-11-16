@@ -67,7 +67,7 @@
         '<span class="prow__area">' + r.area.toLocaleString('en-IN') + ' <small>sq.ft</small></span>' +
         '<span class="prow__wing">' + r.wing + '</span>' +
         '<span class="prow__price">' + r.price + '</span>' +
-        '<span class="prow__act">' + planBtn + '<button class="btn btn--dark-solid btn--sm" data-enquire="Cost Sheet — ' + r.tab + '" data-config="' + cfg + '">Cost Sheet</button></span>' +
+        '<span class="prow__act">' + planBtn + '<button class="prow__cost" data-enquire="Cost Sheet — ' + r.tab + '" data-config="' + cfg + '">Cost Sheet <i aria-hidden="true">→</i></button></span>' +
       '</div>';
     }).join(''));
     $('#plistFloat').toggleClass('is-locked', !lead);
@@ -155,7 +155,9 @@
   $('#gxThumbs').on('click', '.gx__thumb', function () { var i = +$(this).data('i'); if (i < 0) gxFilm(false); else gxShow(i); });
   $('#gxNext').on('click', function () { gxShow(gxIdx + 1); });
   $('#gxPrev').on('click', function () { gxShow(gxIdx - 1); });
-  $('#gxSound').on('click', function () { gxFilm(true); });
+  // Full film is lead-gated: visitors who haven't enquired get the popup form instead
+  $('#gxSound').on('click', function () { if (isLead()) gxFilm(true); else openModal('Gallery — Play Film'); });
+  $('#gxMedia').on('click', function (e) { if ($(e.target).is('.gx__photo') || !$('#gxStage').hasClass('is-film') || $('#gxStage').hasClass('is-sound')) return; if (isLead()) gxFilm(true); else openModal('Gallery — Play Film'); });
   $('#gxMedia').on('click', '.gx__photo', function () {
     lbOpen($.map(gxItems, function (g) { return { src: img(g.img, 'lg'), title: g.title }; }), gxIdx);
   });
@@ -568,7 +570,8 @@
       .from('.banner__thumbs, .banner__count', { opacity: 0, y: 14, duration: 0.8 }, 1.1)
       .from('.banner__rules i', { scaleY: 0, transformOrigin: 'top', duration: 1.2, stagger: 0.12, ease: 'power3.inOut' }, 0.4);
     // Banner parallax as you leave
-    gsap.to('.banner__grid', { yPercent: -10, opacity: 0.25, ease: 'none', scrollTrigger: { trigger: '.banner', start: 'top top', end: 'bottom top', scrub: true } });
+    // Desktop only: on mobile the banner is tall and would fade while still being read
+    if (window.matchMedia('(min-width: 1101px)').matches) gsap.to('.banner__grid', { yPercent: -10, opacity: 0.25, ease: 'none', scrollTrigger: { trigger: '.banner', start: 'top top', end: 'bottom top', scrub: true } });
 
     // Overview: image stage wipes up, pins pop, text rises
     gsap.timeline({ scrollTrigger: { trigger: '#overview', start: 'top 70%' } })
