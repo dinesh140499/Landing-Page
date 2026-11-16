@@ -1272,6 +1272,24 @@ body.menu-open .cdock { opacity: 0; pointer-events: none; }
 /* Banner highlights: typology + booking line */
 .banner__title .bt-2 { display: inline-block !important; padding: 8px 14px 8px 12px; border-left: 3px solid #c4007a; border-radius: 0 10px 10px 0; background: rgba(255, 255, 255, .08); }
 .banner__title .bt-2 b { color: #f477c1; font-weight: 600; }
+.ov__cta { margin-top: 24px; }
+@media (max-width: 600px) { .ov__cta .btn { width: 100%; } }
+/* Typology highlight (all sizes): big pink BHK, no background */
+.banner__title .bt-2 { display: block !important; background: none !important; border-left-width: 4px; padding: 2px 0 2px 16px; font-size: clamp(17px, 1.4vw, 22px); color: #fff; }
+.banner__title .bt-2 b { display: block; font-size: clamp(30px, 2.6vw, 42px); font-weight: 700; line-height: 1.05; color: #f477c1; margin-bottom: 4px; }
+@media (max-width: 600px) {
+  .banner__title .bt-2 { display: block !important; font-size: 18px !important; font-weight: 500; line-height: 1.35; color: #fff !important; opacity: 1 !important; background: none !important; padding: 2px 0 2px 14px; margin-top: 0; border-left-width: 4px; }
+  .banner__title .bt-2 b { display: block; font-size: 30px; font-weight: 700; line-height: 1.1; letter-spacing: .01em; color: #f477c1; margin-bottom: 2px; }
+}
+/* Mobile: brand + typology above the slider so it is seen first */
+@media (max-width: 1100px) {
+  .banner__grid { row-gap: 0 !important; }
+  .banner__brand { display: contents; }
+  .banner__by { order: -4; }
+  .banner__logo-img { order: -3; }
+  .banner__title { order: -2; margin-bottom: 18px; }
+  .banner__stage { order: -1 !important; margin-bottom: 22px; }
+}
 .cover-rules span { color: #fff; font-size: 12px; font-weight: 700; }
 .cover-rules span b { color: #f477c1; }
 .banner__price small { display: inline-block; margin-top: 12px; padding: 8px 14px; border-radius: 999px; background: #c4007a; color: #fff !important; font-size: 11.5px; font-weight: 600; letter-spacing: .12em; box-shadow: 0 10px 24px -10px rgba(196, 0, 122, .8); }
@@ -1331,6 +1349,53 @@ body.menu-open .cdock { opacity: 0; pointer-events: none; }
 .fcta__btn b { font-size: 16px; font-weight: 700; letter-spacing: .02em; }
 .fcta__btn--call { background: #c4007a; box-shadow: 0 12px 26px -12px rgba(196, 0, 122, .8); }
 .fcta__btn--wa { background: #0f7a3d; box-shadow: 0 12px 26px -12px rgba(15, 122, 61, .8); }
+.fcta__btn { border: 1px solid transparent; transition: transform .35s var(--ease), box-shadow .35s, background-color .35s, border-color .35s; }
+.fcta__btn--call:hover, .fcta__btn--wa:hover { background: #000; border-color: rgba(255, 255, 255, .35); box-shadow: 0 12px 26px -12px rgba(0, 0, 0, .8); }
 .footer__mail { margin-top: 14px; font-size: 13.5px; }
 .footer__mail a { color: rgba(255, 255, 255, .8); }
 @media (min-width: 901px) { .fcta { max-width: 300px; } }
+
+/* =====================================================================
+   TONE-DOWN: less pink. Pink kept for primary CTAs, BHK highlight,
+   section-title accents. Decorative pinks → neutrals.
+   ===================================================================== */
+:root { --accent-soft: #e6dfd3; }
+.menu__sheet--1 { background: #1a1a1a; }
+.menu__links a:hover { color: #fff; }
+::-webkit-scrollbar-thumb:hover { background: #888; }
+.gx__cap span, .cfc__txt small, .banner__price strong sup, .banner__logo b,
+.cover-rules span b, .track .sec-title em, .track__grid sup, .track__grid em { color: #e6dfd3 !important; }
+.residences .offer.offer--hl .offer__k { color: rgba(255, 255, 255, .75); }
+/* Booking card: black instead of pink gradient, small pink tag only */
+.residences .offer.offer--hl { background: #0b0b0b; box-shadow: 0 20px 40px -24px rgba(0, 0, 0, .6); }
+.residences .offer.offer--hl .offer__v small { background: var(--accent); color: #fff; }
+/* Banner price pill: outlined, not filled */
+.banner__price small { background: transparent; border: 1px solid rgba(255, 255, 255, .35); box-shadow: none; }
+/* Footer call button: dark, pink icon only */
+.fcta__btn--call { background: #1c1c1c; border-color: rgba(255, 255, 255, .15); box-shadow: 0 12px 26px -12px rgba(0, 0, 0, .7); }
+.fcta__btn--call img { background: var(--accent); }
+.track::before { background: radial-gradient(circle, rgba(255, 255, 255, .06), transparent 60%); }
+
+/* TONE-DOWN v2: pink only on primary CTA buttons */
+.sec-title em { color: inherit; }
+.banner__title .bt-2 { border-left-color: rgba(255, 255, 255, .5) !important; }
+.banner__title .bt-2 b { color: #fff !important; }
+.menu__links a i, .form-card__kicker { color: #9a9a9a; }
+.menu__links a span::after, .form-card::before, .pulse, .banner__mouse i { background: #fff; }
+.residences .offer.offer--hl .offer__v small { background: #fff; color: #0b0b0b; }
+.fcta__btn--call img { background: rgba(255, 255, 255, .2); }
+::selection { background: #222; color: #fff; }
+:focus-visible { outline-color: #888; }
+
+/* TONE-DOWN v3: accent becomes neutral taupe; real pink (--pink) only on primary CTAs */
+:root { --pink: #d6007f; --accent: #a89d8d; --accent-2: #8f8476; }
+.btn--accent, .pill:first-child { background: var(--pink); color: #fff; }
+.pill:first-child i { color: var(--pink); }
+.mbar__cta { background: var(--pink) !important; }
+.mv__kicker, .ty__kicker, .form-card__kicker { color: #8f8476 !important; }
+.light .sec-title em, .mf-kicker em, .cf-line span, .lrows li b, .prow__price, .prow__no, .ov__legend li::before { color: inherit; }
+.ov__legend li::before, .prow__no { color: #8f8476; }
+.track__grid li::before { background: rgba(255, 255, 255, .3); }
+.prow__cost { background: #0b0b0b; box-shadow: none; }
+.prow__cost i { color: #0b0b0b; }
+.prow__cost:hover { background: var(--pink); box-shadow: none; }
