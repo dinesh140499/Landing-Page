@@ -90,16 +90,17 @@
   var rIdx = 0;
   $('#rvList').html($.map(D.residences, function (r, i) {
     var n = r.tab.replace(' BHK', '');
-    return '<button class="rx__tab' + (i ? '' : ' is-on') + '" data-i="' + i + '" role="tab"><b>' + n + '</b><span>BHK<small>' + r.area.toLocaleString('en-IN') + ' sq ft</small></span></button>';
+    return '<button class="rx__tab' + (i ? '' : ' is-on') + '" data-i="' + i + '" role="tab"><b>' + n + '</b><span>BHK<small>' + fa(r.area) + ' sq ft</small></span></button>';
   }).join(''));
+  function fa(a) { return typeof a === 'number' ? a.toLocaleString('en-IN') : a; }
   function rShow(i, instant) {
     rIdx = i; var r = D.residences[i], cfg = r.tab + ' — ' + r.area + ' sq ft';
     $('#rvList .rx__tab').removeClass('is-on').eq(i).addClass('is-on');
     $('#rvImg').attr({ src: img(r.img, 'sm'), srcset: img(r.img, 'sm') + ' 760w, ' + img(r.img, 'lg') + ' 1400w', sizes: '(max-width: 1100px) 92vw, 50vw', alt: r.tab + ' floor plan, ' + r.area + ' sq ft RERA carpet — Runwal The Central Park' });
     $('#rxTwr').text(r.tower + ' · Residence 0' + (i + 1));
     $('#rxType').text(r.tab);
-    $('#rxArea').text(r.area.toLocaleString('en-IN')); $('#rxSqm').text(r.sqm.toFixed(2) + ' sq m');
-    $('#rvBands').html(['G – 10', '11 – 20', '21 – 30'].map(function (b, k) { return '<li><span>Floors ' + b + '</span><i></i><b>₹' + r.bands[k] + ' Cr</b></li>'; }).join(''));
+    $('#rxArea').text(fa(r.area)); $('#rxSqm').text(r.sqm + ' sq m');
+    $('#rvBands').html(!r.bands ? '<li><span>All floors</span><i></i><b>Price on request</b></li>' : ['G – 10', '11 – 20', '21 – 30'].map(function (b, k) { return '<li><span>Floors ' + b + '</span><i></i><b>₹' + r.bands[k] + ' Cr</b></li>'; }).join(''));
     $('#rvUnlock').attr({ 'data-enquire': 'Unlock Plan — ' + r.tab, 'data-config': cfg });
     $('#rvCost').attr({ 'data-enquire': 'Cost Sheet — ' + r.tab, 'data-config': cfg });
     $('#rvView').addClass('is-locked'); /* floor plans always stay blurred */
@@ -169,7 +170,7 @@
     }
     function fOpen() { if (!fv.src) fv.src = fv.getAttribute('data-src'); $fm.addClass('is-open').attr('aria-hidden', 'false'); lock(); if (bg) bg.pause(); fv.currentTime = 0; var p = fv.play(); if (p && p.catch) p.catch(function () {}); window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'film_play' }); }
     function fClose() { fv.pause(); $fm.removeClass('is-open').attr('aria-hidden', 'true'); unlock(); }
-    $('#filmPlay').on('click', fOpen);
+    $('#filmPlay').on('click', function () { mOpen('Film — Play Video'); });
     $fm.on('click', '[data-film-close]', fClose).on('click', function (e) { if (e.target === this) fClose(); });
     $doc.on('keydown', function (e) { if (e.key === 'Escape' && $fm.hasClass('is-open')) fClose(); });
     $(fv).on('ended', function () { fClose(); mOpen('Film — Watched Till End'); });

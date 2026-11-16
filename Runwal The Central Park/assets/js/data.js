@@ -5,10 +5,10 @@ window.SITE = {
 
   /* ---------- SETTINGS: fill these in before going live ---------- */
   contact: {
-    leadEmail: 'officialdinesh1499@gmail.com', // FormSubmit sends every enquiry here
-    phone: '+919126264444',     // IVR (used for tel: links)
-    phoneLabel: '+91 91262 64444', // IVR (shown on the site)
-    whatsapp: '',               // e.g. '919800000000'  (country code + number, no +)
+    leadEmail: 'shiv.buzz123@gmail.com', // FormSubmit sends every enquiry here
+    phone: '+918804088044',     // IVR (used for tel: links)
+    phoneLabel: '+91 88040 88044', // IVR (shown on the site)
+    whatsapp: '918804088044',               // e.g. '919800000000'  (country code + number, no +)
     whatsappText: "Hi, I'm interested in Runwal The Central Park, Pimpri-Chinchwad. Please share the price sheet & site visit details.",
     cpFirm: '',                 // your channel-partner firm name (required in the Runwal disclaimer)
     cpRera: 'A52100020438'                // your channel-partner MahaRERA registration number
@@ -16,10 +16,12 @@ window.SITE = {
 
   /* ---------- Residences (RERA carpet from Tower D3 / D4 booklets; all-inclusive prices for floors G-10, 11-20, 21-30) ---------- */
   residences: [
-    { id: '2bhk',   tab: '2 BHK',   area: 785,  sqm: 72.90,  price: '₹1.38 Cr*', bands: ['1.38', '1.40', '1.42'], tower: 'Tower D3', img: 'residences-2bhk-plan' },
-    { id: '3bhk',   tab: '3 BHK',   area: 1178, sqm: 109.42, price: '₹2.20 Cr*', bands: ['2.20', '2.25', '2.30'], tower: 'Tower D3', img: 'residences-3bhk-plan' },
-    { id: '3-5bhk', tab: '3.5 BHK', area: 1379, sqm: 128.10, price: '₹2.55 Cr*', bands: ['2.55', '2.60', '2.65'], tower: 'Tower D4', img: 'residences-3-5bhk-plan' },
-    { id: '4-5bhk', tab: '4.5 BHK', area: 1825, sqm: 169.51, price: '₹3.55 Cr*', bands: ['3.55', '3.60', '3.65'], tower: 'Tower D4', img: 'residences-4-5bhk-plan' }
+    { id: '2bhk',   tab: '2 BHK',   area: '850 – 860', sqm: '78.97 – 79.90', price: '₹1.38 Cr*', bands: ['1.38', '1.40', '1.42'], tower: 'Tower D3', img: 'residences-2bhk-plan' },
+    { id: '3bhk',   tab: '3 BHK',   area: 1314, sqm: '122.07', price: '₹2.20 Cr*', bands: ['2.20', '2.25', '2.30'], tower: 'Tower D3', img: 'residences-3bhk-plan' },
+    { id: '3-5bhk', tab: '3.5 BHK', area: 1548, sqm: '143.81', price: '₹2.55 Cr*', bands: ['2.55', '2.60', '2.65'], tower: 'Tower D4', img: 'residences-3-5bhk-plan' },
+    { id: '4-5bhk', tab: '4.5 BHK', area: 2057, sqm: '191.10', price: '₹3.55 Cr*', bands: ['3.55', '3.60', '3.65'], tower: 'Tower D4', img: 'residences-4-5bhk-plan' },
+    { id: '2-2bhk', tab: '2+2 BHK', area: 1721, sqm: '159.88', price: 'On Request', bands: null, tower: 'Jodi Residence', img: 'residences-2bhk-plan' },
+    { id: '3-5-3-5bhk', tab: '3.5+3.5 BHK', area: 3100, sqm: '288.00', price: 'On Request', bands: null, tower: 'Jodi Residence', img: 'residences-3-5bhk-plan' }
   ],
 
   /* ---------- Main amenities (renders from the approved brochure) ---------- */
