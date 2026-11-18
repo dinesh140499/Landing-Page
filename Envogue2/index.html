@@ -19,7 +19,7 @@
         imagesrcset="assets/images/banner/banner-front-elevation-sm.webp 900w, assets/images/banner/banner-front-elevation-lg.webp 2000w"
         imagesizes="(max-width: 900px) 100vw, 62vw" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/fonts.css">
-  <link rel="stylesheet" href="assets/css/style.css?v=20261118l">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261118t">
   <link rel="stylesheet" href="assets/css/intlTelInput.min.css">
   <link rel="stylesheet" href="assets/css/lead-form.css">
   <link rel="icon" type="image/webp" href="assets/images/brand/brand-favicon.webp">
@@ -167,27 +167,30 @@
           </figure>
         </div>
       </div>
-      <div class="container ovhl">
-        <div class="ovhl__head" data-reveal>
-          <p class="eyebrow">Project Highlights</p>
-          <h3 class="ovhl__title">Break away from ordinary. <em>Experience extraordinary living.</em></h3>
-          <p class="ovhl__lead">Discover Envogue 2.0 — premium 2, 3 &amp; 4 Bed Suites at PCMC Central, Akurdi, Pune.</p>
+      <div class="container">
+        <div class="hlp" data-reveal>
+          <div class="hlp__intro">
+            <p class="hlp__eyebrow">Project Highlights</p>
+            <h3 class="hlp__title">Break away from ordinary. <em>Experience extraordinary living.</em></h3>
+            <p class="hlp__lead">Premium 2, 3 &amp; 4 Bed Suites at PCMC Central, Akurdi, Pune.</p>
+          </div>
+          <ul class="hlp__chips">
+            <li title="Situated on Old Mumbai Road">Road-Front Property</li>
+            <li title="Distinctive contemporary design">Iconic Black-Themed Architecture</li>
+            <li title="Premium entrance experience">Designer Arrival &amp; Departure Port</li>
+            <li title="Unique black-themed infinity pool">Horizon Pool &amp; Little Lagoon</li>
+            <li title="Dedicated leisure &amp; entertainment spaces">Exclusive Clubhouse</li>
+            <li title="Pool table, cigar &amp; poker room">The Lounge</li>
+            <li title="Dedicated celebration space">Ballroom</li>
+            <li title="Dedicated fitness facilities">Gym &amp; GroupX Studio</li>
+            <li title="Exclusive outdoor relaxation space">Fireside Lounge</li>
+            <li title="Dedicated sports facility">Box Cricket Arena</li>
+            <li title="Recreational space for children">Children&rsquo;s Adventure Zone</li>
+            <li title="Outdoor social &amp; leisure experience">Musical Gathering Space</li>
+            <li title="Dedicated green &amp; recreational areas">Theme Garden</li>
+            <li class="hlp__req"><a href="#brochure" data-enquire="Highlights — Download Brochure">Full list in the brochure — <b>Request it</b> <i aria-hidden="true">→</i></a></li>
+          </ul>
         </div>
-        <ol class="ovhl__grid">
-          <li data-reveal><b>Road-Front Property</b><span>Situated on Old Mumbai Road</span></li>
-          <li data-reveal><b>Iconic Black-Themed Architecture</b><span>Distinctive contemporary design</span></li>
-          <li data-reveal><b>Designer Arrival &amp; Departure Port</b><span>Premium entrance experience</span></li>
-          <li data-reveal><b>Horizon Pool &amp; Little Lagoon</b><span>Unique black-themed infinity pool</span></li>
-          <li data-reveal><b>Exclusive Clubhouse</b><span>Dedicated leisure &amp; entertainment spaces</span></li>
-          <li data-reveal><b>The Lounge</b><span>Pool table, cigar &amp; poker room</span></li>
-          <li data-reveal><b>Multipurpose Hall (Ballroom)</b><span>Dedicated celebration space</span></li>
-          <li data-reveal><b>Gym &amp; GroupX Studio</b><span>Dedicated fitness facilities</span></li>
-          <li data-reveal><b>Fireside Lounge</b><span>Exclusive outdoor relaxation space</span></li>
-          <li data-reveal><b>Box Cricket Arena</b><span>Dedicated sports facility</span></li>
-          <li data-reveal><b>Children&rsquo;s Adventure Zone</b><span>Recreational space for children</span></li>
-          <li data-reveal><b>Musical Gathering Space</b><span>Outdoor social &amp; leisure experience</span></li>
-          <li data-reveal><b>Theme Garden &amp; Landscaped Spaces</b><span>Dedicated green &amp; recreational areas</span></li>
-        </ol>
       </div>
     </section>
 
@@ -209,15 +212,7 @@
 
         <!-- Payment / offer strip -->
         <div class="offer-grid">
-          <div class="offer offer--hl" data-reveal><p class="offer__k">Booking Amount</p><p class="offer__v">₹5 Lacs <small>+ ₹25K GST</small></p></div>
-         
-          <div class="offer" data-reveal><p class="offer__k">Pricing</p><p class="offer__v">All-inclusive <small>of taxes*</small></p></div>
-          <div class="offer" data-reveal><p class="offer__k">Possession</p><p class="offer__v">Dec 2028 <small>Target · RERA Dec 2029</small></p></div>
-          <div class="offer" data-reveal><p class="offer__k">Extra Charges</p><p class="offer__v">Zero <small>No floor-rise · No PLC</small></p></div>
-          <!-- Cost sheet CTA (right after possession box) -->
-          <div class="cost-sheet-cta" data-reveal>
-            <button class="btn btn--accent btn--lg" data-enquire="Residences — Download Full Cost Sheet">Download Full Cost Sheet</button>
-          </div>
+          <button type="button" class="offer offer--hl offer--btn" data-reveal data-enquire="Residences — Book Now ₹5 Lacs"><span class="offer__k">Booking Amount</span><span class="offer__v">₹5 Lacs <small>+ ₹25K GST</small></span><span class="offer__go">Book Now <i aria-hidden="true">→</i></span></button>
         </div>
       </div>
     </section>
@@ -364,13 +359,17 @@
       </div>
       <div class="footer__col">
         <p class="eyebrow eyebrow--light">RERA Details</p>
-        <ul class="footer__list">
-          <li><span>Project</span><b>P52100077680</b></li>
-          <li><span>Agent</span><b>A52100020438</b></li>
-        </ul>
-        <div class="footer__qr">
-          <img src="assets/images/P52100077680.webp" width="110" height="110" alt="MahaRERA QR code for project P52100077680" loading="lazy" decoding="async">
-          <p><span>MahaRERA No.</span><b>P52100077680</b><small>Scan to verify on maharera.maharashtra.gov.in</small></p>
+       
+        <div class="rera-card">
+          <figure class="rera-card__qr">
+            <img src="assets/images/P52100077680.webp" width="104" height="104" alt="MahaRERA QR code for project P52100077680" loading="lazy" decoding="async">
+            <figcaption>Scan</figcaption>
+          </figure>
+          <dl class="rera-card__info">
+            <div><dt>Project RERA</dt><dd>P52100077680</dd></div>
+            <div><dt>Agent RERA</dt><dd>A52100020438</dd></div>
+          </dl>
+          <a class="rera-card__link" href="https://maharera.maharashtra.gov.in" target="_blank" rel="noopener">Verify on maharera.maharashtra.gov.in <i aria-hidden="true">↗</i></a>
         </div>
       </div>
     </div>
@@ -451,6 +450,6 @@
   <script src="assets/js/vendor/intlTelInputWithUtils.min.js" defer></script>
   <script src="assets/js/lead-form.js" defer></script>
   <script src="assets/js/data.js" defer></script>
-  <script src="assets/js/main.js?v=20261118i" defer></script>
+  <script src="assets/js/main.js?v=20261118s" defer></script>
 </body>
 </html>

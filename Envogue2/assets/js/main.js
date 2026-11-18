@@ -412,6 +412,7 @@
     if (/^Price on Request/i.test(src)) return unit ? 'Unlock price for ' + unit : 'Unlock the launch price';
     if (/^Unlock Plan/i.test(src)) return unit ? 'View the ' + unit + ' floor plan' : 'Unlock all floor plans';
     if (/^Cost Sheet/i.test(src)) return unit ? 'Get the ' + unit + ' cost sheet' : 'Get the cost sheet';
+    if (/book now/i.test(src)) return 'Book your home at ₹5 Lacs';
     if (/unlock price/i.test(src)) return 'Unlock the launch price';
     if (/full cost sheet/i.test(src)) return 'Download the full cost sheet';
     if (/price sheet/i.test(src)) return 'Get the price sheet';
