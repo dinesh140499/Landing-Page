@@ -1554,3 +1554,25 @@ body.menu-open .cdock { opacity: 0; pointer-events: none; }
 .footer__qr p span { letter-spacing: .2em; text-transform: uppercase; font-size: 10px; }
 .footer__qr p b { color: #fff; font-size: 15px; letter-spacing: .06em; }
 .footer__qr small { font-size: 10.5px; line-height: 1.4; }
+
+/* ---- Overview: Project Highlights ---- */
+.ovhl { position: relative; z-index: 1; margin-top: clamp(56px, 7vw, 96px); padding-top: clamp(40px, 5vw, 64px); border-top: 1px solid rgba(0,0,0,.1); }
+.ovhl__head { max-width: 760px; margin-bottom: clamp(28px, 4vw, 48px); }
+.ovhl__title { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 3.2vw, 46px); line-height: 1.1; margin: 10px 0 14px; color: #0b0b0b; }
+.ovhl__title em { color: #c4007a; }
+.ovhl__lead { font-size: 15px; color: #555; }
+.ovhl__grid { list-style: none; margin: 0; padding: 0; counter-reset: hl; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(0,0,0,.1); border-left: 1px solid rgba(0,0,0,.1); }
+.ovhl__grid li {
+  counter-increment: hl; position: relative; display: flex; flex-direction: column; gap: 6px;
+  padding: 24px 24px 24px 72px; border-right: 1px solid rgba(0,0,0,.1); border-bottom: 1px solid rgba(0,0,0,.1);
+  transition: background .35s;
+}
+.ovhl__grid li::before {
+  content: counter(hl, decimal-leading-zero); position: absolute; left: 24px; top: 22px;
+  font-family: var(--serif); font-size: 26px; line-height: 1; color: #c4007a;
+}
+.ovhl__grid li:hover { background: rgba(196,0,122,.05); }
+.ovhl__grid b { font-size: 15px; font-weight: 600; color: #0b0b0b; }
+.ovhl__grid span { font-size: 13px; color: #6b6b6b; }
+@media (max-width: 900px) { .ovhl__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .ovhl__grid { grid-template-columns: 1fr; } .ovhl__grid li { padding: 18px 16px 18px 60px; } .ovhl__grid li::before { left: 16px; top: 17px; font-size: 22px; } }
