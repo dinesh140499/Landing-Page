@@ -605,3 +605,5 @@ html:not(.js) [data-rv] { opacity: 1; transform: none; }
 .gl__zoom{opacity:1;transform:none}
 .gl__count b{font-size:26px}
 }
+
+@media (max-width:760px){.ft__top{flex-direction:column;align-items:stretch}.ft__rera{display:grid;grid-template-columns:1fr 1fr;gap:18px 14px;width:100%;text-align:center}.ft__rera>div{grid-column:1/-1;align-items:center}.ft__qrbox{min-width:0}.ft__qr{width:min(130px,100%);height:auto;aspect-ratio:1}.ft__qrbox figcaption b{font-size:12px;padding:4px 8px;white-space:nowrap}}
