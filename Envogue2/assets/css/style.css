@@ -1546,3 +1546,11 @@ body.menu-open .cdock { opacity: 0; pointer-events: none; }
 .btn:hover .btn__play { transform: scale(1.1); background: #c4007a; color: #fff; }
 @keyframes playPulse { from { transform: scale(1); opacity: .9; } to { transform: scale(1.7); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .btn .btn__play::after { animation: none; } }
+
+/* ---- MahaRERA QR (footer) ---- */
+.footer__qr { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
+.footer__qr img { width: 110px; height: 110px; flex: none; padding: 6px; background: #fff; border-radius: 10px; image-rendering: pixelated; }
+.footer__qr p { display: flex; flex-direction: column; gap: 3px; margin: 0; font-size: 11px; color: rgba(255,255,255,.6); }
+.footer__qr p span { letter-spacing: .2em; text-transform: uppercase; font-size: 10px; }
+.footer__qr p b { color: #fff; font-size: 15px; letter-spacing: .06em; }
+.footer__qr small { font-size: 10.5px; line-height: 1.4; }
