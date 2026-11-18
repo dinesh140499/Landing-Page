@@ -130,7 +130,7 @@
   }).join(''));
 
   /* ---------- floor plans ---------- */
-  var lockSvg = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 10V7a5 5 0 0 1 10 0v3h1a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-9a1 1 0 0 1 1-1zm2 0h6V7a3 3 0 0 0-6 0z"/></svg>';
+  var lockSvg = '<img src="' + IMG + 'icons/icon-lock.webp" width="56" height="76" alt="">';
   $('#fpGrid').html($.map(PLANS, function (p) {
     var sq = p.total.split(' (')[0], garden = /Garden/.test(p.name), study = /Study/.test(p.name);
     return '<article class="fpc" data-bhk="' + p.id.charAt(0) + '">' +
