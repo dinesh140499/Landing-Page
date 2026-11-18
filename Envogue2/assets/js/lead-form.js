@@ -111,7 +111,26 @@
     setError($(this).closest('.field'), '');
   }
 
-  $('.lead-form input[name=phone]').each(function () { initPhone(this); });
+  /* Lazy-load the ~300 KB intl-tel-input bundle: on first form interaction,
+     on any enquiry click, or once the page is idle — never on the critical path. */
+  var itiState = 0; // 0 = not loaded, 1 = loading, 2 = ready
+  function initAllPhones() { $('.lead-form input[name=phone]').each(function () { initPhone(this); }); }
+  function loadIti() {
+    if (itiState) return;
+    itiState = 1;
+    var s = document.createElement('script');
+    s.src = 'assets/js/vendor/intlTelInputWithUtils.min.js';
+    s.async = true;
+    s.onload = function () { itiState = 2; initAllPhones(); };
+    s.onerror = function () { itiState = 0; };
+    document.head.appendChild(s);
+  }
+  $(document).one('focusin pointerdown touchstart', '.lead-form', loadIti);
+  $(document).one('click', '[data-enquire]', loadIti);
+  $(window).on('load', function () {
+    var idle = window.requestIdleCallback || function (cb) { return setTimeout(cb, 1); };
+    setTimeout(function () { idle(loadIti, { timeout: 2000 }); }, 3500);
+  });
 
   window.LeadForm = { validate: validate, initPhone: initPhone };
 })(jQuery);

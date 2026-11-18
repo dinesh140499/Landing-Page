@@ -18,15 +18,20 @@
         href="assets/images/banner/banner-front-elevation-lg.webp"
         imagesrcset="assets/images/banner/banner-front-elevation-sm.webp 900w, assets/images/banner/banner-front-elevation-lg.webp 2000w"
         imagesizes="(max-width: 900px) 100vw, 62vw" fetchpriority="high">
-  <link rel="stylesheet" href="assets/css/fonts.css">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/montserrat-400-normal-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/crimson-pro-300-600-normal-latin.woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/fonts.css?v=2">
   <link rel="stylesheet" href="assets/css/style.css?v=20261118t">
-  <link rel="stylesheet" href="assets/css/intlTelInput.min.css">
+  <link rel="stylesheet" href="assets/css/intlTelInput.min.css" media="print" onload="this.media='all'">
   <link rel="stylesheet" href="assets/css/lead-form.css">
   <link rel="icon" type="image/webp" href="assets/images/brand/brand-favicon.webp">
 
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ApartmentComplex","name":"Envogue 2.0","description":"2, 3 & 4 BHK bed suites in 41-storey towers on 8 acres at PCMC Central, Akurdi by Tayal Corp.","address":{"@type":"PostalAddress","streetAddress":"CTS No. 4667, Old Mumbai Rd., PCMC Central, Kalbhor Nagar, Akurdi","addressLocality":"Pimpri-Chinchwad, Pune","postalCode":"411035","addressCountry":"IN"},"telephone":"+919126264444","numberOfAccommodationUnits":864}
   </script>
+
+  <!-- Add Google Tag -->
+   
 </head>
 <body>
 
@@ -207,7 +212,7 @@
         <div class="plist" id="plist">
           <div class="plist__head"><span></span><span>Configuration</span><span>Carpet Area</span><span>Tower</span><span>All-inclusive Price</span><span></span></div>
           <div id="plistRows"></div>
-          <div class="plist__float" id="plistFloat" aria-hidden="true"><img src="assets/images/residences/residences-2bhk-800-sqft-plan-sm.webp" width="760" height="688" alt=""><span class="plist__lock"><img class="ico" src="assets/images/icons/icon-lock.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><b>2 BHK · 800 sq.ft</b></div>
+          <div class="plist__float" id="plistFloat" aria-hidden="true"><img src="assets/images/residences/residences-2bhk-800-sqft-plan-sm.webp" width="760" height="688" alt="" loading="lazy" decoding="async"><span class="plist__lock"><img class="ico" src="assets/images/icons/icon-lock.webp" width="48" height="48" alt="" loading="lazy" decoding="async"></span><b>2 BHK · 800 sq.ft</b></div>
         </div>
 
         <!-- Payment / offer strip -->
@@ -447,8 +452,7 @@
   <script src="assets/js/vendor/lenis.min.js" defer></script>
   <script src="assets/js/vendor/gsap.min.js" defer></script>
   <script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
-  <script src="assets/js/vendor/intlTelInputWithUtils.min.js" defer></script>
-  <script src="assets/js/lead-form.js" defer></script>
+  <script src="assets/js/lead-form.js?v=2" defer></script>
   <script src="assets/js/data.js" defer></script>
   <script src="assets/js/main.js?v=20261118s" defer></script>
 </body>
