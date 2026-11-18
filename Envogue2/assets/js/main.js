@@ -66,7 +66,9 @@
         '<span class="prow__type">' + r.tab + '</span>' +
         '<span class="prow__area">' + r.area.toLocaleString('en-IN') + ' <small>sq.ft</small></span>' +
         '<span class="prow__wing">' + r.wing + '</span>' +
-        '<span class="prow__price">' + r.price + '</span>' +
+        (/x{2,}/i.test(r.price)
+          ? '<span class="prow__price prow__price--locked" data-enquire="Price on Request — ' + r.tab + '" data-config="' + cfg + '" role="button" tabindex="0" aria-label="Unlock price for ' + r.tab + '"><span class="vault"><i class="vault__lock" aria-hidden="true"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path class="vault__shackle" d="M8 11V7.5a4 4 0 0 1 8 0V11"/></svg></i><span class="vault__val" aria-hidden="true">₹1.88 Cr*</span></span></span>'
+          : '<span class="prow__price">' + r.price + '</span>') +
         '<span class="prow__act">' + planBtn + '<button class="prow__cost" data-enquire="Cost Sheet — ' + r.tab + '" data-config="' + cfg + '">Cost Sheet <i aria-hidden="true">→</i></button></span>' +
       '</div>';
     }).join(''));
@@ -406,9 +408,19 @@
      ===================================================================== */
   var $modal = $('#leadModal'), $modalForm = $modal.find('.lead-form');
   function titleFor(src) {
+    var unit = (src.split(' — ')[1] || '').trim();   // e.g. "3 BHK" for per-residence buttons
+    if (/^Price on Request/i.test(src)) return unit ? 'Unlock price for ' + unit : 'Unlock the launch price';
+    if (/^Unlock Plan/i.test(src)) return unit ? 'View the ' + unit + ' floor plan' : 'Unlock all floor plans';
+    if (/^Cost Sheet/i.test(src)) return unit ? 'Get the ' + unit + ' cost sheet' : 'Get the cost sheet';
+    if (/unlock price/i.test(src)) return 'Unlock the launch price';
+    if (/full cost sheet/i.test(src)) return 'Download the full cost sheet';
+    if (/price sheet/i.test(src)) return 'Get the price sheet';
     if (/site visit/i.test(src)) return 'Book a private site visit';
     if (/brochure/i.test(src)) return 'Download the e-brochure';
-    if (/unlock/i.test(src)) return 'Unlock all floor plans';
+    if (/video/i.test(src)) return 'Watch the sample flat video';
+    if (/film/i.test(src)) return 'Watch the project film';
+    if (/exit intent/i.test(src)) return 'Before you go — get the launch offer';
+    if (/auto popup/i.test(src)) return 'Tower K4 now launching — enquire today';
     if (/cost|price/i.test(src)) return 'Get the price sheet';
     return 'Enquire now';
   }

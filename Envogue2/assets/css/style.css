@@ -1411,3 +1411,138 @@ body.menu-open .cdock { opacity: 0; pointer-events: none; }
   .residences .cost-sheet-cta { padding: 14px 0; }
   .residences .cost-sheet-cta .btn { width: 100%; min-width: 0; padding: 15px 16px; font-size: 11px; letter-spacing: .12em; }
 }
+
+/* ---- Highlighted "New Launch Tower" badge (banner) ---- */
+.banner__by { flex-wrap: wrap; gap: 14px; }
+.banner__by-co { color: #d9d9d9; }
+.launch-badge {
+  position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 10px;
+  padding: 9px 18px 9px 14px; border-radius: 999px;
+  background: linear-gradient(135deg, #ff2fa6 0%, #d6007f 55%, #a3005f 100%);
+  color: #fff; font-size: 11.5px; font-weight: 700; letter-spacing: .26em;
+  border: 1px solid rgba(255,255,255,.35);
+  box-shadow: 0 0 0 4px rgba(214,0,127,.18), 0 10px 28px -6px rgba(214,0,127,.75);
+  animation: lbGlow 2.6s ease-in-out infinite;
+}
+.launch-badge::after {
+  content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent);
+  transform: skewX(-20deg); animation: lbShine 3.2s ease-in-out infinite;
+}
+.launch-badge__dot { position: relative; width: 8px; height: 8px; border-radius: 50%; background: #fff; flex: none; }
+.launch-badge__dot::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%; background: #fff;
+  animation: lbPing 1.6s cubic-bezier(0,0,.2,1) infinite;
+}
+@keyframes lbPing { 75%, 100% { transform: scale(2.6); opacity: 0; } }
+@keyframes lbShine { 0% { left: -60%; } 55%, 100% { left: 130%; } }
+@keyframes lbGlow {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(214,0,127,.18), 0 10px 28px -6px rgba(214,0,127,.75); }
+  50% { box-shadow: 0 0 0 7px rgba(214,0,127,.10), 0 12px 36px -4px rgba(255,47,166,.95); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .launch-badge, .launch-badge::after, .launch-badge__dot::before { animation: none; }
+}
+.launch-badge--onimg { position: absolute; top: 18px; left: 18px; z-index: 6; pointer-events: none; }
+@media (max-width: 600px) { .launch-badge--onimg { top: 12px; left: 12px; padding: 7px 14px 7px 11px; font-size: 10px; letter-spacing: .2em; } }
+
+/* ---- "New Launch Tower" editorial overlay on banner image ---- */
+.launch-tag { z-index: 10 !important;
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 6; pointer-events: none;
+  aspect-ratio: auto; padding: 70px 30px 26px;
+  border-radius: 0 0 24px 24px;
+  background: linear-gradient(to top, rgba(0,0,0,.78) 0%, rgba(0,0,0,.45) 45%, transparent 100%);
+}
+.launch-tag__kicker {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 6px;
+  font-size: 10.5px; font-weight: 600; letter-spacing: .38em; text-transform: uppercase; color: #f477c1;
+}
+.launch-tag__kicker i { display: block; width: 36px; height: 1.5px; background: linear-gradient(90deg, #d6007f, #f477c1); }
+.launch-tag__title {
+  display: block; font-family: var(--serif); font-weight: 400; color: #fff;
+  font-size: clamp(30px, 3.4vw, 54px); line-height: 1; letter-spacing: .01em;
+  text-shadow: 0 4px 30px rgba(0,0,0,.5);
+}
+.launch-tag__title em {
+  font-style: italic;
+  background: linear-gradient(100deg, #ff4fb5 0%, #fff 45%, #ff4fb5 60%, #d6007f 100%);
+  background-size: 250% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: ltShine 4s ease-in-out infinite;
+}
+@keyframes ltShine { 0%, 100% { background-position: 100% 0; } 50% { background-position: 0 0; } }
+@media (max-width: 900px) { .launch-tag { border-radius: 0 0 16px 16px; padding: 50px 18px 16px; } }
+@media (prefers-reduced-motion: reduce) { .launch-tag__title em { animation: none; } }
+/* K4 highlight */
+.launch-tag__title em {
+  display: inline-block; margin-left: .12em; font-weight: 700; font-size: 1.45em; line-height: .8;
+  vertical-align: -0.08em; filter: drop-shadow(0 4px 18px rgba(214,0,127,.6));
+}
+
+/* ---- Blurred / locked launch price ---- */
+.price-lock { position: relative; display: inline-flex; align-items: center; padding: 2px 4px; margin: 2px 0 4px; background: none; border: 0; cursor: pointer; font: inherit; color: inherit; }
+.price-lock__val, .banner__price .price-lock__val { display: inline-block; filter: blur(9px); user-select: none; opacity: .85; transition: filter .4s ease; }
+.price-lock__val--sm { filter: blur(7px); cursor: pointer; user-select: none; }
+.price-lock__cta {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: inline-flex; align-items: center; gap: 8px; white-space: nowrap;
+  padding: 9px 18px; border-radius: 999px; font-family: var(--sans, sans-serif);
+  font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: #fff;
+  background: linear-gradient(135deg, #ff2fa6, #d6007f); border: 1px solid rgba(255,255,255,.35);
+  box-shadow: 0 8px 24px -6px rgba(214,0,127,.8); transition: transform .3s ease, box-shadow .3s ease;
+}
+.price-lock__cta img { width: 14px; height: 14px; filter: brightness(0) invert(1); }
+.price-lock:hover .price-lock__cta { transform: translate(-50%, -50%) scale(1.06); box-shadow: 0 10px 30px -4px rgba(255,47,166,.95); }
+.price-lock:hover .price-lock__val { filter: blur(11px); }
+.prow__price--locked { position: relative; cursor: pointer; display: inline-flex; align-items: center; }
+
+/* ---- Locked price "vault" capsule (residences list) ---- */
+.prow__price--locked { display: inline-flex; justify-self: start; outline: none; }
+.vault {
+  position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 12px;
+  padding: 6px 18px 6px 6px; border-radius: 999px;
+  background: linear-gradient(135deg, rgba(214,0,127,.10), rgba(214,0,127,.03));
+  border: 1px solid rgba(214,0,127,.28);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 8px 22px -14px rgba(214,0,127,.8);
+  transition: border-color .35s, box-shadow .35s, transform .35s var(--ease, ease);
+}
+.vault::after {
+  content: ""; position: absolute; inset: 0 auto 0 -50%; width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.65), transparent);
+  transform: skewX(-20deg); animation: vaultSweep 3.4s ease-in-out infinite; pointer-events: none;
+}
+.vault__lock {
+  display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; flex: none;
+  color: #fff; background: linear-gradient(135deg, #ff2fa6, #c4007a);
+  box-shadow: 0 4px 12px -3px rgba(214,0,127,.7);
+}
+.vault__shackle { transition: transform .4s var(--ease, ease); transform-origin: 16px 11px; }
+.vault__val {
+  font-family: var(--serif); font-weight: 500; font-size: clamp(20px, 1.8vw, 26px); line-height: 1;
+  color: #c4007a; filter: blur(7px); user-select: none; transition: filter .45s ease;
+}
+.prow__price--locked:hover .vault, .prow__price--locked:focus-visible .vault {
+  border-color: rgba(214,0,127,.6); transform: translateY(-1px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.5), 0 12px 28px -12px rgba(214,0,127,.95);
+}
+.prow__price--locked:hover .vault__val { filter: blur(5px); }
+.prow__price--locked:hover .vault__shackle { transform: translateY(-2.5px) rotate(18deg); }
+.prow__price--locked:hover .vault__lock { animation: vaultWiggle .5s ease; }
+@keyframes vaultSweep { 0% { left: -50%; } 60%, 100% { left: 130%; } }
+@keyframes vaultWiggle { 20% { transform: rotate(-12deg); } 50% { transform: rotate(10deg); } 80% { transform: rotate(-4deg); } }
+@media (max-width: 900px) { .prow__price--locked { justify-self: end; } .vault { gap: 8px; padding: 4px 12px 4px 4px; } .vault__lock { width: 24px; height: 24px; } .vault__val { font-size: 17px; } }
+@media (prefers-reduced-motion: reduce) { .vault::after, .vault__lock { animation: none; } }
+
+/* ---- Play icon on Sample Flat Video buttons ---- */
+.btn .btn__play {
+  position: relative; z-index: 1; display: inline-grid; place-items: center; flex: none;
+  width: 26px; height: 26px; margin: -4px 10px -4px -6px; vertical-align: middle; border-radius: 50%;
+  background: #fff; color: #c4007a; transition: transform .35s ease, background .35s, color .35s;
+}
+.btn .btn__play svg { margin-left: 2px; }
+.btn .btn__play::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%; border: 1.5px solid rgba(255,255,255,.8);
+  animation: playPulse 1.8s ease-out infinite;
+}
+.btn:hover .btn__play { transform: scale(1.1); background: #c4007a; color: #fff; }
+@keyframes playPulse { from { transform: scale(1); opacity: .9; } to { transform: scale(1.7); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .btn .btn__play::after { animation: none; } }
