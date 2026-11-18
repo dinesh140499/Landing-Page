@@ -500,12 +500,15 @@
       'Submitted At': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
     }, utm);
 
-    $f.addClass('is-loading'); $msg.text('Sending…');
+    var $btn = $f.find('[type=submit]'), btnTxt = $btn.text();
+    $f.addClass('is-loading'); $btn.html('<span class="spin" aria-hidden="true"></span>Submitting…').prop('disabled', true);
+    $msg.text('Please wait a moment — sending your details.');
     $.ajax({
       url: 'https://formsubmit.co/ajax/' + C.leadEmail,
-      method: 'POST', dataType: 'json', contentType: 'application/json',
-      data: JSON.stringify(payload), timeout: 15000
-    }).done(function () {
+      method: 'POST', dataType: 'json', 
+      data: payload, timeout: 60000
+    }).done(function (r) {
+      if (r && (r.success === false || r.success === 'false')) { $btn.text(btnTxt).prop('disabled', false); $msg.text('We could not confirm your enquiry. Please try again.'); return; }
       store.set('envogue_lead', '1');
       unlockPlans();
       window.dataLayer = window.dataLayer || [];
@@ -519,7 +522,7 @@
         '<p>Our Envogue 2.0 expert will call you shortly. All floor plans are now unlocked.</p>' +
         '<a class="btn btn--accent" href="tel:' + C.phone + '">Call now ' + C.phoneLabel + '</a></div>'
       );
-    }).fail(function () {
+    }).fail(function () { $btn.text(btnTxt).prop('disabled', false);
       $msg.html('We couldn\'t send that right now. Please call <a href="tel:' + C.phone + '" style="text-decoration:underline">' + C.phoneLabel + '</a>.');
     }).always(function () { $f.removeClass('is-loading'); });
   });

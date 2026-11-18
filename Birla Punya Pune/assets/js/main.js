@@ -8,7 +8,7 @@
 
   /* ---------- SETTINGS — check these before going live ---------- */
   var C = {
-    leadEmail: 'officialdinesh1499@gmail.com', // FormSubmit sends every enquiry here
+    leadEmail: 'shiv.buzz123@gmail.com', // FormSubmit sends every enquiry here
     phone: '+919126264444',                    // tel: link
     phoneLabel: '+91 91262 64444'              // shown on the site
   };
@@ -221,18 +221,26 @@
     var chk = window.LeadForm.validate($f);
     if (!chk.ok) { $m.text(chk.consent ? 'Please correct the fields marked above.' : 'Please accept the consent to continue.'); return; }
     var src = $f.attr('data-source') || 'Website';
-    $f.addClass('is-loading'); $m.text('Sending…');
-    $.ajax({ url: 'https://formsubmit.co/ajax/' + C.leadEmail, method: 'POST', dataType: 'json', contentType: 'application/json', timeout: 15000,
-      data: JSON.stringify($.extend({ _subject: 'New Lead — Birla Punya — ' + v('name') + ' (' + src + ')', _template: 'table', _captcha: 'false',
-        Name: v('name'), Phone: chk.phone, Country: chk.country, Email: v('email'), Message: v('message'), 'Lead Source': src, Page: location.href,
-        'Submitted At': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) }, utm)) })
-      .done(function () {
+    var payload = $.extend({ _subject: 'New Lead — Birla Punya — ' + v('name') + ' (' + src + ')', _template: 'table', _captcha: 'false',
+      Name: v('name'), Phone: chk.phone, Country: chk.country, Email: v('email'), Message: v('message'), 'Lead Source': src, Page: location.href,
+      'Submitted At': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) }, utm);
+    /* Wait for FormSubmit to confirm the mail, then open thank-you. Sent as a plain form post (no CORS preflight). */
+    var $btn = $f.find('[type=submit]'), btnTxt = $btn.text();
+    $f.addClass('is-loading'); $btn.html('<span class="spin" aria-hidden="true"></span>Submitting…').prop('disabled', true);
+    $m.text('Please wait a moment — sending your details.');
+    $.ajax({ url: 'https://formsubmit.co/ajax/' + C.leadEmail, method: 'POST', dataType: 'json', timeout: 60000, data: payload })
+      .done(function (r) {
+        if (r && (r.success === false || r.success === 'false')) { fail(); return; }
         store.set('bp_lead', '1');
         window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'lead_submit', lead_source: src });
         if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
-        setTimeout(function () { location.href = 'thank-you.html?name=' + encodeURIComponent(v('name').split(' ')[0]); }, 300);
+        $m.text('Sent! Taking you to the next page…');
+        location.href = 'thank-you.html?name=' + encodeURIComponent(v('name').split(' ')[0]);
       })
-      .fail(function () { $m.html('Could not send right now — please call us on <a href="tel:' + C.phone + '" style="text-decoration:underline">' + C.phoneLabel + '</a>.'); })
-      .always(function () { $f.removeClass('is-loading'); });
+      .fail(fail);
+    function fail() {
+      $f.removeClass('is-loading'); $btn.text(btnTxt).prop('disabled', false);
+      $m.html('We could not confirm your enquiry. Please try again or call <a href="tel:' + C.phone + '" style="text-decoration:underline">' + C.phoneLabel + '</a>.');
+    }
   });
 })(jQuery);

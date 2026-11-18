@@ -120,7 +120,9 @@
     sc.onload = function () { $('.lead-form input[name=phone]').each(function () { initPhone(this); }); };
     document.head.appendChild(sc);
   }
-  $(document).one('focusin pointerdown', '.lead-form', loadIti).one('click', '[data-enquire]', loadIti);
+  ['focusin', 'pointerdown', 'touchstart', 'click'].forEach(function (ev) {
+    document.addEventListener(ev, function (e) { if (e.target.closest && e.target.closest('.lead-form, [data-enquire]')) loadIti(); }, { capture: true, passive: true });
+  });
   $(window).on('load', function () { setTimeout(function () { if ('requestIdleCallback' in window) requestIdleCallback(loadIti, { timeout: 4000 }); else loadIti(); }, 3500); });
 
   window.LeadForm = { validate: validate, initPhone: initPhone };

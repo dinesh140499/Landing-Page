@@ -1445,3 +1445,9 @@ address { font-style: normal; }
   #location .lc__map { order: 1; margin-bottom: 18px; }
   #location .lc__col { order: 2; }
 }
+
+/* submit button loading state */
+.lead-form button[type=submit] .spin { display: inline-block; width: 16px; height: 16px; margin-right: 10px; vertical-align: -3px; border: 2px solid rgba(255, 255, 255, .35); border-top-color: #fff; border-radius: 50%; animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.lead-form.is-loading button[type=submit] { opacity: .85; cursor: wait; }
+.form-msg { color: var(--ink-2); }
