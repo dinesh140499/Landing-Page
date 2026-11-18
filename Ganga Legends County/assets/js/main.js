@@ -42,7 +42,7 @@
 
   /* ---------- Header: in flow above banner, fixed bar after it ---------- */
   var heroEl = document.getElementById('home'), $hd = $('#hd');
-  var secIds = ['overview', 'residences', 'wellness', 'amenities', 'location'], navCur = -2, navHover = false;
+  var secIds = ['overview', 'residences', 'wellness', 'amenities', 'location', 'gallery'], navCur = -2, navHover = false;
   function navInd(a) {
     var ind = document.getElementById('hdInd'); $('.hd__nav a').removeClass('is-ind');
     if (!a || !a.offsetWidth) { ind.style.opacity = 0; return; }
@@ -138,7 +138,7 @@
 
   /* ---------- Amenities: hover showcase ---------- */
   var A = D.amenities, sIdx = -1;
-  $('#showList').html($.map(A, function (a, i) { return '<li><button type="button" data-i="' + i + '"><i>0' + (i + 1) + '</i><span><b>' + a.title + '</b><small>' + a.note + '</small></span><em>&#8594;</em></button></li>'; }).join(''));
+  $('#showList').html($.map(A, function (a, i) { return '<li><button type="button" data-i="' + i + '"><i>0' + (i + 1) + '</i><span><b>' + a.title + '</b><small>' + a.note + '</small></span><em>&#8594;</em></button></li>'; }).join('') + '<li class="show__more"><button type="button" data-enquire="Amenities — Full List Brochure"><i>07</i><span><b>Full list in the brochure</b><small>Request it — we&#8217;ll send it right away</small></span><em>&#8594;</em></button></li>');
   function showGo(i, auto) {
     i = (i + A.length) % A.length; if (i === sIdx) return; sIdx = i; var a = A[i];
     var $old = $('#showImgs img.is-on');
@@ -152,7 +152,7 @@
   var sInView = false, sLast = 0, sHover = false;
   if (!reduce) setInterval(function () { if (sInView && !sHover && Date.now() - sLast > 5000) showGo(sIdx + 1); }, 400);
   $('.show').on('mouseenter', function () { sHover = true; }).on('mouseleave', function () { sHover = false; sLast = Date.now(); });
-  $('#showList').on('click mouseenter', 'button', function (e) { if (e.type === 'mouseenter' && window.matchMedia('(hover: none)').matches) return; showGo(+$(this).data('i')); });
+  $('#showList').on('click mouseenter', 'button[data-i]', function (e) { if (e.type === 'mouseenter' && window.matchMedia('(hover: none)').matches) return; showGo(+$(this).data('i')); });
   $('#showZoom, #showImgs').on('click', function () { lbOpen($.map(A, function (a) { return { src: img(a.img, 'lg'), title: a.title }; }), sIdx); });
   showGo(0);
 
@@ -226,6 +226,20 @@
   var $lb = $('#lb'), lbList = [], lbI = 0;
   function lbShow(i) { lbI = (i + lbList.length) % lbList.length; var it = lbList[lbI]; $('#lbImg').attr({ src: it.src, alt: it.title }); $('#lbCap').text(it.title); $lb.find('.lb__nav').toggle(lbList.length > 1); }
   function lbOpen(list, i) { lbList = list; $lb.addClass('is-open').attr('aria-hidden', 'false'); lock(); lbShow(i || 0); }
+  var G = []; for (var gi = 1; gi <= 17; gi++) G.push('assets/images/gallery/gallery-' + (gi < 10 ? '0' : '') + gi);
+  var gOn = 0, gStart = 0, GW = 6, gMob = window.matchMedia('(max-width: 1000px)');
+  $('#glGrid').html($.map(G, function (g, i) { return '<button type="button" class="gl__item" data-g="' + i + '"><img src="' + g + '-sm.webp" width="800" height="600" loading="lazy" decoding="async" alt="Ganga Legends County — image ' + (i + 1) + '"><span class="gl__no">' + (i < 9 ? '0' : '') + (i + 1) + '</span><span class="gl__zoom" aria-hidden="true">&#8599;</span></button>'; }).join(''));
+  var $gi = $('#glGrid .gl__item');
+  function glSet(i) {
+    gOn = (i + G.length) % G.length;
+    if (gOn < gStart || gOn >= gStart + GW) gStart = Math.min(Math.max(0, gOn - (gOn < gStart ? 0 : GW - 1)), G.length - GW);
+    $gi.removeClass('is-on is-in').slice(gStart, gStart + GW).addClass('is-in'); $gi.eq(gOn).addClass('is-on');
+    $('#glNo').text((gOn < 9 ? '0' : '') + (gOn + 1)); $('#glBar').css('width', ((gOn + 1) / G.length * 100) + '%');
+  }
+  glSet(0);
+  $('[data-gl]').on('click', function () { var d = +$(this).data('gl'); if (gMob.matches) { var el = $('#glGrid')[0]; el.scrollBy({ left: d * el.clientWidth * .8, behavior: 'smooth' }); } glSet(gOn + d); });
+  $('#glGrid').on('mouseenter', '.gl__item', function () { if (!gMob.matches) glSet(+$(this).data('g')); });
+  $('#glGrid').on('click', '.gl__item', function () { lbOpen($.map(G, function (g, i) { return { src: g + '-lg.webp', title: 'Ganga Legends County · ' + (i + 1) + ' / ' + G.length }; }), +$(this).data('g')); });
   function lbClose() { $lb.removeClass('is-open').attr('aria-hidden', 'true'); if (!$('#leadModal').hasClass('is-open')) unlock(); }
   $lb.on('click', '[data-lb-close]', lbClose).on('click', '[data-lb-prev]', function () { lbShow(lbI - 1); }).on('click', '[data-lb-next]', function () { lbShow(lbI + 1); })
      .on('click', function (e) { if (e.target === this) lbClose(); });

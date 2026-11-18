@@ -14,20 +14,21 @@ window.SITE = {
 
   /* ---------- Residences by tower (RERA carpet, prices as supplied) ---------- */
   towers: [
+     { id: 'b7', name: 'B7', tag: 'New tower', possession: 'Dec 2029', progress: 0.38,
+      units: [
+        { type: '3 BHK', carpet: 1021, price: '1.56' },
+        { type: '3 BHK', carpet: 1222, price: '1.90' },
+        { type: '4 BHK', carpet: 1294, price: '2.05' },
+        { type: '4 BHK', carpet: 1411, price: '2.31' }
+      ] },
     { id: 'b5', name: 'B5', tag: 'Nearing possession', possession: 'Dec 2027', progress: 0.82,
       units: [
         { type: '3 BHK',   carpet: 1262, price: '1.78' },
         { type: '3 BHK',   carpet: 1272, price: '1.83' },
         { type: '3.5 BHK', carpet: 1402, price: '2.02' },
         { type: '3.5 BHK', carpet: 1470, price: '2.16' }
-      ] },
-    { id: 'b7', name: 'B7', tag: 'New tower', possession: 'Dec 2029', progress: 0.38,
-      units: [
-        { type: '3 BHK', carpet: 1021, price: '1.56' },
-        { type: '3 BHK', carpet: 1222, price: '1.90' },
-        { type: '4 BHK', carpet: 1294, price: '2.05' },
-        { type: '4 BHK', carpet: 1411, price: '2.31' }
       ] }
+   
   ],
 
   /* ---------- Long Life by Design: the seven wellness layers (USP brochure) ---------- */
@@ -68,7 +69,7 @@ window.SITE = {
   /* ---------- Location (from the developer website) ---------- */
   location: [
     { cat: 'Connectivity', items: [['Mumbai–Bengaluru Highway', '2 min'], ['Kothrud', '5 min'], ['Baner', '5 min'], ['Pune Station', '15 min'], ['Pune International Airport', '22 km']] },
-    { cat: 'Education',    items: [['Ryan International School, Bavdhan', '1.8 km'], ['Suryadatta College', '2 min'], ['Little Millennium School', '7 min']] },
+    { cat: 'Education',    items: [['Goel Ganga International School', '0 km'],['Ryan International School, Bavdhan', '1.8 km'], ['Suryadatta College', '2 min'], ['Little Millennium School', '7 min']] },
     { cat: 'Healthcare',   items: [['Chellaram Hospital', '4 min'], ['Asian Speciality Hospital', '11 min'], ['Apple Speciality Hospital', '15 min']] },
     { cat: 'Shopping & Dining', items: [['Vishal Shopping Mall', '1 min'], ['Aditya Shagun Mall', '2 min'], ['La Bali Bar & Kitchen', '2 min'], ['Bagfull Mart', '3 min'], ['Regent Plaza Mall', '13 min']] }
   ]

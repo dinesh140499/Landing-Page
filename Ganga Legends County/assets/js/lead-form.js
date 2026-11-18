@@ -111,7 +111,17 @@
     setError($(this).closest('.field'), '');
   }
 
-  $('.lead-form input[name=phone]').each(function () { initPhone(this); });
+  /* Load the 300 KB phone picker only when needed: first form interaction, enquiry click, or idle after page load */
+  var itiReq = false;
+  function loadIti() {
+    if (itiReq) return; itiReq = true;
+    var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = 'assets/css/intlTelInput.min.css'; document.head.appendChild(css);
+    var sc = document.createElement('script'); sc.src = 'assets/js/vendor/intlTelInputWithUtils.min.js'; sc.async = true;
+    sc.onload = function () { $('.lead-form input[name=phone]').each(function () { initPhone(this); }); };
+    document.head.appendChild(sc);
+  }
+  $(document).one('focusin pointerdown', '.lead-form', loadIti).one('click', '[data-enquire]', loadIti);
+  $(window).on('load', function () { setTimeout(function () { if ('requestIdleCallback' in window) requestIdleCallback(loadIti, { timeout: 4000 }); else loadIti(); }, 3500); });
 
   window.LeadForm = { validate: validate, initPhone: initPhone };
 })(jQuery);
