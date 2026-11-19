@@ -229,7 +229,7 @@
         $('#galleryStatus').text(item.title + '. Image ' + (galleryVisible.indexOf(index) + 1) + ' of ' + galleryVisible.length + '.');
         var thumb = document.querySelector('#glTrack [data-image="' + index + '"]'), rail = document.getElementById('glTrack');
         if (thumb) {
-          var t = thumb.getBoundingClientRect(), r = rail.getBoundingClientRect(), vertical = window.matchMedia('(min-width: 901px)').matches;
+          var t = thumb.getBoundingClientRect(), r = rail.getBoundingClientRect(), vertical = getComputedStyle(rail).flexDirection === 'column';
           if (vertical && (t.top < r.top || t.bottom > r.bottom)) rail.scrollTo({ top: rail.scrollTop + t.top - r.top, behavior: reduce ? 'auto' : 'smooth' });
           else if (!vertical && (t.left < r.left || t.right > r.right)) rail.scrollTo({ left: rail.scrollLeft + t.left - r.left, behavior: reduce ? 'auto' : 'smooth' });
         }
@@ -511,6 +511,58 @@
 
   /* Finish the page with staggered FAQ and registration reveals. */
   ST.batch('.acc details, .rera__qrs figure', { start: 'top 94%', once: true, onEnter: function (b) { G.fromTo(b, { opacity: 0, y: 18 }, { opacity: 1, y: 0, duration: .7, stagger: .1, ease: 'power3.out', clearProps: 'transform,opacity' }); } });
+
+  /* ---------- banner image: curtain reveal, scroll drift, mouse depth ---------- */
+  (function () {
+    var media = document.getElementById('heroMedia'), img = media && media.querySelector('.hero__image');
+    if (!img) return;
+    media.insertAdjacentHTML('beforeend', '<span class="hero__wipe" aria-hidden="true"></span><span class="hero__glint" aria-hidden="true"></span>');
+    var wipe = media.querySelector('.hero__wipe');
+    G.set(img, { scale: 1.3, transformOrigin: '50% 40%' });
+    heroIntro
+      .fromTo(media, { clipPath: 'inset(0 0 0 100%)' }, { clipPath: 'inset(0 0 0 0%)', duration: 1.5, ease: 'expo.inOut' }, 0)
+      .fromTo(wipe, { xPercent: 0, opacity: 1 }, { left: '0%', duration: 1.5, ease: 'expo.inOut' }, 0)
+      .to(wipe, { opacity: 0, duration: .4 }, 1.4)
+      .to(img, { scale: 1.06, duration: 2.6, ease: 'expo.out' }, .3)
+      .add(function () { media.classList.add('is-revealed'); }, 1.8);
+
+    /* Drift and slow zoom as the banner scrolls away. */
+    G.to(img, { yPercent: 8, scale: 1.14, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+    /* Subtle depth on desktop pointer movement. */
+    if (window.matchMedia('(hover: hover) and (min-width: 901px)').matches) {
+      var qx = G.quickTo(img, 'x', { duration: 1.2, ease: 'power3.out' }), qy = G.quickTo(img, 'y', { duration: 1.2, ease: 'power3.out' });
+      document.querySelector('.hero').addEventListener('pointermove', function (e) {
+        var r = media.getBoundingClientRect();
+        qx(((e.clientX - r.left) / r.width - .5) * -22);
+        qy(((e.clientY - r.top) / r.height - .5) * -14);
+      });
+      document.querySelector('.hero').addEventListener('pointerleave', function () { qx(0); qy(0); });
+    }
+  })();
+
+  /* ---------- design refinement: section & highlight motion ---------- */
+  /* Gold underline under each heading draws in as its section arrives. */
+  ST.batch('.head .title, .fq__grid .title, .ct__title', { start: 'top 85%', once: true, onEnter: function (b) { b.forEach(function (el, i) { setTimeout(function () { el.classList.add('is-drawn'); }, 350 + i * 120); }); } });
+
+  /* Stats cards rise in sequence, then their numbers get a gold glint. */
+  G.from('.stats li', { opacity: 0, y: 40, scale: .94, duration: 1, stagger: .12, ease: 'expo.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: '.stats', start: 'top 88%', once: true }, onComplete: function () { $('.stats').addClass('is-lit'); } });
+
+  /* Hero highlights: a light glint passes over them once the intro ends. */
+  heroIntro.call(function () { $('.hero__highlights').addClass('is-lit'); }, null, 2.6);
+
+  /* Residence tabs, amenity chips, location rows and gallery thumbs cascade in. */
+  [['.residences__types > *', '.residences__types'], ['#lcList li', '#lcList'], ['#glTrack button', '#glTrack'], ['.lc__tabs > *', '.lc__tabs'], ['.gallery__filters button', '.gallery__filters']].forEach(function (pair) {
+    if (!document.querySelector(pair[0])) return;
+    G.from(pair[0], { opacity: 0, y: 14, duration: .7, stagger: .06, ease: 'power3.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: pair[1], start: 'top 90%', once: true } });
+  });
+
+  /* Section kickers slide in with their gold rule. */
+  ST.batch('.sec .kicker, .ct .kicker', { start: 'top 90%', once: true, onEnter: function (b) { b.forEach(function (el) { el.classList.add('is-in'); }); } });
+
+  /* Contact card lifts in; map gets a slow drift. */
+  G.from('.ct .card', { opacity: 0, y: 50, rotateX: 8, transformPerspective: 900, duration: 1.3, ease: 'expo.out', clearProps: 'transform,opacity', scrollTrigger: { trigger: '.ct', start: 'top 75%', once: true } });
+  G.fromTo('.lc__map img', { scale: 1.08 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.lc__map', start: 'top bottom', end: 'bottom top', scrub: true } });
 
   $win.on('load', function () { ST.refresh(); });
 
