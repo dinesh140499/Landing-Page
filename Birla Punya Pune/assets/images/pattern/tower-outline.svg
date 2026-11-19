@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 560" fill="none" stroke="#817096" stroke-width="1.4" stroke-linejoin="round">
+  <defs>
+    <pattern id="balconies" width="100" height="22" patternUnits="userSpaceOnUse">
+      <path d="M0 2H100M0 6H100M16 6V22M48 6V22M80 6V22"/>
+    </pattern>
+    <pattern id="side" width="48" height="22" patternUnits="userSpaceOnUse">
+      <path d="M0 2H48M0 6H48M24 6V22"/>
+    </pattern>
+  </defs>
+  <path d="M12 536H828M30 550H810"/>
+  <path d="M94 536V176L190 144 236 166V536M94 176 190 194 236 166M190 194V536M94 168 190 136 236 158V166M94 168V176"/>
+  <path d="M96 196H188V520H96Z" fill="url(#balconies)"/>
+  <path d="M194 196H232V520H194Z" fill="url(#side)"/>
+  <path d="M292 536V72L412 30 470 60V536M292 72 412 96 470 60M412 96V536M292 62 412 20 470 50V60M292 62V72"/>
+  <path d="M296 100H408V520H296Z" fill="url(#balconies)"/>
+  <path d="M416 100H466V520H416Z" fill="url(#side)"/>
+  <path d="M292 298 412 322 470 286M292 308 412 332 470 296M292 318 412 342 470 306"/>
+  <path d="M514 536V234L606 206 650 226V536M514 234 606 252 650 226M606 252V536M514 226 606 198 650 218V226M514 226V234"/>
+  <path d="M518 258H602V520H518Z" fill="url(#balconies)"/>
+  <path d="M610 258H646V520H610Z" fill="url(#side)"/>
+  <path d="M684 536V154L756 130 800 152V536M684 154 756 170 800 152M756 170V536M684 146 756 122 800 144V152M684 146V154"/>
+  <path d="M688 178H752V520H688Z" fill="url(#balconies)"/>
+  <path d="M760 178H796V520H760Z" fill="url(#side)"/>
+  <path d="M56 536V510Q46 499 54 484Q45 465 60 455Q62 434 78 444Q95 441 100 460M78 536V482M252 536V508Q241 494 250 480Q244 464 259 457Q272 445 283 461M268 536V487M480 536V514Q474 499 486 491Q491 474 506 488M496 536V505M816 536V507Q803 494 814 479Q807 465 824 458" stroke-width="1.7"/>
+</svg>

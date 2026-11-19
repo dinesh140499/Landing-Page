@@ -5,7 +5,6 @@ window.SITE = {
 
   /* ---------- SETTINGS: fill these in before going live ---------- */
   contact: {
-    leadEmail: 'shiv.buzz123@gmail.com', // FormSubmit sends every enquiry here
     phone: '+919126264444',         // IVR (used for tel: links)
     phoneLabel: '+91 91262 64444',  // IVR (shown on the site)
     whatsapp: '',                   // e.g. '919800000000' (country code + number, no +) — WhatsApp stays hidden until set

@@ -7,7 +7,6 @@
 
   /* ---------- SETTINGS — check before going live ---------- */
   var C = {
-    leadEmail: 'shiv.buzz123@gmail.com', // FormSubmit sends every enquiry here
     phone: '+919126264444',                    // IVR — same as other project sites
     phoneLabel: '+91 91262 64444',
     rera: ''                                   // MahaRERA no. — fill in when issued (shown in footer)
@@ -233,31 +232,4 @@
   $doc.on('keydown', function (e) { if (e.key === 'Escape') { if ($lb.hasClass('is-open')) lbClose(); else if ($modal.hasClass('is-open')) mClose(); else if ($menu.hasClass('is-open')) menuClose(); } });
   setTimeout(function () { if (store.get('lim_lead') !== '1' && !store.get('lim_popup_seen', true) && !$modal.hasClass('is-open') && !$lb.hasClass('is-open') && !$menu.hasClass('is-open')) mOpen('Auto Popup'); }, 20000);
 
-  /* ---------- forms → FormSubmit (wait for confirmation) → thank-you ---------- */
-  var utm = (function () { var o = {}, q = new URLSearchParams(location.search); ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'].forEach(function (k) { var v = q.get(k) || store.get('lim_' + k, true); if (v) { o[k] = v; store.set('lim_' + k, v, true); } }); return o; })();
-  $doc.on('submit', '.lead-form', function (e) {
-    e.preventDefault();
-    var $f = $(this), $m = $f.find('.form-msg').text(''), v = function (n) { return $.trim($f.find('[name=' + n + ']').val() || ''); };
-    if ($f.find('[name=_honey]').val()) return;
-    var chk = window.LeadForm.validate($f);
-    if (!chk.ok) { $m.text(chk.consent ? 'Please correct the fields marked above.' : 'Please accept the consent to continue.'); return; }
-    var src = $f.attr('data-source') || 'Website';
-    var payload = $.extend({ _subject: 'New Lead — The Arena, Pimpri — ' + v('name') + ' (' + src + ')', _template: 'table', _captcha: 'false',
-      Name: v('name'), Phone: chk.phone, Country: chk.country, Email: v('email'), Message: v('message'), 'Lead Source': src, Page: location.href,
-      'Submitted At': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) }, utm);
-    var $btn = $f.find('[type=submit]'), btnTxt = $btn.text();
-    $f.addClass('is-loading'); $btn.html('<span class="spin" aria-hidden="true"></span>Submitting…').prop('disabled', true);
-    $m.text('Please wait a moment — sending your details.');
-    function fail() { $f.removeClass('is-loading'); $btn.text(btnTxt).prop('disabled', false); $m.html('We could not confirm your enquiry. Please try again or call <a href="tel:' + C.phone + '" style="text-decoration:underline">' + C.phoneLabel + '</a>.'); }
-    $.ajax({ url: 'https://formsubmit.co/ajax/' + C.leadEmail, method: 'POST', dataType: 'json', timeout: 60000, data: payload })
-      .done(function (r) {
-        if (r && (r.success === false || r.success === 'false')) { fail(); return; }
-        store.set('lim_lead', '1');
-        window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'lead_submit', lead_source: src });
-        if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
-        $m.text('Sent! Taking you to the next page…');
-        location.href = 'thank-you.html?name=' + encodeURIComponent(v('name').split(' ')[0]);
-      })
-      .fail(fail);
-  });
 })(jQuery);

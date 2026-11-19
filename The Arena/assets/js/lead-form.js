@@ -1,9 +1,19 @@
 /* =========================================================================
-   LEAD FORMS — country-code picker (intl-tel-input) + basic validation
-   Shared by every .lead-form on the page. main.js calls LeadForm.validate($form).
+   LEAD FORMS — country-code picker (intl-tel-input), validation + submission
+   Shared by every .lead-form on the page. Sends to mail.php after validation.
    ========================================================================= */
 (function ($) {
   'use strict';
+
+  /* ---------- submission settings ---------- */
+  var MAILER_URL = 'mail.php';
+  var THANKYOU_URL = 'thank-you.html';
+  var PHONE = '+919126264444';
+  var PHONE_LABEL = '+91 91262 64444';
+  var store = {
+    get: function (k, ses) { try { return (ses ? sessionStorage : localStorage).getItem(k); } catch (e) { return null; } },
+    set: function (k, v, ses) { try { (ses ? sessionStorage : localStorage).setItem(k, v); } catch (e) {} }
+  };
 
   var COUNTRY_ORDER = ['in', 'ae', 'us', 'gb', 'sg', 'qa', 'sa', 'kw', 'om', 'bh', 'au', 'ca', 'nz', 'de'];
 
@@ -34,7 +44,7 @@
       geoIpLookup: geoIpLookup,
       countryOrder: COUNTRY_ORDER,
       separateDialCode: true,
-      strictMode: true,
+      strictMode: false,
       autoPlaceholder: 'off',
       dropdownContainer: document.body
     });
@@ -64,11 +74,10 @@
       if (v.length < 2 || !/^[\p{L} .'-]+$/u.test(v)) return 'Please enter a valid name (letters only).';
       return '';
     },
-    phone: function (v, input) {
+    phone: function (v) {
       if (!v) return 'Please enter your mobile number.';
-      var iti = input && input._iti;
-      var valid = iti ? iti.isValidNumber() : /^\+?[\d\s-]{7,18}$/.test(v);
-      return valid ? '' : 'Please enter a valid mobile number for the selected country.';
+      var valid = /^\+?[\d\s-]{7,18}$/.test(v);
+      return valid ? '' : 'Please enter a valid mobile number.';
     },
     email: function (v) {
       if (!v) return 'Please enter your email address.';
@@ -124,6 +133,65 @@
     document.addEventListener(ev, function (e) { if (e.target.closest && e.target.closest('.lead-form, [data-enquire]')) loadIti(); }, { capture: true, passive: true });
   });
   $(window).on('load', function () { setTimeout(function () { if ('requestIdleCallback' in window) requestIdleCallback(loadIti, { timeout: 4000 }); else loadIti(); }, 3500); });
+
+  /* ---------- forms → PHP mailer (wait for confirmation) → thank-you ---------- */
+  var utm = (function () { var o = {}, q = new URLSearchParams(location.search); ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'].forEach(function (k) { var v = q.get(k) || store.get('lim_' + k, true); if (v) { o[k] = v; store.set('lim_' + k, v, true); } }); return o; })();
+  $(document).on('submit', '.lead-form', function (e) {
+    e.preventDefault();                   // stop the page from reloading
+    var form = $(this);
+    var msg = form.find('.form-msg');
+    var btn = form.find('[type=submit]');
+    var btnText = btn.text();
+
+    // 1. Spam bot trap: real visitors never fill this hidden field
+    if (form.find('[name=_honey]').val()) return;
+
+    // 2. Check the fields (name, phone, email, consent)
+    var check = validate(form);
+    if (!check.ok) {
+      msg.text(check.consent ? 'Please correct the fields marked above.' : 'Please accept the consent to continue.');
+      return;
+    }
+
+    // 3. Collect the data to send
+    var name = $.trim(form.find('[name=name]').val());
+    var source = form.attr('data-source') || 'Website';
+    var data = {
+      'Name': name,
+      'Phone': check.phone,
+      'Country': check.country,
+      'Email': $.trim(form.find('[name=email]').val()),
+      'Message': $.trim(form.find('[name=message]').val()),
+      'Lead Source': source,
+      'Page': location.href
+    };
+    $.extend(data, utm);                  // add utm_source, gclid, etc. if present
+
+    // 4. Show "sending…" and disable the button
+    form.addClass('is-loading');
+    btn.html('<span class="spin" aria-hidden="true"></span>Submitting…').prop('disabled', true);
+    msg.text('Please wait a moment — sending your details.');
+
+    // 5. Send to mail.php
+    $.post(MAILER_URL, data, null, 'json')
+      .done(function (res) {
+        if (!res || !res.success) { showError(); return; }
+        // 6. Success: remember the lead, fire tracking, go to thank-you page
+        store.set('lim_lead', '1');
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'lead_submit', lead_source: source });
+        if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
+        location.href = THANKYOU_URL + '?name=' + encodeURIComponent(name.split(' ')[0]);
+      })
+      .fail(showError);
+
+    // Something went wrong: re-enable the button and show the phone number
+    function showError() {
+      form.removeClass('is-loading');
+      btn.text(btnText).prop('disabled', false);
+      msg.html('Could not send right now. Please try again or call <a href="tel:' + PHONE + '" style="text-decoration:underline">' + PHONE_LABEL + '</a>.');
+    }
+  });
 
   window.LeadForm = { validate: validate, initPhone: initPhone };
 })(jQuery);

@@ -39,7 +39,7 @@
   if (C.phoneLabel) $('[data-tel-label]').text(C.phoneLabel);
   if (C.cpFirm) $('[data-cp-firm]').text(C.cpFirm);
   if (C.cpRera) $('[data-cp-rera]').text(C.cpRera);
-  if (!C.leadEmail || !C.cpRera) console.warn('[Runwal TCP] Fill leadEmail and cpRera in assets/js/data.js before going live.');
+  if (!C.cpRera) console.warn('[Runwal TCP] Fill cpRera in assets/js/data.js before going live.');
   $('#year').text(new Date().getFullYear());
   $('#ftMore').on('click', function () { var o = $('#ftDisc').toggleClass('is-open').hasClass('is-open'); $(this).text(o ? 'Read less' : 'Read more').attr('aria-expanded', o); if (hasGsap) ScrollTrigger.refresh(); });
 
@@ -273,37 +273,9 @@
     $win.on('scroll', depthPop);
   }
 
-  /* ---------- Forms → FormSubmit → thank-you page ---------- */
-  var utm = (function () { var o = {}, q = new URLSearchParams(location.search); ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'].forEach(function (k) { var v = q.get(k) || store.get('tcp_' + k, true); if (v) { o[k] = v; store.set('tcp_' + k, v, true); } }); return o; })();
-  $doc.on('submit', '.lead-form', function (e) {
-    e.preventDefault();
-    var $f = $(this), $m = $f.find('.form-msg').text(''), v = function (n) { return $.trim($f.find('[name=' + n + ']').val() || ''); };
-    if ($f.find('[name=_honey]').val()) return;
-    var chk = window.LeadForm.validate($f);
-    if (!chk.ok) { $m.text(chk.consent ? 'Please correct the fields marked above.' : 'Please accept the consent to continue.'); return; }
-    if (!C.leadEmail) {
-      var wt = 'Hi, I am ' + v('name') + ' (' + v('phone') + ', ' + v('email') + '). Interested in Runwal The Central Park. ' + v('message');
-      $m.html(C.whatsapp ? 'Please send your enquiry on <a href="https://wa.me/' + C.whatsapp + '?text=' + encodeURIComponent(wt) + '" target="_blank" rel="noopener" style="text-decoration:underline">WhatsApp</a>.' : 'Please call us on <a href="tel:' + C.phone + '" style="text-decoration:underline">' + (C.phoneLabel || C.phone) + '</a>.');
-      return;
-    }
-    var src = $f.attr('data-source') || 'Website';
-    var $btn = $f.find('[type=submit]'), btnTxt = $btn.text();
-    $f.addClass('is-loading'); $btn.html('<span class="spin" aria-hidden="true"></span>Submitting…').prop('disabled', true);
-    $m.text('Please wait a moment — sending your details.');
-    $.ajax({ url: 'https://formsubmit.co/ajax/' + C.leadEmail, method: 'POST', dataType: 'json', timeout: 60000,
-      data: ($.extend({ _subject: 'New Lead — Runwal The Central Park — ' + v('name') + ' (' + src + ')', _template: 'table', _captcha: 'false',
-        Name: v('name'), Phone: chk.phone, Country: chk.country, Email: v('email'), Message: v('message'), 'Lead Source': src, Page: location.href,
-        'Submitted At': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) }, utm)) })
-      .done(function (r) {
-      if (r && (r.success === false || r.success === 'false')) { $btn.text(btnTxt).prop('disabled', false); $m.text('We could not confirm your enquiry. Please try again.'); return; }
-        store.set('tcp_lead', '1');
-        window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: 'lead_submit', lead_source: src });
-        if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
-        setTimeout(function () { location.href = 'thank-you.html?name=' + encodeURIComponent(v('name').split(' ')[0]); }, 300);
-      })
-      .fail(function () { $btn.text(btnTxt).prop('disabled', false); $m.html('Could not send right now — please ' + (C.whatsapp ? '<a href="https://wa.me/' + C.whatsapp + '" target="_blank" rel="noopener" style="text-decoration:underline">WhatsApp us</a>' : 'call us on <a href="tel:' + C.phone + '" style="text-decoration:underline">' + C.phoneLabel + '</a>') + '.'); })
-      .always(function () { $f.removeClass('is-loading'); });
-  });
+  /* ---------- Forms → PHP mailer → thank-you page ---------- */
+
+
 
   $win.on('load', function () { if (hasGsap) ScrollTrigger.refresh(); });
 })(jQuery);
