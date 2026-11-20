@@ -63,7 +63,7 @@ window.ENVOGUE = {
       name: '3 BHK Ultra Luxury Suite',
       tag: 'Bed Suites',
       area: 1450,
-      price: '₹xxx',
+      price: '₹1.77 – 1.81 Cr*',
       wing: 'Wing K-4',
       img: 'residences-3bhk-luxury-1265-sqft-plan',
       ratio: '1440/1091',
