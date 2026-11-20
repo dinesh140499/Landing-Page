@@ -9,8 +9,8 @@
   /* ---------- Settings ---------- */
   var MAILER_URL = 'mailer-api/mail.php';
   var THANKYOU_URL = 'thank-you.html';
-  var PHONE = '+919126264444';
-  var PHONE_LABEL = '+91 91262 64444';
+  var PHONE = '+919096330038';
+  var PHONE_LABEL = '+91 90963 30038';
 
   var COUNTRY_ORDER = ['in', 'ae', 'us', 'gb', 'sg', 'qa', 'sa', 'kw', 'om', 'bh', 'au', 'ca', 'nz', 'de'];
   var TRACKING_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'];

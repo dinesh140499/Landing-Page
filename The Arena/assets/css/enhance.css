@@ -1,0 +1,101 @@
+/* =========================================================================
+   THE ARENA — design enhancement layer (loaded after style.min.css)
+   Direction: "Life in Motion" — court lines, deep violet stages, lime energy.
+   Remove this file's <link> in index.html to roll back.
+   ========================================================================= */
+:root {
+  --court: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='160' fill='none' stroke='%235B3F99' stroke-width='1'%3E%3Crect x='10' y='10' width='220' height='140'/%3E%3Cpath d='M120 10v140'/%3E%3Ccircle cx='120' cy='80' r='22'/%3E%3Crect x='10' y='45' width='30' height='70'/%3E%3Crect x='200' y='45' width='30' height='70'/%3E%3C/svg%3E");
+  --court-w: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='160' fill='none' stroke='%23ffffff' stroke-width='1'%3E%3Crect x='10' y='10' width='220' height='140'/%3E%3Cpath d='M120 10v140'/%3E%3Ccircle cx='120' cy='80' r='22'/%3E%3Crect x='10' y='45' width='30' height='70'/%3E%3Crect x='200' y='45' width='30' height='70'/%3E%3C/svg%3E");
+  --glow-lime: radial-gradient(600px 360px at 90% 0%, rgba(226,226,43,.18), transparent 65%);
+}
+
+/* ---------- typography & shared ---------- */
+.title { font-size: clamp(30px, 3.6vw, 50px); letter-spacing: -.025em; }
+.kicker { display: inline-flex; width: fit-content; padding: 6px 14px 6px 10px; border-radius: 99px; background: var(--violet-l); font-size: 11px; }
+.kicker::before { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 0 3px rgba(226,226,43,.35); }
+.head .kicker { margin-inline: auto; }
+.btn { border-radius: 99px; }
+.btn--violet { background: linear-gradient(135deg, #6A4BB0, #3A2668); }
+.btn--lime:hover { box-shadow: 0 14px 30px -12px rgba(202,202,24,1); }
+
+/* ---------- header ---------- */
+.hd.is-solid { background: rgba(58,38,104,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); }
+.hd__nav a { position: relative; }
+.hd__nav a::after { content: ''; position: absolute; left: 50%; right: 50%; bottom: -6px; height: 2px; border-radius: 2px; background: var(--lime); transition: left .3s, right .3s; }
+.hd__nav a:hover::after { left: 0; right: 0; }
+
+/* ---------- hero ---------- */
+.hero__shade { background: linear-gradient(90deg, rgba(36,22,70,.92) 0%, rgba(36,22,70,.6) 45%, rgba(36,22,70,.15) 75%), linear-gradient(0deg, rgba(36,22,70,.7), transparent 40%) !important; }
+.hero__hl { border-radius: 18px !important; overflow: hidden; background: rgba(255,255,255,.08) !important; border: 1px solid rgba(255,255,255,.18) !important; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.hero__hl small { color: var(--lime) !important; }
+.hero__form { border-radius: 22px !important; box-shadow: 0 40px 80px -30px rgba(0,0,0,.6) !important; }
+
+/* ---------- sports ticker ---------- */
+.tick { position: relative; z-index: 2; overflow: hidden; background: var(--lime); color: var(--violet-9); border-block: 2px solid var(--violet-9); }
+.tick__row { display: flex; width: max-content; animation: tick 38s linear infinite; }
+.tick__row li { display: flex; align-items: center; gap: 22px; padding: 14px 22px 14px 0; font: 800 15px var(--ff-d); letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.tick__row li::after { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--violet-9); }
+@keyframes tick { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .tick__row { animation: none; } }
+
+/* ---------- overview: faint court lines ---------- */
+.ov { background: var(--court) center / 240px 160px repeat, #fff; }
+.ov::before { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, #fff 30%, rgba(255,255,255,.9)); pointer-events: none; }
+.ov .wrap { position: relative; }
+.reel, .ov__side { border-radius: 22px !important; box-shadow: 0 34px 60px -34px rgba(58,38,104,.6); }
+
+/* ---------- highlights: card list on violet tint ---------- */
+.hlx { background: linear-gradient(180deg, var(--violet-l), #fff); }
+.hlx2__media img { border-radius: 24px; box-shadow: 0 40px 70px -40px rgba(58,38,104,.7); }
+.hlx2__list { display: grid; gap: 10px; }
+.hlx2__list li { align-items: center; padding: 14px 16px !important; border: 1px solid rgba(91,63,153,.14) !important; border-radius: 14px; background: #fff; transition: transform .3s, box-shadow .3s, border-color .3s; }
+.hlx2__list li:hover { transform: translateX(6px); border-color: var(--violet) !important; box-shadow: 0 16px 30px -22px rgba(58,38,104,.6); }
+.hlx2__list li > b { flex-shrink: 0; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: var(--violet); color: var(--lime) !important; font: 800 14px var(--ff-d); }
+
+/* ---------- price & plans: glow + court texture ---------- */
+.pr::before { content: ''; position: absolute; inset: 0; background: var(--court-w) center / 240px 160px repeat; opacity: .05; pointer-events: none; }
+.pr .wrap { position: relative; }
+
+/* ---------- gallery: court lines + lime glow ---------- */
+.dk { background: radial-gradient(700px 420px at 75% 40%, rgba(226,226,43,.14), transparent 60%), var(--off) !important; }
+.dk::before { content: ''; position: absolute; inset: 0; background: var(--court) center / 240px 160px repeat; opacity: .16; -webkit-mask-image: linear-gradient(90deg, #000, transparent 60%); mask-image: linear-gradient(90deg, #000, transparent 60%); pointer-events: none; }
+.dk .wrap { position: relative; }
+.dk__no b { background: linear-gradient(135deg, #6A4BB0, #3A2668); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+/* ---------- location ---------- */
+.lc { background: linear-gradient(180deg, #fff, var(--violet-l)); }
+.lc__map--d { border-radius: 24px !important; overflow: hidden; box-shadow: 0 40px 70px -40px rgba(58,38,104,.6) !important; }
+
+/* ---------- developers ---------- */
+.dv2__partners article { border-radius: 20px !important; border: 1px solid rgba(91,63,153,.14) !important; transition: transform .35s, box-shadow .35s; }
+.dv2__partners article:hover { transform: translateY(-6px); box-shadow: 0 30px 50px -30px rgba(58,38,104,.55); }
+.dv2__stats { border-radius: 22px !important; overflow: hidden; background: linear-gradient(135deg, #5B3F99, #3A2668) !important; color: #fff; }
+.dv2__stats b { color: var(--lime) !important; }
+.dv2__stats span { color: rgba(255,255,255,.8) !important; }
+
+/* ---------- contact: dark violet stage ---------- */
+.ct { background: var(--glow-lime), linear-gradient(160deg, #3A2668, #24164A) !important; color: #fff; }
+.ct::before { content: ''; position: absolute; inset: 0; background: var(--court-w) center / 240px 160px repeat; opacity: .05; pointer-events: none; }
+.ct .wrap { position: relative; }
+.ct .title { color: #fff; }
+.ct .lead { color: rgba(255,255,255,.75); }
+.ct .kicker { background: rgba(255,255,255,.1); color: var(--lime); }
+.ct .card { border-radius: 22px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.6); }
+
+/* ---------- footer ---------- */
+.ft { background: #1A1036 !important; }
+.ft__rera b { color: var(--lime); }
+
+/* ---------- mobile ---------- */
+@media (max-width: 900px) {
+  .mbar { left: 10px; right: 10px; bottom: calc(10px + env(safe-area-inset-bottom)); border-radius: 16px; overflow: hidden; gap: 6px; padding: 6px; background: rgba(36,22,70,.95); box-shadow: 0 16px 34px -14px rgba(0,0,0,.6); backdrop-filter: blur(12px); }
+  .mbar a, .mbar button { border-radius: 11px; }
+  .mbar a { background: rgba(255,255,255,.1); color: #fff; }
+}
+@media (max-width: 600px) {
+  .title { font-size: clamp(26px, 7.4vw, 32px); }
+  .tick__row li { font-size: 12.5px; padding-block: 10px; gap: 16px; padding-right: 16px; }
+  .hero__hl { border-radius: 14px !important; }
+  .hlx2__list li { padding: 12px !important; }
+  .hlx2__list li > b { width: 36px; height: 36px; font-size: 13px; }
+}

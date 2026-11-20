@@ -5,223 +5,263 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>The Arena, Pimpri | 2, 3 &amp; 4 BHK Sports Township | From ₹1.15 Cr*</title>
   <meta name="description" content="The Arena — Pimpri's first sports township at Finolex Chowk, Pimpri, Pune. 2, 3 &amp; 4 BHK homes from ₹1.15 Cr* all inclusive, with 80,000 sq. ft. of sports &amp; recreation. By Mahalaxmi Group &amp; Kohinoor Group.">
-  <meta name="theme-color" content="#5B3F99">
+  <meta name="theme-color" content="#16112B">
   <script>document.documentElement.className += ' js';</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" type="image/webp" href="assets/images/gallery/r-revised-view-02.webp" imagesrcset="assets/images/gallery/r-revised-view-02-sm.webp 900w, assets/images/gallery/r-revised-view-02.webp 1600w" imagesizes="100vw" fetchpriority="high">
-  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700;800&display=swap">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@600;700;800&display=swap"></noscript>
-  <link rel="stylesheet" href="assets/css/style.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,400..900&display=swap">
+  <link rel="stylesheet" href="assets/css/arena.min.css">
   <link rel="stylesheet" href="assets/css/lead-form.css" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="assets/css/lead-form.css"></noscript>
   <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="assets/images/brand/apple-touch-icon.png">
 </head>
 <body>
 
-  <!-- ============ HEADER ============ -->
-  <header class="hd" id="hd">
-    <a class="hd__logo" href="#home" aria-label="The Arena — home"><img class="hd__lim" src="assets/images/brand/life-in-motion.webp" width="700" height="669" alt="The Arena — Life in Motion"></a>
-    <nav class="hd__nav" aria-label="Sections"><a href="#overview">Overview</a><a href="#highlights">Highlights</a><a href="#price">Price &amp; Plans</a><a href="#amenities">Amenities</a><a href="#gallery">Gallery</a><a href="#location">Location</a></nav>
-    <div class="hd__act">
-      <a class="hd__call" href="#" data-tel><span data-tel-label></span></a>
-      <button class="btn btn--lime" data-enquire="Header — Enquire Now">Enquire Now</button>
-      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  <!-- ================= HEADER ================= -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#home" aria-label="The Arena — home"><img src="assets/images/brand/the-arena-logo.webp" width="900" height="121" alt="The Arena"></a>
+    <div class="nav__act">
+      <a class="nav__tel" href="#" data-tel><i aria-hidden="true"></i><span data-tel-label>+91 91262 64444</span></a>
+      <button class="btn btn--lime btn--sm" data-enquire="Header — Enquire Now">Enquire</button>
+      <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     </div>
   </header>
 
-  <nav class="menu" id="menu" aria-hidden="true" data-lenis-prevent>
-    <ul>
-      <li><a href="#overview">Overview</a></li><li><a href="#highlights">Highlights</a></li><li><a href="#price">Price &amp; Plans</a></li><li><a href="#amenities">Amenities</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#location">Location</a></li><li><a href="#developer">Developer</a></li>
-    </ul>
+  <nav class="menu" id="menu" aria-hidden="true" inert>
+    <ol>
+      <li><a href="#overview"><small>01</small>Overview</a></li>
+      <li><a href="#lineup"><small>02</small>Highlights</a></li>
+      <li><a href="#homes"><small>03</small>Price &amp; Plans</a></li>
+      <li><a href="#zones"><small>04</small>Amenities</a></li>
+      <li><a href="#gallery"><small>05</small>Gallery</a></li>
+      <li><a href="#location"><small>06</small>Location</a></li>
+    </ol>
     <button class="btn btn--lime btn--block" data-enquire="Menu — Enquire">Get Pre-launch Access</button>
   </nav>
 
   <main>
-    <!-- ============ HERO — video + highlights + form ============ -->
+    <!-- ================= HERO ================= -->
     <section class="hero" id="home">
-      <div class="hero__slides" id="heroSlides">
-        <img class="is-on" src="assets/images/gallery/r-revised-view-02.webp" srcset="assets/images/gallery/r-revised-view-02-sm.webp 900w, assets/images/gallery/r-revised-view-02.webp 1600w" sizes="100vw" width="1600" height="900" fetchpriority="high" decoding="async" alt="The Arena towers at sunset">
-        <img data-src="assets/images/gallery/r-revised-view-01.webp" data-srcset="assets/images/gallery/r-revised-view-01-sm.webp 900w, assets/images/gallery/r-revised-view-01.webp 1600w" sizes="100vw" width="1289" height="794" alt="The Arena from the highway">
-        <img data-src="assets/images/gallery/r-9.webp" data-srcset="assets/images/gallery/r-9-sm.webp 900w, assets/images/gallery/r-9.webp 1600w" sizes="100vw" width="1265" height="1243" alt="Lake edge at The Arena">
+      <div class="hero__bg" id="heroBg">
+        <img class="is-on" src="assets/images/gallery/r-revised-view-02.webp" srcset="assets/images/gallery/r-revised-view-02-sm.webp 900w, assets/images/gallery/r-revised-view-02.webp 1600w" sizes="100vw" width="1600" height="900" fetchpriority="high" decoding="async" alt="The Arena towers at Finolex Chowk, Pimpri">
+        <img data-src="assets/images/gallery/r-revised-view-01.webp" data-srcset="assets/images/gallery/r-revised-view-01-sm.webp 900w, assets/images/gallery/r-revised-view-01.webp 1289w" sizes="100vw" width="1289" height="794" alt="The Arena township from the highway">
+        <img data-src="assets/images/gallery/r-6.webp" data-srcset="assets/images/gallery/r-6-sm.webp 900w, assets/images/gallery/r-6.webp 1600w" sizes="100vw" width="1600" height="900" alt="Elevated walkway over the central park">
       </div>
-      <div class="hero__shade"></div>
-      <div class="wrap hero__grid">
+      <div class="hero__court" aria-hidden="true"></div>
+
+      <div class="hero__in wrap">
         <div class="hero__copy">
-          <p class="hero__badge" data-hi><span>Pre-launch</span>Pimpri's First Sports Township</p>
-          <h1 class="hero__logo" data-hi><img src="assets/images/brand/the-arena-logo.webp" width="900" height="121" alt="The Arena"></h1>
-          <ul class="hero__hl" data-hi>
-            <li><small>Typology</small><b id="heroTypes">2, 3 &amp; 4 BHK</b></li>
-            <li><small>Starting price</small><b><span class="rs">₹</span>1.15 Cr<sup>*</sup> <em>all incl.</em></b></li>
-            <li><small>Location</small><b>Finolex Chowk, Pimpri</b></li>
-            <li><small>Sports &amp; recreation</small><b>80,000 sq. ft.</b></li>
+          <p class="hero__tag"><b>Pre-launch</b><span>Pimpri's first sports township</span></p>
+          <h1 class="hero__name"><img src="assets/images/brand/the-arena-logo.webp" width="900" height="121" alt="The Arena"></h1>
+          <p class="hero__motto">Life in <em>motion</em> · Finolex Chowk, Pimpri</p>
+          <div class="board" role="list" aria-label="Project at a glance">
+            <div class="board__cell" role="listitem"><small>Typology</small><b>2 · 3 · 4 <i>BHK</i></b></div>
+            <div class="board__cell board__cell--hot" role="listitem"><small>Starting price</small><b><span class="rs">₹</span>1.15 <i>Cr* all incl.</i></b></div>
+            <div class="board__cell" role="listitem"><small>Sports &amp; recreation</small><b>80,000 <i>sq. ft.</i></b></div>
+          </div>
+          <ul class="hero__pts">
+            <li>Pre-launch priority pricing</li>
+            <li>Pune Metro at 2.4 km</li>
+            <li>Sports run by Ileseum</li>
           </ul>
-          <div class="hero__cta" data-hi>
-            <button class="btn btn--lime" data-enquire="Hero — Price Sheet">Get Price Sheet</button>
-            <button class="btn btn--ghost" data-enquire="Hero — Site Visit">Book Site Visit</button>
+          <div class="hero__cta">
+            <button class="btn btn--lime" data-enquire="Hero — Price Sheet">Get Price Sheet <i class="arr" aria-hidden="true"></i></button>
+            <button class="btn btn--line" data-enquire="Hero — Site Visit">Book Site Visit</button>
           </div>
         </div>
+
         <form class="lead-form hero__form" data-source="Banner Form" novalidate>
+          <span class="hero__form-tag">Limited pre-launch inventory</span>
           <h2>Get pre-launch access</h2>
           <p>Priority pricing &amp; site-visit slots</p>
           <div class="fgrid">
             <div class="field"><input type="text" name="name" placeholder=" " autocomplete="name" required><label>Full Name</label></div>
             <div class="field"><input type="tel" name="phone" placeholder=" " inputmode="tel" autocomplete="tel-national" required><label>Mobile Number</label></div>
             <div class="field"><input type="email" name="email" placeholder=" " autocomplete="email" required><label>Email Address</label></div>
-            <div class="field"><input type="text" name="message" placeholder=" " maxlength="200" autocomplete="off"><label>Your Message</label></div>
+            <div class="field"><input type="text" name="message" placeholder=" " maxlength="200" autocomplete="off" required><label>Your Message</label></div>
           </div>
           <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label class="consent"><input type="checkbox" name="consent" checked required> <span>I agree to be contacted by call, SMS &amp; WhatsApp.</span></label>
-          <button type="submit" class="btn btn--violet btn--block">Submit</button>
+          <button type="submit" class="btn btn--ink btn--block">Unlock Pre-launch Price</button>
           <p class="form-msg" role="status" aria-live="polite"></p>
         </form>
       </div>
-      <div class="hero__dots" id="heroDots"></div>
+
+      <div class="hero__dots" id="heroDots" aria-hidden="true"></div>
       <span class="disc">Artist's impression</span>
     </section>
-    <!-- ============ OVERVIEW ============ -->
-    <section class="sec ov" id="overview">
-      <div class="wrap ov__grid">
-        <div class="ov__media" data-rv>
-          <div class="reel">
-            <video id="vdPlayer" muted loop playsinline preload="none" poster="assets/images/amenities/open-air-courts.webp"><source src="assets/video/life-in-motion.mp4" type="video/mp4"></video>
-            <button type="button" class="reel__play" data-enquire="Video — Watch the Film" aria-label="Watch the full film"><span></span>Watch the full film</button>
-          </div>
-          <img class="ov__side" src="assets/images/gallery/clubhouse-arrival-sm.webp" width="1200" height="1200" loading="lazy" decoding="async" alt="Clubhouse arrival" data-parallax>
+
+    <!-- ================= A DAY AT THE ARENA ================= -->
+    <section class="sec day" id="overview">
+      <div class="wrap day__head">
+        <div data-rv>
+          <p class="label"><span>01</span>A day at The Arena</p>
+          <h2 class="h2">Pimpri's first <mark>sports township</mark></h2>
         </div>
-        <div class="ov__copy">
-          <div data-rv><p class="kicker">Overview</p><h2 class="title">Pimpri needs more than a home. <span>It needs a sports township.</span></h2></div>
-          <p class="lead" data-rv>A township planned around sport, movement and everyday wellbeing — so staying active becomes part of daily life, for every age.</p>
-          <button class="btn btn--violet" data-enquire="Overview — Brochure" data-rv>Download Brochure</button>
+        <div class="day__intro" data-rv>
+          <p class="lead">Sport, movement and everyday wellbeing — planned into every hour, for every age.</p>
+          <button type="button" class="day__film" id="filmOpen"><span class="day__film-ic" aria-hidden="true"></span>Watch the film</button>
         </div>
+      </div>
+      <div class="day__rail" id="dayRail">
+        <article class="slot"><time>06:00</time><figure><img src="assets/images/gallery/r-4-sm.webp" loading="lazy" decoding="async" alt="Jogging track"></figure><h3>Run the lake loop</h3><p>Jogging track around the central water body.</p></article>
+        <article class="slot"><time>07:30</time><figure><img src="assets/images/gallery/football-courts-sm.webp" loading="lazy" decoding="async" alt="Football courts"></figure><h3>Kick-off on the turf</h3><p>Football, tennis &amp; multi-sport courts on the western edge.</p></article>
+        <article class="slot"><time>10:00</time><figure><img src="assets/images/amenities/co-working-sm.webp" loading="lazy" decoding="async" alt="Co-working"></figure><h3>Work from the club</h3><p>Co-working spaces and café lounges.</p></article>
+        <article class="slot"><time>16:00</time><figure><img src="assets/images/amenities/early-learning-sm.webp" loading="lazy" decoding="async" alt="Early learning centre"></figure><h3>Kids' learning hour</h3><p>Early learning centre within the township.</p></article>
+        <article class="slot"><time>18:30</time><figure><img src="assets/images/gallery/r-8-sm.webp" loading="lazy" decoding="async" alt="Amphitheatre"></figure><h3>Evenings at the park</h3><p>Elevated walkway, lake edge &amp; amphitheatre.</p></article>
+        <article class="slot"><time>20:00</time><figure><img src="assets/images/gallery/rooftop-pool-sm.webp" loading="lazy" decoding="async" alt="Rooftop pool"></figure><h3>Rooftop swim</h3><p>Infinity pool &amp; deck above the city.</p></article>
+        <article class="slot"><time>21:30</time><figure><img src="assets/images/amenities/sports-bar-sm.webp" loading="lazy" decoding="async" alt="Sports bar"></figure><h3>Match night</h3><p>Premium sports bar &amp; cue lounge.</p></article>
+      </div>
+      <div class="wrap day__foot">
+        <div class="day__clock"><i id="dayProg"></i></div>
+        <div class="day__btns"><button type="button" class="rnd" id="dayPrev" aria-label="Earlier">&#8592;</button><button type="button" class="rnd rnd--fill" id="dayNext" aria-label="Later">&#8594;</button></div>
       </div>
     </section>
 
-    <!-- ============ HIGHLIGHTS ============ -->
-    <section class="sec hlx" id="highlights">
-      <div class="wrap hlx2">
-        <div class="hlx2__media" data-rv>
-          <img src="assets/images/gallery/football-courts-sm.webp" loading="lazy" decoding="async" alt="Football pitch and sports courts at The Arena">
-          <span class="disc">Artist's impression</span>
-        </div>
-        <div class="hlx2__copy">
-          <div data-rv><p class="kicker">Highlights</p><h2 class="title">Why <span class="hl">The Arena</span></h2></div>
-          <ol class="hlx2__list" data-rv>
-            <li><b>01</b><div><h3>Football, tennis &amp; multi-sport courts</h3><p>A dedicated sports zone on the township's western edge</p></div></li>
-            <li><b>02</b><div><h3>34-storey towers</h3><p>2 basements + ground + 2 podiums + 34 floors</p></div></li>
-            <li><b>03</b><div><h3>Central park &amp; water body</h3><p>Lake edge, elevated walkway, jogging track &amp; amphitheatre</p></div></li>
-            <li><b>04</b><div><h3>Rooftop infinity pool &amp; deck</h3><p>Resort-style leisure above the city</p></div></li>
-            <li><b>05</b><div><h3>Segregated entries</h3><p>Separate residential &amp; commercial access with a 9 m fire driveway</p></div></li>
-          </ol>
-          <button class="btn btn--violet" data-enquire="Highlights — Brochure" data-rv>Download Brochure</button>
-        </div>
+    <!-- ================= SPEC SHEET ================= -->
+    <section class="spec" id="lineup">
+      <div class="wrap spec__in" data-rv>
+        <p class="spec__t">Spec <br>sheet</p>
+        <dl class="spec__list">
+          <div><dt>Towers</dt><dd>34 storeys</dd><span>2 basements + ground + 2 podiums + 34 floors</span></div>
+          <div><dt>Entries</dt><dd>Segregated</dd><span>Separate residential &amp; commercial access, 9 m fire driveway</span></div>
+          <div><dt>Open space</dt><dd>Central park</dd><span>Lake edge, elevated walkway &amp; amphitheatre</span></div>
+          <div><dt>Sports ops</dt><dd>Ileseum</dd><span>Trained coaches, structured programmes &amp; upkeep</span></div>
+        </dl>
       </div>
     </section>
 
-    <!-- ============ PRICE & PLANS ============ -->
-    <section class="sec pr" id="price">
+    <!-- ================= FIXTURE TABLE (PRICE & PLANS) ================= -->
+    <section class="sec fix" id="homes">
       <div class="wrap">
-        <div class="head" data-rv>
-          <span class="secno" aria-hidden="true">01</span><p class="kicker">Price &amp; Plans</p>
-          <h2 class="title">Choose your <span class="hl">home</span></h2>
-          <p class="lead">Total RERA carpet areas from the architect's statement.</p>
+        <div class="sechead sechead--row" data-rv>
+          <div><p class="label"><span>02</span>Price &amp; plans</p><h2 class="h2">The <mark>fixture</mark> table</h2></div>
+          <p class="lead">Total RERA carpet areas from the architect's statement. Tap a plan to unlock it.</p>
         </div>
-        <div class="pr__grid">
-          <div class="pr__list" id="prList" data-rv></div>
-          <div class="fp" data-rv>
-            <div class="fp__tabs" id="fpTabs"></div>
-            <div id="fpView"></div>
-          </div>
+        <div class="fix__table" role="table" aria-label="Homes, areas and prices" data-rv>
+          <div class="fix__row fix__row--head" role="row"><span role="columnheader">Home</span><span role="columnheader">RERA carpet</span><span role="columnheader">Plans</span><span role="columnheader">Price</span><span role="columnheader"></span></div>
+          <div id="fixBody"></div>
         </div>
-        <p class="pr__foot">*Price is indicative, all inclusive, and subject to change.</p>
+        <div class="fix__extra" data-rv>
+          <button type="button" class="fix__card" data-enquire="Floor Plan — Master plan"><img src="assets/images/plans/master-plan.webp" loading="lazy" decoding="async" alt="Master plan preview"><span>Master plan</span></button>
+          <button type="button" class="fix__card" data-enquire="Floor Plan — Typical floor"><img src="assets/images/plans/typical-floor.webp" loading="lazy" decoding="async" alt="Typical floor plan preview"><span>Typical floor plan</span></button>
+        </div>
+        <p class="foot">*Price is indicative, all inclusive, and subject to change.</p>
       </div>
     </section>
 
-    <!-- ============ AMENITIES ============ -->
-    <section class="hs" id="amenities">
-      <div class="hs__pin">
-        <div class="hs__head">
-          <p class="kicker">Amenities</p>
-          <h2 class="title">Sport, <span class="hl">built in</span></h2>
-          <p class="lead">Professionally operated by Ileseum Sports Management.</p>
-          <div class="hs__prog"><i id="hsProg"></i></div>
-          <button class="btn btn--violet" data-enquire="Amenities — Full List">Get the full amenities list</button>
-        </div>
-        <div class="hs__view"><div class="hs__track" id="hsTrack"></div></div>
-      </div>
-    </section>
-
-    <!-- ============ GALLERY ============ -->
-    <section class="sec dk" id="gallery">
-      <div class="wrap dk__grid">
-        <div class="dk__copy" data-rv>
-          <p class="kicker">Gallery</p>
-          <h2 class="title">Life at <span class="hl">The Arena</span></h2>
-          <p class="dk__no"><b id="dkNo">01</b><span>/ <i id="dkTot">09</i></span></p>
-          <p class="dk__cap" id="dkCap"></p>
-          <div class="dk__nav"><button type="button" class="rbtn" data-dk="-1" aria-label="Previous image">&#8592;</button><button type="button" class="rbtn rbtn--fill" data-dk="1" aria-label="Next image">&#8594;</button></div>
-        </div>
-        <div class="dk__deck" id="dkDeck" data-rv></div>
-      </div>
-    </section>
-
-    <!-- ============ LOCATION ============ -->
-    <section class="sec lc" id="location">
-      <div class="wrap lc__grid">
-        <div class="lc__copy">
-          <div data-rv><p class="kicker">Location</p><h2 class="title">Finolex Chowk, Pimpri</h2><p class="lead">On the Old Mumbai–Pune Highway, minutes from metro, rail and the city's workplaces.</p></div>
-          <figure class="lc__map lc__map--m" data-rv><button type="button" data-map aria-label="View map full screen"><img src="assets/images/misc/location-map-clean.webp" width="834" height="933" loading="lazy" decoding="async" alt="Location map, Pimpri"></button></figure>
-          <div class="lc__tabs" id="lcTabs" data-rv></div>
-          <ol class="route" id="lcList" data-rv></ol>
-          <button class="btn btn--violet" data-enquire="Location — Site Visit" data-rv>Schedule a Site Visit</button>
-        </div>
-        <figure class="lc__map lc__map--d" data-rv><figcaption class="lcm__top"><span class="lcm__pin"></span><span><b>The Arena</b>Finolex Chowk, Pimpri</span><em>NH 65 · Old Mumbai–Pune Hwy</em></figcaption><button type="button" data-map aria-label="View map full screen"><img src="assets/images/misc/location-map-clean.webp" width="834" height="933" loading="lazy" decoding="async" alt="Location map, Pimpri"><span class="lcm__zoom">&#8599; Enlarge map</span></button></figure>
-      </div>
-    </section>
-
-    <!-- ============ DEVELOPER ============ -->
-    <section class="sec dv2" id="developer">
+    <!-- ================= AMENITIES — EXPANDING PANELS ================= -->
+    <section class="sec pan" id="zones">
       <div class="wrap">
-        <div class="head" data-rv><p class="kicker">The Developers</p><h2 class="title">A legacy that <span class="hl">lives on</span></h2><p class="lead">Since 2001, built on strength of steel, precision and reliability.</p></div>
-        <div class="dv2__partners">
-          <article data-rv><div class="dv2__logo"><img src="assets/images/brand/dev-mahalaxmi.webp" alt="Mahalaxmi Group" loading="lazy"></div><small>Developer</small><h3>Mahalaxmi Group</h3><p>A Pune legacy since 2001 — homes, landmarks and communities built to last.</p></article>
-          <article data-rv><div class="dv2__logo"><img src="assets/images/brand/dev-kohinoor.webp" alt="Kohinoor Group" loading="lazy"></div><small>Developer</small><h3>Kohinoor Group</h3><p>A Krishnakumar Goyal enterprise, creators of Kohinoor World Towers, Pimpri.</p></article>
-          <article data-rv class="dv2__op"><div class="dv2__logo"><img src="assets/images/brand/life-in-motion.webp" alt="Life in Motion sports ecosystem" loading="lazy"></div><small>Sports operator</small><h3>Ileseum Sports Management</h3><p>Expertise in large-scale sports ecosystems — trained coaches, structured programmes and safe upkeep.</p></article>
+        <div class="sechead sechead--row" data-rv>
+          <div><p class="label label--lime"><span>03</span>Amenities</p><h2 class="h2">Sport, <mark>built in</mark></h2></div>
+          <p class="lead">Ten spaces to play, recover, learn and work. Hover or tap a card to flip it.</p>
         </div>
-        <ul class="dv2__stats" data-rv>
-          <li><b data-count="25" data-suffix="+">25+</b><span>Years of legacy</span></li>
-          <li><b data-count="2800" data-suffix="+">2800+</b><span>Delighted families</span></li>
-          <li><b data-count="5" data-pad="2" data-suffix="+">05+</b><span>Projects completed</span></li>
-          <li><b data-count="4.2" data-dec="1" data-suffix=" M">4.2 M</b><span>Sq. ft. delivered</span></li>
+        <div class="deck" id="deck"></div>
+        <div class="center"><button class="btn btn--lime" data-enquire="Amenities — Full List">Get the full amenities list <i class="arr" aria-hidden="true"></i></button></div>
+      </div>
+    </section>
+
+    <!-- ================= GALLERY — MOSAIC ================= -->
+    <section class="sec mos" id="gallery">
+      <div class="wrap">
+        <div class="sechead sechead--row" data-rv>
+          <div><p class="label"><span>04</span>Gallery</p><h2 class="h2">Life at <mark>The Arena</mark></h2></div>
+          <p class="lead">Artist's impressions. Swipe, use the arrows, or tap the centre image to view it full screen.</p>
+        </div>
+        <div class="flow" id="flow" tabindex="0" aria-roledescription="carousel" aria-label="Gallery">
+          <div class="flow__stage" id="flowStage"></div>
+        </div>
+        <div class="flow__bar"><button type="button" class="rnd" id="flowPrev" aria-label="Previous image">&#8592;</button><p class="flow__cap"><b id="flowNo">01</b><span id="flowCap"></span></p><div class="flow__dots" id="flowDots"></div><button type="button" class="rnd rnd--fill" id="flowNext" aria-label="Next image">&#8594;</button></div>
+      </div>
+    </section>
+
+    <!-- ================= LOCATION — DISTANCE RINGS ================= -->
+    <section class="sec ring" id="location">
+      <div class="wrap ring__grid">
+        <div class="ring__copy" data-rv>
+          <p class="label label--lime"><span>05</span>Location</p>
+          <h2 class="h2">Finolex Chowk, <mark>Pimpri</mark></h2>
+          <p class="lead">On the Old Mumbai–Pune Highway (NH 65). Pick a category — the rings show how close it all is.</p>
+          <div class="ring__tabs" id="ringTabs" role="tablist" aria-label="Nearby places"></div>
+          <ol class="ring__list" id="ringList"></ol>
+          <div class="ring__btns"><button class="btn btn--lime btn--sm" data-enquire="Location — Site Visit">Schedule a site visit</button><button type="button" class="btn btn--line btn--sm" id="mapOpen">View map</button></div>
+        </div>
+        <div class="ring__radar" data-rv aria-hidden="true">
+          <div class="ring__c ring__c--1"><em>3 km</em></div>
+          <div class="ring__c ring__c--2"><em>6 km</em></div>
+          <div class="ring__c ring__c--3"><em>12 km</em></div>
+          <div class="ring__c ring__c--4"><em>21 km</em></div>
+          <div class="ring__sweep"></div>
+          <div class="ring__home">The Arena</div>
+          <div id="ringDots"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TIMELINE ================= -->
+    <section class="sec tl" id="timeline">
+      <div class="wrap">
+        <div class="sechead sechead--row" data-rv>
+          <div><p class="label"><span>06</span>Timeline</p><h2 class="h2">The road to <mark>matchday</mark></h2></div>
+          <p class="lead">Where The Arena stands today — and what comes next. Book now to lock in pre-launch pricing.</p>
+        </div>
+        <ol class="tl__track" id="tlTrack">
+          <li class="is-done"><i></i><small>Stage 01</small><h3>Land &amp; master plan</h3><p>Township planned with sports zone, central park and towers.</p></li>
+          <li class="is-now"><i></i><small>Stage 02 · Now</small><h3>Pre-launch</h3><p>Priority pricing and first pick of units for early enquiries.</p></li>
+          <li><i></i><small>Stage 03</small><h3>MahaRERA &amp; launch</h3><p>Project registration and official public launch.</p></li>
+          <li><i></i><small>Stage 04</small><h3>Construction</h3><p>Towers, podiums and the sports &amp; recreation zones take shape.</p></li>
+          <li><i></i><small>Stage 05</small><h3>Possession</h3><p>Keys handed over as per the MahaRERA-registered timeline.</p></li>
+        </ol>
+        <div class="center"><button class="btn btn--ink" data-enquire="Timeline — Pre-launch Price">Lock pre-launch price <i class="arr" aria-hidden="true"></i></button></div>
+      </div>
+    </section>
+
+    <!-- ================= DEVELOPERS — SLIM STRIP ================= -->
+    <section class="devstrip" id="developer">
+      <div class="wrap devstrip__in" data-rv>
+        <p class="devstrip__t">Built by</p>
+        <ul class="devstrip__logos">
+          <li><img src="assets/images/brand/dev-mahalaxmi.webp" alt="Mahalaxmi Group" loading="lazy"><span>Mahalaxmi Group<small>Pune legacy since 2001</small></span></li>
+          <li><img src="assets/images/brand/dev-kohinoor.webp" alt="Kohinoor Group" loading="lazy"><span>Kohinoor Group<small>Creators of Kohinoor World Towers</small></span></li>
         </ul>
-        <p class="dv2__jv" data-rv>In JV with Agarwal Sukhwani Associates</p>
+        <ul class="devstrip__stats">
+          <li><b data-count="25">25</b>+<span>Years</span></li>
+          <li><b data-count="2800">2800</b>+<span>Families</span></li>
+          <li><b data-count="4.2" data-dec="1">4.2</b>M<span>Sq. ft. delivered</span></li>
+        </ul>
       </div>
+      <p class="devstrip__jv">In JV with Agarwal Sukhwani Associates</p>
     </section>
 
-    <!-- ============ CONTACT ============ -->
-    <section class="sec ct" id="contact">
-      <div class="wrap ct__grid">
-        <div class="ct__copy" data-rv>
-          <p class="kicker">Enquire</p>
-          <h2 class="title">Book your pre-launch slot</h2>
-          <p class="lead">Get the price sheet, brochure and a priority site-visit slot.</p>
+    <!-- ================= CONTACT ================= -->
+    <section class="sec cta" id="contact">
+      <div class="wrap cta__grid">
+        <div class="cta__copy" data-rv>
+          <p class="label label--lime"><span>07</span>Enquire</p>
+          <h2 class="h2">Book your <mark>pre-launch slot</mark></h2>
+          <p class="lead">Get the price sheet, brochure and a priority site-visit slot — before public launch.</p>
+          <a class="cta__tel" href="#" data-tel><small>Call our sales team</small><b data-tel-label>+91 91262 64444</b></a>
         </div>
-        <form class="lead-form card" data-source="Contact Section" novalidate data-rv>
+        <form class="lead-form cta__form" data-source="Contact Section" novalidate data-rv>
           <div class="fgrid">
             <div class="field"><input type="text" name="name" placeholder=" " autocomplete="name" required><label>Full Name</label></div>
             <div class="field"><input type="tel" name="phone" placeholder=" " inputmode="tel" autocomplete="tel-national" required><label>Mobile Number</label></div>
             <div class="field"><input type="email" name="email" placeholder=" " autocomplete="email" required><label>Email Address</label></div>
-            <div class="field"><input type="text" name="message" placeholder=" " maxlength="200" autocomplete="off"><label>Your Message</label></div>
+            <div class="field"><input type="text" name="message" placeholder=" " maxlength="200" autocomplete="off" required><label>Your Message</label></div>
           </div>
           <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label class="consent"><input type="checkbox" name="consent" checked required> <span>I agree to be contacted by call, SMS &amp; WhatsApp.</span></label>
-          <button type="submit" class="btn btn--violet btn--block">Submit</button>
+          <button type="submit" class="btn btn--lime btn--block">Submit</button>
           <p class="form-msg" role="status" aria-live="polite"></p>
         </form>
       </div>
     </section>
   </main>
 
+  <!-- ================= FOOTER ================= -->
   <footer class="ft">
     <div class="wrap">
       <div class="ft__top">
@@ -233,14 +273,26 @@
     </div>
   </footer>
 
-  <div class="mbar"><a href="#" data-tel>Call Now</a><button data-enquire="Mobile Bar — Enquire">Enquire Now</button></div>
+  <!-- ================= DOCK NAV (desktop) ================= -->
+  <nav class="dock" id="dock" aria-label="Sections">
+    <span class="dock__pill" id="dockPill" aria-hidden="true"></span>
+    <a href="#overview">Overview</a><a href="#lineup">Highlights</a><a href="#homes">Price &amp; Plans</a><a href="#zones">Amenities</a><a href="#gallery">Gallery</a><a href="#location">Location</a>
+    <button type="button" class="dock__cta" data-enquire="Dock — Enquire">Enquire</button>
+  </nav>
 
+  <!-- ================= MOBILE BAR ================= -->
+  <div class="mbar" role="group" aria-label="Quick contact">
+    <a href="#" data-tel class="mbar__call"><i aria-hidden="true"></i>Call Now</a>
+    <button type="button" data-enquire="Mobile Bar — Enquire" class="mbar__cta">Enquire Now</button>
+  </div>
+
+  <!-- ================= LEAD MODAL ================= -->
   <div class="modal" id="leadModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
     <div class="modal__bg" data-close></div>
-    <div class="modal__box" data-lenis-prevent>
+    <div class="modal__box">
       <button class="modal__x" data-close aria-label="Close">×</button>
       <div class="modal__media">
-        <img class="modal__img" src="assets/images/gallery/r-revised-view-02.webp" alt="" loading="lazy" decoding="async">
+        <img src="assets/images/gallery/r-revised-view-02-sm.webp" alt="" loading="lazy" decoding="async">
         <div class="modal__brand"><img src="assets/images/brand/the-arena-logo.webp" width="900" height="121" alt="The Arena"><p>2, 3 &amp; 4 BHK · From <span class="rs">₹</span>1.15 Cr*</p></div>
       </div>
       <div class="modal__body">
@@ -251,17 +303,18 @@
             <div class="field"><input type="text" name="name" placeholder=" " autocomplete="name" required><label>Full Name</label></div>
             <div class="field"><input type="tel" name="phone" placeholder=" " inputmode="tel" autocomplete="tel-national" required><label>Mobile Number</label></div>
             <div class="field"><input type="email" name="email" placeholder=" " autocomplete="email" required><label>Email Address</label></div>
-            <div class="field"><input type="text" name="message" placeholder=" " maxlength="200" autocomplete="off"><label>Your Message</label></div>
+            <div class="field"><input type="text" name="message" placeholder=" " maxlength="200" autocomplete="off" required><label>Your Message</label></div>
           </div>
           <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
           <label class="consent"><input type="checkbox" name="consent" checked required> <span>I agree to be contacted by call, SMS &amp; WhatsApp.</span></label>
-          <button type="submit" class="btn btn--violet btn--block">Submit</button>
+          <button type="submit" class="btn btn--ink btn--block">Submit</button>
           <p class="form-msg" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
   </div>
 
+  <!-- ================= LIGHTBOX ================= -->
   <div class="lb" id="lb" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Image viewer">
     <button class="lb__x" data-lb-close aria-label="Close">×</button>
     <button class="lb__nav lb__prev" data-lb-prev aria-label="Previous">‹</button>
@@ -269,8 +322,8 @@
     <button class="lb__nav lb__next" data-lb-next aria-label="Next">›</button>
   </div>
 
-  <script src="assets/js/vendor/vendor.bundle.min.js" defer></script>
+  <script src="assets/js/vendor/jquery.min.js" defer></script>
   <script src="assets/js/lead-form.js" defer></script>
-  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/arena.js" defer></script>
 </body>
 </html>

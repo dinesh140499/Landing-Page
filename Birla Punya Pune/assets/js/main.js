@@ -10,8 +10,9 @@
      SETTINGS — check these before going live
      ===================================================================== */
   var CONTACT = {
-    phone: '+919126264444',       // tel: link
-    phoneLabel: '+91 91262 64444' // shown on the site
+    phone: '+919096330038',        // tel: link (IVR)
+    phoneLabel: '+91 90963 30038', // shown on the site
+    whatsapp: '919096330038'       // wa.me number
   };
 
   var IMG = 'assets/images/';
@@ -85,10 +86,12 @@
 
   /* FAQs only cover what the rest of the page doesn't. */
   var FAQS = [
-    ['Who are the architects and consultants?', 'Broadway Malyan (Principal Design Consultant), JW Consultants LLP (Structural), STX Landscape Architects (Landscape) and Terracon Ecotech Pvt. Ltd. (Environmental).'],
-    ['What sustainability features are included?', 'Solar hot-water systems, solar lighting for landscapes and walkways, energy-efficient equipment for common services and a rainwater harvesting system that collects and stores rainwater for reuse.'],
-    ['What fire-safety and electrical protection is provided?', 'All rooms are fitted with red water pipes as part of the fire-safety system, and homes feature an Intelligent Electricity Management System that protects against electrical fires and insulation failures caused by rodents.'],
-    ['Are the apartments Vastu compliant?', 'Yes, all apartments are designed in accordance with Vastu principles, with layouts and orientation planned for a harmonious home.']
+    ['What is Birla Punya?', 'A LifeDesigned® residential project by Birla Estates in Central Pune, inspired by the city\'s heritage and designed for modern family living.'],
+    ['What is the exact address?', 'Near AISSMS College, Wellesley Road, Central Pune 411001.'],
+    ['Who are the architects and consultants?', 'Broadway Malyan (Principal Design Consultant), JW Consultants LLP (Principal Structural Consultant), STX Landscape Architects (Landscape) and Terracon Ecotech Pvt. Ltd. (Environmental Consultant).'],
+    ['What fire-safety and electrical protection is provided?', 'All rooms have red water pipes as part of the fire-safety system, and homes feature an Intelligent Electricity Management System that protects against electrical fires and insulation failures caused by rodents.'],
+    ['What sustainable features are included?', 'Solar hot-water systems, solar lighting for landscapes and walkways, energy-efficient equipment for common services and a rainwater harvesting system that stores rainwater for reuse.'],
+    ['How do I get the price sheet or book a site visit?', 'Tap “Get Price Sheet” or “Book Site Visit”, call or WhatsApp +91 90963 30038, and our relationship manager will share current pricing, availability and a visit slot.']
   ];
 
   /* =====================================================================
@@ -180,6 +183,7 @@
   /* Page-wide basics. */
   $('[data-tel]').attr('href', 'tel:' + CONTACT.phone);
   $('[data-tel-label]').text(CONTACT.phoneLabel);
+  $('[data-wa]').attr('href', 'https://wa.me/' + CONTACT.whatsapp + '?text=' + encodeURIComponent('Hi, I am interested in Birla Punya, Pune. Please share details.'));
   $('#year').text(new Date().getFullYear());
 
   /* =====================================================================
@@ -287,7 +291,7 @@
 
   $('#amStage').html($.map(AMENITIES, function (a, i) {
     return '<figure' + (i ? '' : ' class="is-on"') + '>' +
-      '<img src="' + amenityImage(a.images[0]) + '" loading="lazy" decoding="async" alt="' + esc(a.title) + '">' +
+      '<img src="' + amenityImage(a.images[0]) + '"' + (function (s) { return s ? ' srcset="' + s.srcset + '" sizes="(max-width: 600px) 100vw, 1200px"' : ''; })(window.BirlaImageSources && window.BirlaImageSources[amenityImage(a.images[0])]) + ' loading="lazy" decoding="async" alt="' + esc(a.title) + '">' +
       '<figcaption>' + esc(a.title) + ' · Artist\'s impression</figcaption></figure>';
   }).join(''));
 
@@ -441,6 +445,45 @@
     gallerySelect(galleryVisible[next], true);
   }
 
+  /* Masonry grid: every image at its natural shape, never cropped. */
+  function galleryGridRender(cat) {
+    var list = galleryItems.filter(function (g) { return cat === 'all' || g.category === cat; });
+    $('#glGrid').html(list.map(function (g, i) {
+      var so = window.BirlaImageSources && window.BirlaImageSources[g.src];
+      var extra = so ? ' srcset="' + so.srcset + '" sizes="(max-width: 600px) 86vw, 640px" width="' + so.width + '" height="' + so.height + '"' : '';
+      return '<button type="button" class="glm" data-gi="' + i + '"><img src="' + g.src + '"' + extra + ' loading="lazy" decoding="async" alt="' + esc(g.title) + '">' +
+        '<span class="glm__cap"><small>' + pad(i + 1) + '</small>' + esc(g.title) + '</span></button>';
+    }).join('')).data('list', list);
+    refreshScroll();
+  }
+  galleryGridRender('all');
+  (function () {
+    var rail = document.getElementById('glGrid');
+    function step(dir) { rail.scrollBy({ left: dir * rail.clientWidth * .8, behavior: 'smooth' }); }
+    function progress() {
+      var max = rail.scrollWidth - rail.clientWidth;
+      var vis = rail.clientWidth / rail.scrollWidth;
+      var bar = document.getElementById('glsBar');
+      bar.style.width = (vis * 100) + '%';
+      bar.style.left = (max > 0 ? rail.scrollLeft / max * (100 - vis * 100) : 0) + '%';
+      document.getElementById('glsPrev').disabled = rail.scrollLeft < 4;
+      document.getElementById('glsNext').disabled = rail.scrollLeft > max - 4;
+    }
+    $('#glsPrev').on('click', function () { step(-1); });
+    $('#glsNext').on('click', function () { step(1); });
+    rail.addEventListener('scroll', progress, { passive: true });
+    $(window).on('resize load', progress);
+    $(rail).on('load', 'img', progress);
+    rail.addEventListener('load', progress, true);
+    $('#galleryFilters').on('click', '[data-category]', function () { rail.scrollLeft = 0; setTimeout(progress, 50); });
+    setTimeout(progress, 300);
+  })();
+  $('#glGrid').on('click', '.glm', function () {
+    var list = $('#glGrid').data('list');
+    lightboxOpen(list.map(function (g) { return { src: g.src, title: g.title + ' · Artist\'s impression' }; }), +this.getAttribute('data-gi'));
+  });
+  $('#galleryFilters').on('click', '[data-category]', function () { galleryGridRender(this.getAttribute('data-category')); });
+
   $('#galleryFilters').on('click', '[data-category]', function () {
     var category = this.getAttribute('data-category');
 
@@ -548,6 +591,14 @@
     return '<details' + (i ? '' : ' open') + '><summary><span>' + esc(f[0]) + '</span></summary>' +
       '<div class="acc__body"><p>' + esc(f[1]) + '</p></div></details>';
   }).join(''));
+
+  // Compact: show the first 6, reveal the rest on demand.
+  $('#fqAcc').after('<button type="button" class="fq__more" id="fqMore" aria-expanded="false">View all ' + FAQS.length + ' FAQs</button>');
+  $('#fqMore').on('click', function () {
+    var open = $('#fqAcc').toggleClass('is-all').hasClass('is-all');
+    $(this).text(open ? 'Show fewer' : 'View all FAQs').attr('aria-expanded', String(open));
+    refreshScroll();
+  });
 
   // Only one answer open at a time.
   $('.acc details').on('toggle', function () {
@@ -912,7 +963,7 @@
 
     G.set(img, { scale: 1.3, transformOrigin: '50% 40%' });
     heroIntro
-      .fromTo(media, { clipPath: 'inset(0 0 0 100%)' }, { clipPath: 'inset(0 0 0 0%)', duration: 1.5, ease: 'expo.inOut' }, 0)
+      .fromTo(media, { clipPath: 'inset(100% 0 0 0)' }, { clipPath: 'inset(0% 0 0 0)', duration: 1.5, ease: 'expo.inOut', clearProps: 'clipPath' }, 0)
       .fromTo(wipe, { xPercent: 0, opacity: 1 }, { left: '0%', duration: 1.5, ease: 'expo.inOut' }, 0)
       .to(wipe, { opacity: 0, duration: .4 }, 1.4)
       .to(img, { scale: 1.06, duration: 2.6, ease: 'expo.out' }, .3)
@@ -1030,7 +1081,7 @@
   });
 
   // Stats cards rise in sequence, then their numbers get a gold glint.
-  G.from('.stats li', {
+  if (document.querySelector('.stats')) G.from('.stats li', {
     opacity: 0, y: 40, scale: .94, duration: 1, stagger: .12, ease: 'expo.out', clearProps: 'transform,opacity',
     scrollTrigger: { trigger: '.stats', start: 'top 88%', once: true },
     onComplete: function () { $('.stats').addClass('is-lit'); }

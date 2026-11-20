@@ -133,6 +133,9 @@
     email: function (v) {
       if (!v) return 'Please enter your email address.';
       return /^\S+@\S+\.\S+$/.test(v) ? '' : 'Please enter a valid email address.';
+    },
+    message: function (v) {
+      return v ? '' : 'Please enter your message.';
     }
   };
 
