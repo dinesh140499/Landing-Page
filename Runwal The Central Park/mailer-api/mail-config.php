@@ -4,10 +4,10 @@
 // =============================================================
 
 // Where enquiries are sent (your Gmail)
-$to = "shiv.buzz123@gmail.com";
+$to = "officialdinesh@gmail.com";
 
 // Sender email — must be on your real domain, e.g. no-reply@yourdomain.com
-$from_email = "shiv.buzz123@gmail.com";
+// $from_email = "shiv.buzz123@gmail.com";
 
 // Sender name shown in your inbox
 $from_name = "Runwal The Central Park";

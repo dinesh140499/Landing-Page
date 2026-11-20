@@ -116,9 +116,7 @@ try {
     $mail->Body    = $body;
     $mail->AltBody = strip_tags(str_replace(["<br />", "</tr>"], "\n", $body));
 
-    $mailresponse=$mail->send();
-
-    echo  $mailresponse;die;
+   $mail->send();
     
     echo json_encode(["success" => true]);
 } catch (Exception $e) {

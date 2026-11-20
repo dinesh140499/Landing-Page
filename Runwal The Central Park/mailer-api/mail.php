@@ -116,7 +116,7 @@ try {
     $mail->Body    = $body;
     $mail->AltBody = strip_tags(str_replace(["<br />", "</tr>"], "\n", $body));
 
-    $mailresponse=$mail->send();
+    $mail->send();
 
     echo  $mailresponse;die;
     

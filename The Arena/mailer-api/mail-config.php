@@ -7,7 +7,7 @@
 $to = "officialdinesh1499@gmail.com";
 
 // Sender email — must be on your real domain, e.g. no-reply@yourdomain.com
-$from_email = "abc@gmail.com";
+// $from_email = "";
 
 // Sender name shown in your inbox
 $from_name = "The Arena";

@@ -5,7 +5,7 @@
 
 // Where enquiries are sent (your Gmail)
 // $to = "officialdinesh1499@gmail.com";
-$to = "dinesh.kumar@thecodewyre.com";
+$to = "officialdinesh@gmail.com";
 
 // Sender email shown in the "From" field.
 // With Gmail SMTP this must be the login account ($mailUser below)

@@ -4,10 +4,10 @@
 // =============================================================
 
 // Where enquiries are sent (your Gmail)
-$to = "dinesh.kumar@thecodewyre.com";
+$to = "officialdinesh@gmail.com";
 
 // Sender email — must be on your real domain, e.g. no-reply@yourdomain.com
-$from_email = "dinesh.kumar@thecodewyre.com";
+// $from_email = "dinesh.kumar@thecodewyre.com";
 
 // Sender name shown in your inbox
 $from_name = "Envogue 2.0";
