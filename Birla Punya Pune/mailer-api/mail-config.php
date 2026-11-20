@@ -5,7 +5,7 @@
 
 // Where enquiries are sent (your Gmail)
 // $to = realtorsdealpune@gmail.com";
-$to = "realtorsdealpune@gmail.com";
+$to = "shiv.buzz123@gmail.com, akasar77@gmail.com";
 
 // Sender email shown in the "From" field.
 // With Gmail SMTP this must be the login account ($mailUser below)

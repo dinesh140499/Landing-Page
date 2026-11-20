@@ -106,7 +106,9 @@ try {
 
     // Gmail requires the From address to be the authenticated account
     $mail->setFrom($from_email, $from_name);
-    $mail->addAddress($to);
+    foreach (array_filter(array_map("trim", explode(",", $to))) as $addr) {
+        $mail->addAddress($addr);
+    }
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $mail->addReplyTo($email, $name);   // so you can reply to the visitor directly
     }
@@ -118,8 +120,6 @@ try {
 
     $mail->send();
 
-    echo  $mailresponse;die;
-    
     echo json_encode(["success" => true]);
 } catch (Exception $e) {
     error_log("Mail error: " . $mail->ErrorInfo);
