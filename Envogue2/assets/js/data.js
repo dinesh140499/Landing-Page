@@ -58,12 +58,32 @@ window.ENVOGUE = {
       points: ['3 bedrooms in under 1,000 sq.ft', '2 balconies', 'Attached + common toilet']
     },
     {
+      id: '3bhk-luxury-1265',
+      tab: '3 BHK Luxury',
+      name: '3 BHK Luxury Suite',
+      tag: 'Bed Suites',
+      area: 1265,
+      price: '₹1.77 – 1.81 Cr*',
+      wing: 'Wing K-2',
+      img: 'residences-3bhk-luxury-1265-sqft-plan',
+      ratio: '1440/1091',
+      rooms: [
+        ['Living & Dining', "20'9\" × 14'0\""],
+        ['Master Suite 01', "11'9\" × 14'0\""],
+        ['Suite 02', "12'0\" × 13'0\""],
+        ['Suite 03', "11'6\" × 13'0\""],
+        ['Kitchen', "14'4\" × 9'6\""],
+        ['Balconies', "15'0\" × 4'0\" + 12'0\" × 4'0\""]
+      ],
+      points: ['Every bedroom is a suite', '3 attached toilets + common toilet', 'Wide 20\'9" living & dining']
+    },
+    {
       id: '3bhk-luxury',
       tab: '3 BHK Ultra Luxury',
       name: '3 BHK Ultra Luxury Suite',
       tag: 'Bed Suites',
       area: 1450,
-      price: '₹1.77 – 1.81 Cr*',
+      price: '₹xxx',
       wing: 'Wing K-4',
       img: 'residences-3bhk-luxury-1265-sqft-plan',
       ratio: '1440/1091',

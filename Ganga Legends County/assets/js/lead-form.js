@@ -8,8 +8,8 @@
   /* ---------- submission settings ---------- */
   var MAILER_URL = 'mail.php';
   var THANKYOU_URL = 'thank-you.html';
-  var PHONE = '+919126264444';
-  var PHONE_LABEL = '+91 91262 64444';
+  var PHONE = '+918080907434';
+  var PHONE_LABEL = '+91 80809 07434';
   var store = {
     get: function (k, ses) { try { return (ses ? sessionStorage : localStorage).getItem(k); } catch (e) { return null; } },
     set: function (k, v, ses) { try { (ses ? sessionStorage : localStorage).setItem(k, v); } catch (e) {} }

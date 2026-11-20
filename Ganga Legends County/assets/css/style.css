@@ -377,6 +377,7 @@ html:not(.js) [data-rv] { opacity: 1; transform: none; }
 .ft__rera p { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
 .ft__rera b { color: #fff; font: 300 17px var(--ff-num); letter-spacing: .04em; border: 1px solid rgba(255, 255, 255, .22); border-radius: 99px; padding: 6px 14px; }
 .ft__rera span { font-size: 12px; color: rgba(255, 255, 255, .5); }
+.ft__rera .ft__agent span { color: #fff; font: 300 17px var(--ff-num); letter-spacing: .04em; }
 .ft__disc { position: relative; margin-top: clamp(28px, 4vw, 44px); padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, .12); font-size: 12.5px; }
 .ft__disc p { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .ft__disc.is-open p { -webkit-line-clamp: unset; display: block; }

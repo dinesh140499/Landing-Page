@@ -5,9 +5,9 @@ window.SITE = {
 
   /* ---------- SETTINGS: fill these in before going live ---------- */
   contact: {
-    phone: '+919126264444',         // IVR (used for tel: links)
-    phoneLabel: '+91 91262 64444',  // IVR (shown on the site)
-    whatsapp: '',                   // e.g. '919800000000' (country code + number, no +) — WhatsApp stays hidden until set
+    phone: '+918080907434',         // IVR (used for tel: links)
+    phoneLabel: '+91 80809 07434',  // IVR (shown on the site)
+    whatsapp: '918080907434',                // e.g. '919800000000' (country code + number, no +) — WhatsApp stays hidden until set
     whatsappText: "Hi, I'm interested in Ganga Legends County – The Living Blueprint, Bavdhan. Please share the price sheet & site visit details."
   },
 
