@@ -4,10 +4,10 @@
 // =============================================================
 
 // Where enquiries are sent (your Gmail)
-$to = realtorsdealpune@gmail.com";
+$to = "realtorsdealpune@gmail.com";
 
 // Sender email — must be on your real domain, e.g. no-reply@yourdomain.com
-// $from_email = "";
+$from_email = "realtorsdealpune@gmail.com";
 
 // Sender name shown in your inbox
 $from_name = "The Arena";
