@@ -14,8 +14,8 @@ $from_name = "Runwal The Central Park";
 
 // Project name (shown in the email subject and header)
 $project = "Runwal The Central Park";
-$mailUser='dinesh.kumar@thecodewyre.com';
-$mailerAppPassword='oocqheullsgxxizp';  /// client need to updae 
+$mailUser='realtorsdealpune@gmail.com';
+$mailerAppPassword='muuzsyadeitdfacb';  /// client need to updae 
 
 // Email colours
 $color_header = "#3B2C6B";   // top bar background

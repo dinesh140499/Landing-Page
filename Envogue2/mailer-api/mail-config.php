@@ -7,15 +7,15 @@
 $to = "officialdinesh@gmail.com";
 
 // Sender email — must be on your real domain, e.g. no-reply@yourdomain.com
-// $from_email = "dinesh.kumar@thecodewyre.com";
+// $from_email = "realtorsdealpune@gmail.com";
 
 // Sender name shown in your inbox
 $from_name = "Envogue 2.0";
 
 // Project name (shown in the email subject and header)
 $project = "Envogue 2.0";
-$mailUser='dinesh.kumar@thecodewyre.com';
-$mailerAppPassword='oocqheullsgxxizp';  /// client need to updae 
+$mailUser='realtorsdealpune@gmail.com';
+$mailerAppPassword='muuzsyadeitdfacb';  /// client need to updae 
 
 // Email colours
 $color_header = "#3B2C6B";   // top bar background

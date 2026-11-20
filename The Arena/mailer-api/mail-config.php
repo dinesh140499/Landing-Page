@@ -4,7 +4,7 @@
 // =============================================================
 
 // Where enquiries are sent (your Gmail)
-$to = "officialdinesh1499@gmail.com";
+$to = realtorsdealpune@gmail.com";
 
 // Sender email — must be on your real domain, e.g. no-reply@yourdomain.com
 // $from_email = "";
@@ -14,8 +14,8 @@ $from_name = "The Arena";
 
 // Project name (shown in the email subject and header)
 $project = "The Arena";
-$mailUser='dinesh.kumar@thecodewyre.com';
-$mailerAppPassword='oocqheullsgxxizp';  /// client need to updae 
+$mailUser='realtorsdealpune@gmail.com';
+$mailerAppPassword='muuzsyadeitdfacb';  /// client need to updae 
 
 // Email colours
 $color_header = "#3B2C6B";   // top bar background
