@@ -28,11 +28,15 @@ document.addEventListener('submit', function (e) {
   // 1. Spam bot trap: real visitors never fill this hidden field
   if (get('_honey')) return;
 
-  // 2. Simple checks
-  if (get('name') === '')                          { msg.textContent = 'Please enter your name.'; return; }
-  if (!/^[0-9+ ]{10,15}$/.test(get('phone')))      { msg.textContent = 'Please enter a valid mobile number.'; return; }
+  // 2. Simple checks (message is optional)
+  var phoneDigits = get('phone').replace(/\D/g, '').length;   // ignores +, spaces, dashes, brackets
+  var email = get('email');
   var consent = form.querySelector('[name=consent]');
-  if (consent && !consent.checked)                  { msg.textContent = 'Please accept the consent to continue.'; return; }
+
+  if (get('name') === '')                       { msg.textContent = 'Please enter your name.'; return; }
+  if (phoneDigits < 6 || phoneDigits > 15)      { msg.textContent = 'Please enter a valid mobile number.'; return; }
+  if (email && !/^\S+@\S+\.\S+$/.test(email))   { msg.textContent = 'Please enter a valid email address.'; return; }
+  if (consent && !consent.checked)              { msg.textContent = 'Please accept the consent to continue.'; return; }
 
   // 3. Collect the data to send
   var data = new FormData();

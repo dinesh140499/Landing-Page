@@ -152,8 +152,7 @@ window.ENVOGUE = {
     { img: 'amenities-childrens-adventure-zone', title: "Children's Adventure Zone", line: 'A captivating space for the little ones!', note: 'Swingscape, skate park & interactive green spaces' }
   ],
 
-
-  /* ---------- Gallery ---------- */
+  /* ---------- Gallery (main.js shows the 'interiors' items) ---------- */
   gallery: [
     { img: 'gallery-sample-flat-living-dining-room', cat: 'interiors', title: 'Living & Dining — Sample Flat' },
     { img: 'gallery-sample-flat-master-bedroom', cat: 'interiors', title: 'Master Bedroom' },
@@ -163,15 +162,53 @@ window.ENVOGUE = {
     { img: 'gallery-sample-flat-marble-bathroom', cat: 'interiors', title: 'Marble Finish Bathroom', tall: true },
     { img: 'gallery-sample-flat-bedroom-tv-unit', cat: 'interiors', title: 'Bedroom with TV Unit' },
     { img: 'gallery-sample-flat-bathroom-vanity', cat: 'interiors', title: 'Attached Bathroom', tall: true },
-    { img: 'gallery-sample-flat-guest-bedroom', cat: 'interiors', title: 'Guest Bedroom' },
+    { img: 'gallery-sample-flat-guest-bedroom', cat: 'interiors', title: 'Guest Bedroom' }
   ],
 
-  /* ---------- Location ---------- */
+  /* ---------- Location — [place, distance] per category ---------- */
   location: [
-    { cat: 'Metro & Rail', items: [['Akurdi Metro Station (Upcoming)', '300 m · 02 mins'], ['PCMC Metro Station', '06 mins'], ['Akurdi Railway Station', 'Quick access'], ['Chinchwad Railway Station', 'Quick access']] },
-    { cat: 'Schools', items: [['Elpro International School', '05 mins'], ['Orchids — The International School', '05 mins']] },
-    { cat: 'Hospitals', items: [["Unique Children's Hospital", '03 mins'], ['Aditya Birla Memorial Hospital', '05 mins'], ['Lokmanya Hospital', 'Nearby']] },
-    { cat: 'Shopping & Leisure', items: [['Elpro City Square Mall', '05 mins'], ['D Mart', '08 mins'], ['PVR City One', '03 mins'], ['Vishal E Square', '05 mins'], ['INOX — Elpro City Square', '05 mins']] },
-    { cat: 'Work Hubs', items: [['Hinjawadi IT Park', 'Excellent connectivity'], ['Baner', 'Excellent connectivity'], ['Chakan Industrial Zone', 'Excellent connectivity'], ['Pune – Mumbai Highway', 'On Old Mumbai Rd.']] }
+    {
+      cat: 'Metro & Rail',
+      items: [
+        ['Akurdi Metro Station (Upcoming)', '300 m · 02 mins'],
+        ['PCMC Metro Station', '06 mins'],
+        ['Akurdi Railway Station', 'Quick access'],
+        ['Chinchwad Railway Station', 'Quick access']
+      ]
+    },
+    {
+      cat: 'Schools',
+      items: [
+        ['Elpro International School', '05 mins'],
+        ['Orchids — The International School', '05 mins']
+      ]
+    },
+    {
+      cat: 'Hospitals',
+      items: [
+        ["Unique Children's Hospital", '03 mins'],
+        ['Aditya Birla Memorial Hospital', '05 mins'],
+        ['Lokmanya Hospital', 'Nearby']
+      ]
+    },
+    {
+      cat: 'Shopping & Leisure',
+      items: [
+        ['Elpro City Square Mall', '05 mins'],
+        ['D Mart', '08 mins'],
+        ['PVR City One', '03 mins'],
+        ['Vishal E Square', '05 mins'],
+        ['INOX — Elpro City Square', '05 mins']
+      ]
+    },
+    {
+      cat: 'Work Hubs',
+      items: [
+        ['Hinjawadi IT Park', 'Excellent connectivity'],
+        ['Baner', 'Excellent connectivity'],
+        ['Chakan Industrial Zone', 'Excellent connectivity'],
+        ['Pune – Mumbai Highway', 'On Old Mumbai Rd.']
+      ]
+    }
   ]
 };
