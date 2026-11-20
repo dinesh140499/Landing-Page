@@ -7,7 +7,6 @@ window.ENVOGUE = {
 
   /* ---------- Lead + contact settings ---------- */
   contact: {
-    leadEmail: 'shiv.buzz123@gmail.com',     // FormSubmit sends every enquiry here
     phone: '+919126264444',
     phoneLabel: '+91 91262 64444',
     rera: 'P52100077680',

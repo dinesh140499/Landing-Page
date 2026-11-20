@@ -10,10 +10,12 @@
   <script>document.documentElement.className += ' js';</script>
   <link rel="preload" as="image" type="image/webp" href="assets/images/banner/banner-three-towers-day-lg.webp"
         imagesrcset="assets/images/banner/banner-three-towers-day-sm.webp 800w, assets/images/banner/banner-three-towers-day-lg.webp 1600w" imagesizes="100vw" fetchpriority="high">
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-400-normal-latin.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/hanken-grotesk-600-normal-latin.woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/fonts.css">
   <link rel="stylesheet" href="assets/css/style.min.css">
-  <link rel="stylesheet" href="assets/css/intlTelInput.min.css">
-  <link rel="stylesheet" href="assets/css/lead-form.css">
+  <link rel="stylesheet" href="assets/css/lead-form.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="assets/css/lead-form.css"></noscript>
   <link rel="icon" type="image/webp" href="assets/images/brand/brand-favicon.webp">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ApartmentComplex","name":"Ganga Legends County – The Living Blueprint","description":"3, 3.5 & 4 BHK residences in a 30-acre township at Bavdhan, Pune by Goel Ganga Corporation.","address":{"@type":"PostalAddress","streetAddress":"DSK Ranwara Road, Ram Nagar, Bavdhan, Off Pashan","addressLocality":"Pune","postalCode":"411021","addressCountry":"IN"}}
@@ -30,7 +32,7 @@
     </a>
     <nav class="hd__nav" id="hdNav" aria-label="Sections">
       <span class="hd__ind" id="hdInd" aria-hidden="true"></span>
-      <a href="#overview">Overview</a><a href="#residences">Price List</a><a href="#wellness">Wellness</a><a href="#amenities">Amenities</a><a href="#location">Location</a>
+      <a href="#overview">Overview</a><a href="#residences">Price List</a><a href="#wellness">Wellness</a><a href="#amenities">Amenities</a><a href="#location">Location</a><a href="#gallery">Gallery</a>
     </nav>
     <div class="hd__right">
       <a class="hd__call" href="#" data-tel><i><img src="assets/images/icons/icon-phone-white.webp" width="48" height="48" alt=""></i><b data-tel-label>Call us</b></a>
@@ -50,6 +52,7 @@
         <li><a href="#wellness"><i>04</i>Wellness</a></li>
         <li><a href="#amenities"><i>05</i>Amenities</a></li>
         <li><a href="#location"><i>06</i>Location</a></li>
+        <li><a href="#gallery"><i>07</i>Gallery</a></li>
       </ul>
       <div class="menu__side">
         <img src="assets/images/brand/brand-living-blueprint-white.webp" width="219" height="160" alt="The Living Blueprint" loading="lazy" decoding="async">
@@ -118,7 +121,7 @@
           <div data-rv>
             <p class="kicker">02 — Overview</p>
             <h2 class="title">A better life, <em>for longer,</em> is the idea.</h2>
-            <p class="lead">Most homes are designed for space and convenience. The Living Blueprint goes further — it recognises that where you live shapes how you breathe, sleep, move, eat, recover and connect. Wellbeing is built in from the start.</p>
+            <p class="lead">Ganga Legend County. Amidst 30 acres of verdant panoramas, emerges our newest jewel, heralding a pinnacle of opulence. Indulge in an unparalleled fusion of lavish amenities and global standards, promising a lifestyle steeped in exclusivity. This prequel to our forthcoming masterpiece epitomizes refinement, where luxury is an art meticulously crafted at every turn.</p>
           </div>
           <ol class="layers" data-rv>
             <li><i>1</i><div><b>Longevity Architecture</b><span>A physical environment designed around the everyday inputs that shape how you live.</span></div></li>
@@ -155,7 +158,6 @@
             </ul>
           </div>
         </div>
-        <p class="note">*Prices are indicative, as supplied for Towers B5 &amp; B7, and subject to change. RERA carpet areas in sq ft. Please verify with the sales team.</p>
       </div>
     </section>
 
@@ -182,6 +184,26 @@
             <div class="orb__nav"><button type="button" id="orbPrev" aria-label="Previous layer">&#8592;</button><button type="button" id="orbNext" aria-label="Next layer">&#8594;</button></div>
           </article>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ HIGHLIGHTS ============ -->
+    <section class="sec hl" id="highlights">
+      <div class="wrap">
+        <div class="head" data-rv>
+          <div><p class="kicker">Highlights</p><h2 class="title">Why choose <em>Ganga Legends County?</em></h2></div>
+          <p class="lead">A snapshot of what makes this township stand apart.</p>
+        </div>
+        <ul class="hl__grid" data-rv>
+          <li><i>01</i><b>30-Acre Integrated Township</b></li>
+          <li><i>02</i><b>12.5-Acre Sports Complex</b></li>
+          <li><i>03</i><b>27-Storey Premium Towers</b></li>
+          <li><i>04</i><b>2 Levels of Basement Parking + Ground Level Parking</b></li>
+          <li><i>05</i><b>Sky Walk &amp; World-Class Lifestyle Amenities</b></li>
+          <li><i>06</i><b>CBSE Board Functional School within the Township</b></li>
+          <li><i>07</i><b>IB Board Pre-Primary School within the Township</b></li>
+          <li class="hl__cta"><button type="button" class="btn btn--sun" data-enquire="Highlights — Download Brochure">Download Brochure</button></li>
+        </ul>
       </div>
     </section>
 
@@ -230,6 +252,18 @@
       </div>
     </section>
 
+    <!-- ============ GALLERY ============ -->
+    <section class="sec gl" id="gallery">
+      <div class="wrap">
+        <div class="head" data-rv>
+          <div><p class="kicker">Gallery</p><h2 class="title">A glimpse of <em>life here</em></h2></div>
+          <div class="gl__nav"><p class="gl__count"><b id="glNo">01</b><span>/ 17</span></p><button type="button" class="gl__btn" data-gl="-1" aria-label="Previous images">&#8592;</button><button type="button" class="gl__btn" data-gl="1" aria-label="Next images">&#8594;</button></div>
+        </div>
+        <div class="gl__grid" id="glGrid" data-rv></div>
+        <div class="gl__bar" aria-hidden="true"><span id="glBar"></span></div>
+      </div>
+    </section>
+
     <!-- ============ CONTACT ============ -->
     <section class="sec ct" id="contact">
       <div class="wrap ct__grid">
@@ -271,15 +305,14 @@
         <div class="ft__rera">
           <div>
             <small>MahaRERA Registration</small>
-            <p><b>P52100076756</b><b>P52100076968</b></p>
             <span>maharera.mahaonline.gov.in</span>
           </div>
-          <!-- Official MahaRERA QR: save it as assets/images/brand/brand-maharera-qr.webp — it appears automatically -->
-          <img class="ft__qr" src="assets/images/brand/brand-maharera-qr.webp" width="96" height="96" alt="MahaRERA QR code" loading="lazy" decoding="async" onerror="this.remove()">
+          <figure class="ft__qrbox"><img class="ft__qr" src="assets/images/qr/qr-b5.webp" width="351" height="351" alt="MahaRERA QR code — Ganga Legend Building B5" loading="lazy" decoding="async"><figcaption>Building B5<b>P52100076756</b></figcaption></figure>
+          <figure class="ft__qrbox"><img class="ft__qr" src="assets/images/qr/qr-b7.webp" width="351" height="351" alt="MahaRERA QR code — Ganga Legend Building B7" loading="lazy" decoding="async"><figcaption>Building B7<b>P52100076968</b></figcaption></figure>
         </div>
       </div>
       <div class="ft__disc" id="ftDisc"><p id="ftDiscTxt"><b>Disclaimer:</b> All images, renders, illustrations and visual representations on this website are for conceptual and illustrative purposes only. They are intended to convey the vision and philosophy of The Living Blueprint. Specifications, features, amenities and design details are subject to change. The details are only indicative and the developer/owner reserves the right to change any or all of them. This material does not constitute a contract or offer of any type between the developer/owner and the recipient. Any purchase in this development shall be governed by the terms and conditions of the agreement for sale entered into between the parties. Prices are indicative and subject to change; please verify all details with the sales team and on the MahaRERA website.</p><button type="button" class="ft__more" id="ftMore" aria-expanded="false" aria-controls="ftDiscTxt">Read more</button></div>
-      <div class="ft__bar"><p>© <span id="year">2026</span> Ganga Legends County · The Living Blueprint</p><p>Website design by adEstato.com</p></div>
+      <div class="ft__bar"><p>© <span id="year">2026</span> Marketed By a Goel Ganga Corporation Preferred Partner</p><p>Website design by adEstato.com</p></div>
     </div>
   </footer>
 
@@ -325,7 +358,6 @@
   </div>
 
   <script src="assets/js/vendor/vendor.bundle.min.js" defer></script>
-  <script src="assets/js/vendor/intlTelInputWithUtils.min.js" defer></script>
   <script src="assets/js/lead-form.js" defer></script>
   <script src="assets/js/data.js" defer></script>
   <script src="assets/js/main.js" defer></script>

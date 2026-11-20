@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Thank You | The Arena, Pimpri</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#5B3F99">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Inter+Tight:wght@700;900&display=swap">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/brand/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/images/brand/apple-touch-icon.png">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{-webkit-text-size-adjust:100%}
+    body{min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:max(24px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom));background:radial-gradient(circle,rgba(255,255,255,.08) 1.2px,transparent 1.8px) 0 0/22px 22px,linear-gradient(135deg,#36245F,#5B3F99);color:#fff;font:400 16px/1.6 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-align:center;overflow-x:hidden}
+    main{width:100%;max-width:560px;display:flex;flex-direction:column;align-items:center;padding:clamp(28px,6vw,44px) clamp(20px,5vw,40px);border-radius:24px;background:rgba(20,10,50,.28);border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+    img{display:block;max-width:100%;height:auto}
+    .logo{width:min(150px,40vw);margin-bottom:18px}
+    .tick{width:64px;height:64px;margin-bottom:16px;flex:none}
+    .tick circle{fill:#E2E22B}
+    .tick path{fill:none;stroke:#36245F;stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:d .7s .3s ease forwards}
+    @keyframes d{to{stroke-dashoffset:0}}
+    h1{font:900 clamp(26px,7vw,46px)/1.1 "Inter Tight",Inter,sans-serif;text-transform:uppercase;overflow-wrap:anywhere;max-width:100%}
+    h1 mark{display:inline-block;margin-top:6px;background:#E2E22B;color:#36245F;padding:.05em .25em;border-radius:6px;font-size:.78em}
+    p{color:rgba(255,255,255,.85);margin:16px 0 26px;font-size:clamp(14.5px,3.6vw,16px);max-width:44ch}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;width:100%}
+    a{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:12px 24px;border-radius:99px;font:700 14.5px "Inter Tight",Inter,sans-serif;text-decoration:none;border:1.5px solid rgba(255,255,255,.7);color:#fff;transition:background .25s,color .25s}
+    a:hover{background:#fff;color:#36245F}
+    a.p{background:#E2E22B;border-color:#E2E22B;color:#36245F}
+    a.p:hover{background:#fff;border-color:#fff}
+    @media (max-width:520px){.btns{flex-direction:column}a{width:100%}}
+    @media (max-height:520px) and (orientation:landscape){body{align-items:flex-start}.logo{margin-bottom:12px}.tick{width:48px;height:48px;margin-bottom:10px}p{margin:10px 0 18px}}
+  </style>
+</head>
+<body>
+  <main>
+    <img class="logo" src="assets/images/brand/life-in-motion.webp" width="300" height="287" alt="The Arena — Life in Motion">
+    <svg class="tick" viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="36"/><path d="M22 37l10 10 19-21"/></svg>
+    <h1>Thank you<span id="nm"></span>! <mark>You're in motion.</mark></h1>
+    <p>Your pre-launch enquiry has reached us. Our team will call you shortly with the price sheet, brochure and priority site-visit options.</p>
+    <div class="btns"><a class="p" href="index.html">Back to website</a><a href="tel:+919126264444">Call +91 91262 64444</a></div>
+  </main>
+  <script>
+    var n = new URLSearchParams(location.search).get('name');
+    if (n) document.getElementById('nm').textContent = ' ' + n.replace(/[^\p{L} .'-]/gu, '').trim().split(' ')[0].slice(0, 18);
+  </script>
+</body>
+</html>

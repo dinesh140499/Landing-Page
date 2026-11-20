@@ -462,67 +462,16 @@
   });
 
   /* =====================================================================
-     LEAD FORMS → email via FormSubmit (AJAX)
+     LEAD FORMS → email via PHP mailer (AJAX)
      ===================================================================== */
-  var utm = (function () {
-    var out = {}, q = new URLSearchParams(window.location.search);
-    $.each(['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid', 'fbclid'], function (_, k) {
-      var v = q.get(k) || store.get('envogue_' + k, true); if (v) { out[k] = v; store.set('envogue_' + k, v, true); }
-    });
-    return out;
-  })();
+
 
   function unlockPlans() { $('.plan').removeClass('is-locked'); renderPlist(); }
   if (isLead()) unlockPlans();
+  $doc.on('lead:success', unlockPlans);
 
 
-  $doc.on('submit', '.lead-form', function (e) {
-    e.preventDefault();
-    var $f = $(this), $msg = $f.find('.form-msg').text('');
-    var v = function (n) { return $.trim($f.find('[name=' + n + ']').val() || ''); };
-    if ($f.find('[name=_honey]').val()) return; // bot
 
-    var chk = window.LeadForm.validate($f);
-    if (!chk.ok) { $msg.text(chk.consent ? 'Please correct the fields marked above.' : 'Please accept the consent to continue.'); return; }
-
-    var source = $f.attr('data-source') || 'Website';
-    var payload = $.extend({
-      _subject: 'New Lead — Envogue 2.0 — ' + v('name') + ' (' + source + ')',
-      _template: 'table',
-      _captcha: 'false',
-      Name: v('name'),
-      Phone: chk.phone,
-      Country: chk.country,
-      Email: v('email'),
-      Message: v('message'),
-      'Lead Source': source,
-      Page: window.location.href,
-      'Submitted At': new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
-    }, utm);
-
-    $f.addClass('is-loading'); $msg.text('Sending…');
-    $.ajax({
-      url: 'https://formsubmit.co/ajax/' + C.leadEmail,
-      method: 'POST', dataType: 'json', contentType: 'application/json',
-      data: JSON.stringify(payload), timeout: 15000
-    }).done(function () {
-      store.set('envogue_lead', '1');
-      unlockPlans();
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({ event: 'lead_submit', lead_source: source });
-      if (typeof window.fbq === 'function') window.fbq('track', 'Lead');
-      // Redirect to the thank-you (conversion) page with the visitor's first name & choice
-      var tyUrl = 'thank-you.html?name=' + encodeURIComponent(v('name').split(' ')[0]);
-      setTimeout(function () { window.location.href = tyUrl; }, 350);
-      $f.hide().after(
-        '<div class="thanks"><div class="thanks__ico">✓</div><h4>Thank you, ' + $('<i>').text(v('name').split(' ')[0]).html() + '!</h4>' +
-        '<p>Our Envogue 2.0 expert will call you shortly. All floor plans are now unlocked.</p>' +
-        '<a class="btn btn--accent" href="tel:' + C.phone + '">Call now ' + C.phoneLabel + '</a></div>'
-      );
-    }).fail(function () {
-      $msg.html('We couldn\'t send that right now. Please call <a href="tel:' + C.phone + '" style="text-decoration:underline">' + C.phoneLabel + '</a>.');
-    }).always(function () { $f.removeClass('is-loading'); });
-  });
 
   /* =====================================================================
      VIDEO, MAP, MISC

@@ -14,3 +14,8 @@
 .field.is-invalid input { border-color: #d1007c; }
 /* phone label always sits small at the top; flag, code and number share one line below it */
 .field.field--iti label { top: 7px; left: 16px; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
+
+/* submit button loading state */
+.lead-form button[type=submit] .spin { display: inline-block; width: 16px; height: 16px; margin-right: 10px; vertical-align: -3px; border: 2px solid rgba(255, 255, 255, .35); border-top-color: #fff; border-radius: 50%; animation: lfSpin .8s linear infinite; }
+@keyframes lfSpin { to { transform: rotate(360deg); } }
+.lead-form.is-loading button[type=submit] { opacity: .85; cursor: wait; }
