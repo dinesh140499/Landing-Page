@@ -84,14 +84,20 @@
     { title: 'Nearby', items: [['Shivaji Nagar', '1.6 km'], ['Shaniwar Wada', '2.2 km'], ['Swargate', '4.2 km'], ['Koregaon Park', '4.5 km'], ['Yerwada', '5.3 km'], ['Pune Cantonment', '5.7 km'], ['Kalyani Nagar', '8.3 km'], ['Viman Nagar', '10.4 km'], ['Baner', '11.2 km'], ['Kharadi', '11.5 km']] }
   ];
 
-  /* FAQs only cover what the rest of the page doesn't. */
+  /* FAQs — from the official Birla Estates project page. */
   var FAQS = [
-    ['What is Birla Punya?', 'A LifeDesigned® residential project by Birla Estates in Central Pune, inspired by the city\'s heritage and designed for modern family living.'],
-    ['What is the exact address?', 'Near AISSMS College, Wellesley Road, Central Pune 411001.'],
-    ['Who are the architects and consultants?', 'Broadway Malyan (Principal Design Consultant), JW Consultants LLP (Principal Structural Consultant), STX Landscape Architects (Landscape) and Terracon Ecotech Pvt. Ltd. (Environmental Consultant).'],
-    ['What fire-safety and electrical protection is provided?', 'All rooms have red water pipes as part of the fire-safety system, and homes feature an Intelligent Electricity Management System that protects against electrical fires and insulation failures caused by rodents.'],
-    ['What sustainable features are included?', 'Solar hot-water systems, solar lighting for landscapes and walkways, energy-efficient equipment for common services and a rainwater harvesting system that stores rainwater for reuse.'],
-    ['How do I get the price sheet or book a site visit?', 'Tap “Get Price Sheet” or “Book Site Visit”, call or WhatsApp +91 90963 30038, and our relationship manager will share current pricing, availability and a visit slot.']
+    ['What is Birla Punya?', 'Birla Punya is a LifeDesigned® residential project by Birla Estates in Central Pune, offering 2, 3 and 4 BHK homes on approximately 5 acres.'],
+    ['How many towers are part of Birla Punya?', 'Birla Punya has four towers in Central Pune.'],
+    ['Where is Birla Punya located?', 'In the historic heart of Central Pune, where the city\'s cultural heritage is concentrated — near AISSMS College, Wellesley Road, Pune 411001.'],
+    ['What are the no. of residences on each floor at Birla Punya?', 'Towers A and B have 8 residences per floor each, while Towers C and D have 4 residences per floor each.'],
+    ['Who are the key architects and consultants involved in Birla Punya?', 'Broadway Malyan (Principal Design Consultant), JW Consultants LLP (Principal Structural Consultant), STX Landscape Architects (Landscape) and Terracon Ecotech Pvt. Ltd. (Environmental Consultant).'],
+    ['What percentage of open space and greenery does Birla Punya offer?', 'Birla Punya offers 79% open spaces with greenery across the project.'],
+    ['Is Birla Punya IGBC compliant?', 'Yes. Birla Punya holds IGBC Gold Pre-certification for its sustainable design and eco-friendly practices.'],
+    ['What fire safety and electrical protection features are included?', 'All rooms have red water pipes as part of the fire safety system, and homes feature an Intelligent Electricity Management System that protects against electrical fires and insulation failures caused by rodents.'],
+    ['What sustainable development features are included?', 'Solar hot water systems, solar lighting for landscapes and walkways, and energy-efficient equipment for common services.'],
+    ['Does Birla Punya have a rainwater harvesting system?', 'Yes. Rainwater is collected and stored for reuse, reducing water wastage and conserving water.'],
+    ['Are the apartments at Birla Punya Vastu compliant?', 'Yes. All apartments are designed according to Vastu principles.'],
+    ['How do I get the price sheet or book a site visit?', 'Tap “Get Price Sheet” or “Book Site Visit”, or call / WhatsApp +91 90963 30038 — our relationship manager will share current pricing, offers, availability and a visit slot.']
   ];
 
   /* =====================================================================
