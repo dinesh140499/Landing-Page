@@ -118,7 +118,7 @@
   /* =====================================================================
      VALIDATION
      ===================================================================== */
-  /* Simple, friendly checks. Message is optional.
+  /* Simple, friendly checks. Message is required.
      The country code comes from the picker, so the phone only needs 6–15 digits
      (spaces, dashes and brackets are ignored). */
   var RULES = {

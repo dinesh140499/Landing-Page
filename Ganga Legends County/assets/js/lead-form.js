@@ -116,7 +116,7 @@
   /* =====================================================================
      VALIDATION
      ===================================================================== */
-  /* Simple, friendly checks. Message is optional.
+  /* Simple, friendly checks. Message is required.
      The country code comes from the picker, so the phone only needs 6–15 digits
      (spaces, dashes and brackets are ignored). */
   var RULES = {
@@ -131,6 +131,9 @@
     email: function (v) {
       if (!v) return 'Please enter your email address.';
       return /^\S+@\S+\.\S+$/.test(v) ? '' : 'Please enter a valid email address.';
+    },
+    message: function (v) {
+      return v ? '' : 'Please enter your message.';
     }
   };
 
