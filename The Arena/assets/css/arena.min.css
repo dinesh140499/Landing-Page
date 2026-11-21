@@ -149,3 +149,58 @@
 .about__facts li:nth-child(2) b,.about__facts li:nth-child(3) b{color:var(--violet)}
 .about__facts span{display:block;margin-top:8px;font:700 11.5px var(--ff);letter-spacing:.12em;text-transform:uppercase;opacity:.75}
 @media (max-width: 900px){.about__grid{grid-template-columns:1fr;gap:24px}.about__copy p:not(.label){font-size:15px;line-height:1.7}.about__facts li{padding:18px 16px}.about__facts b{font-size:38px}}
+
+/* Amenities deck: swipe slider on mobile */
+@media (max-width: 900px){
+  .pan{overflow:hidden}
+  .deck{grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:64%;gap:10px!important;overflow-x:auto;overflow-y:visible;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 8px;margin-bottom:10px!important}
+  .deck::-webkit-scrollbar{display:none}
+  .deck>*{scroll-snap-align:start;min-width:0}
+  .pan .eco__dots{margin:0 0 22px}
+  .pan .eco__dots i{background:rgba(255,255,255,.3)}
+  .pan .eco__dots i.is-on{background:var(--lime)}
+}
+@media (max-width: 600px){.deck{grid-auto-columns:72%}}
+
+/* section CTA buttons */
+.about__btn,.eco__btn{margin-top:22px}
+.sec__btn{margin-top:14px}
+.spec__btn{justify-self:start;white-space:nowrap}
+.dev__btn{margin-left:auto}
+.eco--lime .eco__btn{background:var(--ink);color:var(--lime)}
+@media (min-width: 901px){.spec__in{grid-template-columns:auto 1fr auto}}
+@media (max-width: 900px){.about__btn,.eco__btn,.sec__btn,.spec__btn,.dev__btn{width:100%;justify-content:center;margin-left:0}.spec__btn{margin-top:4px}.eco__btn{margin-top:16px}}
+
+/* Mobile: Sports + Sports Operations points stay open (no slider) */
+@media (max-width: 900px){
+  #sports .eco__list,#ileseum .eco__list{display:grid!important;grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:1fr;overflow:visible;scroll-snap-type:none;padding:0;margin-right:0}
+  #sports .eco__list li,#ileseum .eco__list li{min-height:0;display:flex!important}
+  #sports .eco__dots,#ileseum .eco__dots{display:none!important}
+}
+
+/* Dark contact form: country code picker visible */
+.cta__form .iti__selected-dial-code,.cta__form .iti__selected-country,.cta__form .iti__selected-country-primary{color:#fff!important}
+.cta__form .iti__arrow{border-top-color:rgba(255,255,255,.8)!important}
+.cta__form .iti__arrow--up{border-top-color:transparent!important;border-bottom-color:rgba(255,255,255,.8)!important}
+.cta__form .iti__selected-country:hover,.cta__form .iti__selected-country-primary:hover{background:rgba(255,255,255,.08)!important}
+.cta__form .iti__dropdown-content,.cta__form .iti__country-list{color:var(--ink)}
+.cta__form .iti__search-input{color:var(--ink)}
+@media (max-width: 900px){.devstrip__jv{padding:0 var(--gut);text-align:left}}
+
+/* Mobile: Highlights back to open layout (no slider) */
+@media (max-width: 900px){
+  #highlights .eco__list{display:grid!important;grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:1fr;overflow:visible;scroll-snap-type:none;padding:0;margin-right:0}
+  #highlights .eco__list li{min-height:0;display:flex!important}
+  #highlights .eco__dots,.spec .eco__dots{display:none!important}
+  .spec__list{grid-auto-flow:row!important;grid-template-columns:1fr 1fr!important;overflow:visible!important;scroll-snap-type:none!important}
+  .spec__list>div{border:0!important;border-radius:0!important;padding:10px 12px!important;border-top:1px solid rgba(255,255,255,.14)!important}
+}
+
+/* Mobile: Sports township + Sports operations as sliders again */
+@media (max-width: 900px){
+  #sports .eco__list,#ileseum .eco__list{display:grid!important;grid-template-columns:none!important;grid-auto-flow:column!important;grid-auto-columns:78%!important;overflow-x:auto!important;scroll-snap-type:x mandatory!important;padding:2px 2px 6px!important}
+  #sports .eco__list li,#ileseum .eco__list li{min-height:92px}
+  #sports .eco__dots,#ileseum .eco__dots{display:flex!important}
+  .m-end{margin-top:18px!important;width:100%;justify-content:center}
+}
+@media (max-width: 900px){.m-end{order:99}.day__foot{flex-wrap:wrap}.day__foot .m-end{flex:1 0 100%}}

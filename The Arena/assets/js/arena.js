@@ -345,7 +345,7 @@
 
 /* Mobile swipe dots for eco point lists */
 (function () {
-  document.querySelectorAll('.eco__list, .spec__list').forEach(function (list) {
+  document.querySelectorAll('.eco__list, .spec__list, #deck').forEach(function (list) {
     var n = list.children.length, dots = document.createElement('div');
     dots.className = 'eco__dots'; dots.setAttribute('aria-hidden', 'true');
     dots.innerHTML = new Array(n + 1).join('<i></i>');
@@ -357,4 +357,26 @@
     }
     list.addEventListener('scroll', upd, { passive: true }); upd();
   });
+})();
+
+/* Mobile: move each section's CTA button to the end of its section */
+(function () {
+  var mq = window.matchMedia('(max-width: 900px)');
+  var btns = [].slice.call(document.querySelectorAll('.about__btn, .sec__btn, .eco__btn, .spec__btn'));
+  btns.forEach(function (b) {
+    var home = document.createComment('cta-home');
+    b.parentNode.insertBefore(home, b);
+    b._home = home;
+    var sec = b.closest('section');
+    var wraps = sec.querySelectorAll(':scope > .wrap, :scope > div');
+    b._end = wraps[wraps.length - 1] || sec;
+  });
+  function place() {
+    btns.forEach(function (b) {
+      if (mq.matches) { b._end.appendChild(b); b.classList.add('m-end'); }
+      else { b._home.parentNode.insertBefore(b, b._home.nextSibling); b.classList.remove('m-end'); }
+    });
+  }
+  place();
+  (mq.addEventListener ? mq.addEventListener('change', place) : mq.addListener(place));
 })();
