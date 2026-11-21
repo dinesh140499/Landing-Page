@@ -485,3 +485,10 @@
   #homes .fix__card{min-height:0;height:100%}
   .fix__row{grid-template-columns:170px 1fr 1fr auto !important;gap:16px}
 }
+/* Day intro: film + site visit aligned in one row */
+.day__intro{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}
+.day__intro .lead{flex:1 1 100%;margin-bottom:4px}
+.day__intro .day__film,.day__intro .sec__btn{margin:0 !important}
+.day__intro .day__film{display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
+.day__intro .sec__btn{white-space:nowrap}
+@media (max-width:600px){.day__intro{gap:12px}.day__intro .sec__btn{flex:1 1 100%;justify-content:center}}
