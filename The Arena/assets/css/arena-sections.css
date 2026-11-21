@@ -199,3 +199,42 @@
 }
 @media (prefers-reduced-motion: reduce) { .ring__sweep { animation: none; } }
 .mos__grid { grid-auto-flow: dense; } .mos__it:nth-child(9) { grid-column: span 1; }
+
+/* SPORTS ECOSYSTEM */
+.eco--lime{background:var(--lime)}
+.eco--chalk{background:var(--chalk)}
+.eco--paper{background:var(--paper)}
+.eco--lime .h2 mark{color:var(--ink);background-image:linear-gradient(#fff,#fff)}
+.eco__grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(30px,5vw,70px);align-items:center}
+.eco__grid--rev{grid-template-columns:1fr 1.05fr}
+.eco__list{list-style:none;margin:clamp(20px,2.4vw,30px) 0 0;padding:0;display:grid;gap:10px}
+.eco__list li{display:flex;align-items:center;gap:14px;padding:12px 16px;border-radius:14px;background:var(--paper);border:1px solid var(--line);font-size:clamp(14.5px,1.05vw,16px);color:var(--text)}
+.eco--paper .eco__list li{background:var(--chalk)}
+.eco--lime .eco__list li{background:rgba(255,255,255,.55);border-color:rgba(22,17,43,.1)}
+.eco__list span{flex:none;display:grid;place-items:center;min-width:30px;height:22px;border-radius:6px;background:var(--ink);color:var(--lime);font:700 11px var(--ff);letter-spacing:.04em}
+.eco__media{margin:0;border-radius:var(--r);overflow:hidden;aspect-ratio:1/1;background:var(--ink)}
+.eco__media img{width:100%;height:100%;object-fit:cover;display:block}
+@media (max-width: 900px){.eco__grid,.eco__grid--rev{grid-template-columns:1fr}.eco__grid--rev .eco__media{order:2}.eco__media{aspect-ratio:4/3}}
+
+/* NAV — developer logos */
+.nav__logo--dev{display:inline-flex;align-items:center;gap:14px}
+.nav__logo.nav__logo--dev img{height:56px;width:auto}
+.nav__logo--dev i{width:1px;height:30px;background:rgba(255,255,255,.35)}
+@media (max-width: 600px){.nav__logo.nav__logo--dev img{height:32px}.nav__logo--dev{gap:10px}.nav__logo--dev i{height:24px}}
+
+.ft__devs{display:inline-flex;align-items:center;gap:18px}
+.ft__top .ft__devs img{height:56px;width:auto}
+.ft__devs i{width:1px;height:42px;background:rgba(255,255,255,.3)}
+@media (max-width: 600px){.ft__top .ft__devs img{height:44px}.ft__devs i{height:34px}}
+
+/* builder logo (dark artwork on white chip) */
+.nav__logo.nav__logo--dev{padding:0;margin-top:0;background:none;box-shadow:none}
+.nav__logo--dev img,.ft__devs img,.modal__devs img{display:block;background:#fff;border-radius:12px;padding:8px 14px;box-sizing:content-box}
+.nav__logo.nav__logo--dev img{height:56px;width:auto}
+.ft__top .ft__devs img{height:88px;width:auto}
+.devstrip__logos img{height:80px;border-radius:0}
+.modal__devs img{height:46px;width:auto;margin-bottom:10px;border-radius:10px;padding:6px 10px}
+@media (max-width: 600px){.nav__logo.nav__logo--dev img{height:38px;padding:6px 10px;border-radius:10px}.ft__top .ft__devs img{height:64px}.devstrip__logos img{height:60px}}
+.nav .nav__logo.nav__logo--dev,.nav.is-solid .nav__logo.nav__logo--dev{background:none;box-shadow:none;padding:0;margin-top:0;border-radius:0}
+.nav .nav__logo.nav__logo--dev{margin-top:8px}.nav .nav__logo.nav__logo--dev img{height:46px}@media (max-width: 600px){.nav .nav__logo.nav__logo--dev{margin-top:6px}.nav .nav__logo.nav__logo--dev img{height:34px}}
+@media (max-width: 600px){.nav .nav__logo.nav__logo--dev{margin-top:4px}.nav .nav__logo.nav__logo--dev img{height:44px;padding:4px 8px;border-radius:8px}}

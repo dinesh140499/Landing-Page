@@ -9,8 +9,8 @@
      SETTINGS — check before going live
      ===================================================================== */
   var SETTINGS = {
-    phone: '+919126264444',                    // IVR — same as other project sites
-    phoneLabel: '+91 91262 64444',
+    phone: '+918080907434',                    // IVR — same as other project sites
+    phoneLabel: '+91 80809 07434',
     rera: ''                                   // MahaRERA no. — fill in when issued (shown in footer)
   };
   var IMG = 'assets/images/';
