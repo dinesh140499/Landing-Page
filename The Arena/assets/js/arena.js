@@ -139,9 +139,11 @@
       '<span role="cell"><strong>' + esc(c.area) + '</strong> sq. ft.</span>' +
       '<span role="cell" class="fix__plans">' + plans.map(function (p) {
         return '<button type="button" class="fix__plan" data-enquire="Floor Plan — ' + esc(p.name + ' ' + p.area) + '"><img src="' + IMG + 'plans/' + p.id + '.webp" alt="" loading="lazy" decoding="async"><em>' + p.area + '</em></button>';
-      }).join('') + '</span>' +
-      '<span role="cell" class="fix__price">' + (c.price ? '₹' + esc(c.price) : 'On request') + '</span>' +
-      '<span role="cell"><button type="button" class="btn btn--ink btn--sm" data-enquire="Price — ' + esc(c.type) + '">Check price</button></span></div>';
+      }).join('') + (plans.length ? '' : '<button type="button" class="fix__plan fix__plan--lock" data-enquire="Floor Plan — ' + esc(c.type) + '"><img src="' + IMG + 'plans/typical-floor.webp" alt="" loading="lazy" decoding="async"><em>&#128274; Unlock plan</em></button>') + '</span>' +
+      (c.price
+        ? '<span role="cell" class="fix__price">₹' + esc(c.price) + '</span>'
+        : '<span role="cell"><button type="button" class="fix__price fix__price--lock" data-enquire="Unlock Pricing — ' + esc(c.type) + '">&#128274; Unlock</button></span>') +
+      '</div>';
   }).join(''));
   stagger('#fixBody');
 
