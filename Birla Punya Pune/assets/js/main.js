@@ -217,6 +217,8 @@
       $('#residenceLayout').val(plan.id);
       $('#residenceName').text(type + ' BHK');
       $('#residenceStyle').text(style);
+      var PRICE = { '2 BHK': '₹1.96 – 2.11 Cr*', '3 BHK': '₹3.76 – 3.86 Cr*', '4 BHK': '₹4.58 – 4.97 Cr*' };
+      $('#residencePrice').text(PRICE[plan.name.slice(0, 5)] || 'On request');
       $('#residenceLayoutName, #residencePlanLabel').text(plan.name);
       $('#residenceTotal').html('<b>' + esc(plan.total.split(' sq. ft.')[0]) + '</b> sq. ft.');
       $('#residenceCarpet').text(plan.carpet);
@@ -228,7 +230,7 @@
       $('#residenceVisit').attr('data-enquire', 'Site Visit - ' + plan.name);
 
       if (animate) {
-        $('#residenceStatus').text(plan.name + ' selected. Total area ' + plan.total + '. Price on request.');
+        $('#residenceStatus').text(plan.name + ' selected. Total area ' + plan.total + '. Price ' + (({ '2 BHK': '₹1.96 – 2.11 Cr', '3 BHK': '₹3.76 – 3.86 Cr', '4 BHK': '₹4.58 – 4.97 Cr' })[plan.name.slice(0, 5)] || 'on request') + '.');
         refreshScroll();
       }
     }

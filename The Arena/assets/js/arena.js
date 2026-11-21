@@ -342,3 +342,19 @@
   })();
 
 })(jQuery);
+
+/* Mobile swipe dots for eco point lists */
+(function () {
+  document.querySelectorAll('.eco__list, .spec__list').forEach(function (list) {
+    var n = list.children.length, dots = document.createElement('div');
+    dots.className = 'eco__dots'; dots.setAttribute('aria-hidden', 'true');
+    dots.innerHTML = new Array(n + 1).join('<i></i>');
+    list.parentNode.insertBefore(dots, list.nextSibling);
+    function upd() {
+      var w = list.children[0] ? list.children[0].getBoundingClientRect().width + 10 : 1;
+      var k = Math.min(n - 1, Math.round(list.scrollLeft / w));
+      [].forEach.call(dots.children, function (d, j) { d.classList.toggle('is-on', j === k); });
+    }
+    list.addEventListener('scroll', upd, { passive: true }); upd();
+  });
+})();
