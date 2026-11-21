@@ -204,3 +204,26 @@
   .m-end{margin-top:18px!important;width:100%;justify-content:center}
 }
 @media (max-width: 900px){.m-end{order:99}.day__foot{flex-wrap:wrap}.day__foot .m-end{flex:1 0 100%}}
+/* typology: duplex on its own line so it never overflows */
+.board__cell--type b .board__dup{display:block;margin-top:4px;font-size:.42em;font-weight:700;font-stretch:100%;letter-spacing:.02em;color:var(--lime);white-space:normal}
+
+/* ---------- Banner board: Typology and Starting price as separate, equal cells ---------- */
+.hero .board{grid-template-columns:repeat(3,1fr)}
+.hero .board .board__cell--type{grid-column:auto;display:block}
+.hero .board .board__cell--type small{writing-mode:horizontal-tb;transform:none;border:0;padding:0;margin:0;font-size:inherit;letter-spacing:inherit}
+.hero .board .board__cell--type b{white-space:nowrap;font-size:clamp(26px,2.6vw,36px);line-height:1.05;margin-top:4px}
+.hero .board .board__cell--type b i{font-size:.55em;margin-left:2px}
+.hero .board .board__cell--type .board__dup{display:block;margin-top:5px;font-size:12px;font-weight:700;font-stretch:100%;letter-spacing:.04em;line-height:1.2;color:var(--lime);white-space:normal}
+@media (max-width:600px){
+  .hero .board{grid-template-columns:1fr 1fr}
+  .hero .board .board__cell--type{padding:12px 14px}
+  .hero .board .board__cell--type small{font-size:9.5px;letter-spacing:.12em}
+  .hero .board .board__cell--type b{font-size:24px !important;margin-top:2px}
+  .hero .board .board__cell--type .board__dup{font-size:11px}
+  .hero .board .board__cell:nth-child(3){grid-column:1/-1;display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+  .hero .board .board__cell:nth-child(3) b{margin:0}
+}
+.hero .board .board__cell--type small{font-size:11px;letter-spacing:.14em}
+.hero .board .board__cell--type b{display:block !important}
+.hero .board .board__cell--type .board__dup{display:block !important;width:100%;text-align:left}
+@media (max-width:600px){.hero .board .board__cell--type small{font-size:9.5px;letter-spacing:.12em}}
