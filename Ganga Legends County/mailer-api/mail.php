@@ -13,8 +13,7 @@ require __DIR__ . "/mail-config.php";
 
 ini_set("display_errors", 0);   // never print PHP warnings (they break the reply)
 header("Content-Type: application/json");
-
-
+date_default_timezone_set("Asia/Kolkata");   // show the received time in India time
 
 // Only accept form submissions
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
@@ -29,17 +28,23 @@ if (!empty($_POST["_honey"])) {
 }
 
 // Read the form fields
-$name   = trim($_POST["Name"] ?? "");
-$phone  = trim($_POST["Phone"] ?? "");
-$email  = trim($_POST["Email"] ?? "");
-$source = trim($_POST["Lead_Source"] ?? "Website");
+$name    = trim($_POST["Name"] ?? "");
+$phone   = trim($_POST["Phone"] ?? "");
+$email   = trim($_POST["Email"] ?? "");
+$country = trim($_POST["Country"] ?? "");
+$message = trim($_POST["Message"] ?? "");
+$source  = trim($_POST["Lead_Source"] ?? "Website");
+$page    = trim($_POST["Page"] ?? "");
 
-// Project name sent from the website form (falls back to $project in mail-config.php)
-$postedProject = trim($_POST["Project"] ?? "");
+// Project name: from mail-config.php, unless the website form sends one
+$postedProject = trim($_POST["Project"] ?? ($_POST["project"] ?? ""));
 if ($postedProject !== "") {
     $project = mb_substr($postedProject, 0, 100);
 }
-$project = trim($_POST["project"] ?? "New Project");
+if (empty($project)) {
+    $project = "Website";
+}
+
 // Name and phone are required
 if ($name === "" || $phone === "") {
     echo json_encode(["success" => false]);
@@ -51,39 +56,89 @@ function clean($text) {
     return htmlspecialchars($text, ENT_QUOTES, "UTF-8");
 }
 
-// One table row per form field (Name, Phone, Email, Message, Page, utm...)
-$rows = "";
-foreach ($_POST as $key => $value) {
-    if ($key === "_honey" || trim($value) === "") continue;
-    $label = str_replace("_", " ", $key);   // PHP turns spaces into _ in field names, so put them back
-    $rows .= "
-      <tr>
-        <td style='padding:10px 0;border-bottom:1px solid #eee;width:130px;color:$color_accent;font-size:12px;text-transform:uppercase;letter-spacing:1px;vertical-align:top'>" . clean($label) . "</td>
-        <td style='padding:10px 0;border-bottom:1px solid #eee;color:#222;font-size:15px'>" . nl2br(clean($value)) . "</td>
-      </tr>";
+$date     = date("d M Y, h:i A") . " IST";
+$phoneDig = preg_replace("/\D+/", "", $phone);
+$waText   = rawurlencode("Hi $name, thank you for your enquiry about $project.");
+$hasEmail = filter_var($email, FILTER_VALIDATE_EMAIL);
+
+// Short, readable page address (domain + path, no long tracking codes)
+$pageShort = "";
+if ($page !== "") {
+    $p = parse_url($page);
+    $pageShort = urldecode(($p["host"] ?? "") . rtrim($p["path"] ?? "", "/"));
 }
 
-$date = date("d M Y, h:i A");
+// Detail rows (only filled-in fields are shown)
+function row($label, $valueHtml, $accent) {
+    return "
+          <tr>
+            <td style='padding:11px 0;border-bottom:1px solid #EEE9E0;width:120px;color:$accent;font-size:11px;font-weight:bold;text-transform:uppercase;letter-spacing:1px;vertical-align:top'>$label</td>
+            <td style='padding:11px 0;border-bottom:1px solid #EEE9E0;color:#222;font-size:14px;line-height:1.5'>$valueHtml</td>
+          </tr>";
+}
+$rows = "";
+if ($hasEmail)       $rows .= row("Email", "<a href='mailto:" . clean($email) . "' style='color:#1a5fb4'>" . clean($email) . "</a>", $color_accent);
+if ($country !== "") $rows .= row("Country", clean($country), $color_accent);
+$rows .= row("Enquired via", clean($source), $color_accent);
+if ($page !== "")    $rows .= row("Page", "<a href='" . clean($page) . "' style='color:#1a5fb4;overflow-wrap:anywhere'>" . clean($pageShort) . "</a>", $color_accent);
+
+// Ad-tracking fields (utm_source, gclid, ...) and anything extra the form sends
+$known = ["_honey", "Name", "Phone", "Email", "Country", "Message", "Lead_Source", "Page", "Project", "project"];
+$extra = "";
+foreach ($_POST as $key => $value) {
+    if (in_array($key, $known, true) || !is_string($value) || trim($value) === "") continue;
+    $label = str_replace("_", " ", $key);   // PHP turns spaces into _ in field names, so put them back
+    $extra .= "<div style='margin:2px 0'><span style='color:#999'>" . clean($label) . ":</span> " . clean(mb_substr($value, 0, 300)) . "</div>";
+}
+
+// Message box
+$messageHtml = "";
+if ($message !== "") {
+    $messageHtml = "
+        <div style='margin:20px 0 4px;padding:14px 16px;background:#FAF7F1;border-left:3px solid $color_accent;border-radius:6px'>
+          <div style='font-size:11px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:$color_accent;margin-bottom:4px'>Message</div>
+          <div style='font-size:14px;line-height:1.6;color:#222'>" . nl2br(clean($message)) . "</div>
+        </div>";
+}
+
+// Action buttons
+$btn = "display:inline-block;margin:0 6px 8px 0;padding:12px 20px;border-radius:30px;font-size:14px;font-weight:bold;text-decoration:none";
+$buttons  = "<a href='tel:" . clean($phone) . "' style='$btn;background:$color_accent;color:#fff'>&#128222; Call " . clean($name) . "</a>";
+if ($phoneDig !== "") {
+    $buttons .= "<a href='https://wa.me/$phoneDig?text=$waText' style='$btn;background:#1F9D55;color:#fff'>WhatsApp</a>";
+}
+if ($hasEmail) {
+    $buttons .= "<a href='mailto:" . clean($email) . "?subject=" . rawurlencode("Your enquiry - $project") . "' style='$btn;background:#fff;color:$color_header;border:1.5px solid $color_header'>Email</a>";
+}
 
 // ===== THE EMAIL (edit the HTML below to change the design) =====
 $body = "
-<div style='background:$color_bg;padding:30px 10px;font-family:Arial,sans-serif'>
-  <div style='max-width:560px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden'>
+<div style='background:$color_bg;padding:24px 10px;font-family:Arial,Helvetica,sans-serif'>
+  <div style='display:none;max-height:0;overflow:hidden'>" . clean("$name · $phone · $source") . "</div>
+  <div style='max-width:560px;margin:0 auto;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 6px 24px rgba(0,0,0,.06)'>
 
-    <div style='background:$color_header;color:#fff;padding:22px 28px'>
-      <div style='font-size:12px;letter-spacing:2px;text-transform:uppercase;opacity:.8'>New Lead</div>
-      <div style='font-size:22px;font-weight:bold;margin-top:4px'>" . clean($project) . "</div>
+    <div style='background:$color_header;color:#fff;padding:22px 26px'>
+      <div style='font-size:11px;letter-spacing:2px;text-transform:uppercase;opacity:.75'>New enquiry &middot; $date</div>
+      <div style='font-size:24px;font-weight:bold;margin-top:6px;line-height:1.2'>" . clean($project) . "</div>
+      <div style='display:inline-block;margin-top:12px;padding:5px 12px;border-radius:20px;background:$color_accent;color:#fff;font-size:12px;font-weight:bold'>" . clean($source) . "</div>
     </div>
 
-    <div style='padding:24px 28px'>
+    <div style='padding:22px 26px 8px'>
+      <div style='font-size:13px;color:#777'>Lead</div>
+      <div style='font-size:22px;font-weight:bold;color:#222;margin:2px 0'>" . clean($name) . "</div>
+      <a href='tel:" . clean($phone) . "' style='font-size:18px;color:$color_header;text-decoration:none;font-weight:bold'>" . clean($phone) . "</a>
+      <div style='margin-top:16px'>$buttons</div>
+      $messageHtml
+    </div>
+
+    <div style='padding:8px 26px 20px'>
       <table style='width:100%;border-collapse:collapse'>$rows
-      </table>
-
-      <a href='tel:" . clean($phone) . "' style='display:inline-block;margin-top:22px;background:$color_accent;color:#fff;text-decoration:none;padding:12px 24px;border-radius:30px;font-weight:bold'>Call " . clean($name) . "</a>
+      </table>" . ($extra !== "" ? "
+      <div style='margin-top:14px;font-size:12px;color:#555;line-height:1.5'><div style='font-size:11px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:#999;margin-bottom:4px'>Tracking</div>$extra</div>" : "") . "
     </div>
 
-    <div style='border-top:3px solid $color_accent;padding:14px 28px;font-size:12px;color:#888'>
-      Received $date
+    <div style='border-top:3px solid $color_accent;padding:14px 26px;font-size:12px;color:#888;line-height:1.5'>
+      Received $date" . ($hasEmail ? "<br>Reply to this email to answer " . clean($name) . " directly." : "") . "
     </div>
 
   </div>
@@ -91,6 +146,15 @@ $body = "
 // ================================================================
 
 $subject = "New Lead - $project - $name ($source)";
+
+// Plain-text version for email apps that don't show HTML
+$alt  = "New enquiry - $project\n\nName: $name\nPhone: $phone\n";
+if ($hasEmail)       $alt .= "Email: $email\n";
+if ($country !== "") $alt .= "Country: $country\n";
+if ($message !== "") $alt .= "Message: $message\n";
+$alt .= "Enquired via: $source\n";
+if ($page !== "")    $alt .= "Page: $page\n";
+$alt .= "\nReceived $date";
 
 // Send through Gmail SMTP using the app password
 $mail = new PHPMailer(true);
@@ -109,17 +173,17 @@ try {
     foreach (array_filter(array_map("trim", explode(",", $to))) as $addr) {
         $mail->addAddress($addr);
     }
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if ($hasEmail) {
         $mail->addReplyTo($email, $name);   // so you can reply to the visitor directly
     }
 
     $mail->isHTML(true);
     $mail->Subject = $subject;
     $mail->Body    = $body;
-    $mail->AltBody = strip_tags(str_replace(["<br />", "</tr>"], "\n", $body));
+    $mail->AltBody = $alt;
 
     $mail->send();
-    
+
     echo json_encode(["success" => true]);
 } catch (Exception $e) {
     error_log("Mail error: " . $mail->ErrorInfo);
