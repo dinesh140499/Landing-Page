@@ -5,62 +5,153 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Thank You | Birla Punya, Central Pune</title>
   <meta name="robots" content="noindex, nofollow">
-  <meta name="theme-color" content="#3B2C6B">
+  <meta name="theme-color" content="#2A1C15">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,400&family=Poppins:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap">
   <link rel="icon" type="image/webp" href="assets/images/brand/birla-punya-logo.webp">
+  <link rel="preload" as="image" type="image/webp" href="assets/images/v2/hero-1-sm.webp">
   <style>
-    :root{--plum:#3B2C6B;--plum-9:#271C4A;--lav:#6E5DB8;--lav-l:#ECE8F7;--ivory:#FAF7F1;--gold:#C29A55;--gold-l:#E3C489;--terra:#B4553A;--ink:#221F2B;--ink-2:#5E5A6B;--line:rgba(34,31,43,.12)}
+    :root{--cocoa:#3E2A20;--cocoa-2:#5A3F31;--cocoa-3:#2A1C15;--cream:#F6EEDF;--cream-2:#EFE3CC;--paper:#FFFBF3;--gold:#C29A55;--gold-l:#E3C489;--ink:#2B211C;--ink-2:#6B5D54;--line:rgba(62,42,32,.14);--ease:cubic-bezier(.22,1,.36,1);--ff:Poppins,system-ui,sans-serif}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html,body{height:100%}
-    body{min-height:100svh;display:grid;grid-template-columns:1fr;background:var(--ivory);color:var(--ink);font:400 16px/1.6 Poppins,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+    body{min-height:100svh;display:grid;grid-template-columns:1.05fr 1fr;background:var(--cream);color:var(--ink);font:400 16px/1.6 var(--ff);-webkit-font-smoothing:antialiased}
     img{display:block;max-width:100%}
     a{color:inherit;text-decoration:none}
-    .media{position:relative;overflow:hidden;background:var(--plum);min-height:100%}
-    .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:z 9s ease-out both}
-    @keyframes z{from{transform:scale(1.08)}}
-    .media span{position:absolute;right:12px;bottom:10px;font-size:10.5px;color:#fff;background:rgba(0,0,0,.38);padding:2px 9px;border-radius:99px}
-    .msg{position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;min-height:100svh;padding:clamp(28px,6vw,90px);background:radial-gradient(circle,rgba(110,93,184,.12) 1.2px,transparent 1.8px) 0 0/20px 20px,var(--ivory)}
-    .msg::before{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(560px,90vw);height:min(690px,90svh);background:url(assets/images/pattern/gate-lav.webp) center/contain no-repeat;opacity:.1;pointer-events:none}
-    .msg>*{position:relative;max-width:520px}
-    .logos{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:clamp(22px,4vh,40px)}
-    .logos img{height:56px;width:auto}
-    .logos i{width:1px;height:42px;background:var(--line)}
-    .tick{width:68px;height:68px;margin-bottom:20px}
-    .tick circle{fill:var(--plum)}
-    .tick path{fill:none;stroke:var(--gold-l);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:d .7s .3s ease forwards}
-    @keyframes d{to{stroke-dashoffset:0}}
-    h1{font:700 clamp(32px,4.2vw,54px)/1.1 "PT Serif",Georgia,serif;color:var(--plum)}
-    h1 em{display:block;font-style:italic;font-weight:400;color:var(--gold);font-size:.62em;margin-top:6px}
-    .line{width:150px;margin:18px auto}
-    p{color:var(--ink-2);margin:0 0 26px;font-size:16px}
-    .btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:14px 26px;border-radius:99px;font-weight:600;font-size:14.5px;border:1.5px solid var(--plum);color:var(--plum);transition:background .3s,color .3s}
-    .btn:hover{background:var(--plum);color:#fff}
-    .btn--plum{background:var(--plum);color:#fff}
-    .btn--plum:hover{background:var(--plum-9)}
-    @media (max-width:800px){
+    :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+    /* ---- photo side ---- */
+    .media{position:relative;overflow:hidden;background:var(--cocoa-3);color:#fff}
+    .media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%;animation:kb 12s ease-out both}
+    @keyframes kb{from{transform:scale(1.1)}}
+    .media::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(42,28,21,.92) 0%,rgba(42,28,21,.35) 38%,rgba(42,28,21,.1) 60%,rgba(42,28,21,.45) 100%)}
+    .media__in{position:absolute;z-index:1;left:clamp(24px,4vw,56px);right:clamp(24px,4vw,56px);bottom:clamp(28px,5vh,56px)}
+    .media__pre{display:inline-block;padding:4px 12px;border:1px solid var(--gold-l);border-radius:99px;color:var(--gold-l);font-size:11px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+    .media h2{margin:12px 0 4px;font:700 clamp(36px,4.4vw,64px)/1 var(--ff);letter-spacing:-.02em}
+    .media h2 em{font-style:italic;font-weight:300;color:var(--gold-l)}
+    .media__tag{font-style:italic;color:rgba(255,255,255,.85)}
+    .stats{display:flex;margin-top:22px;padding-top:18px;border-top:1px solid rgba(227,196,137,.3)}
+    .stats li{list-style:none;flex:1;padding:0 14px;border-left:1px solid rgba(227,196,137,.3);line-height:1.2}
+    .stats li:first-child{padding-left:0;border:0}
+    .stats b{display:block;font-size:clamp(18px,1.6vw,24px);font-weight:600;color:var(--gold-l)}
+    .stats span{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.72)}
+    .media__disc{position:absolute;z-index:1;right:14px;top:12px;font-size:10.5px;opacity:.7}
+
+    /* ---- message side ---- */
+    .msg{position:relative;display:flex;flex-direction:column;justify-content:safe center;padding:clamp(28px,5vw,72px);background:radial-gradient(circle at 100% 0,rgba(194,154,85,.16),transparent 45%),radial-gradient(circle at 0 100%,rgba(194,154,85,.12),transparent 40%),var(--cream)}
+    .msg>*{position:relative;max-width:500px;width:100%;animation:up .9s var(--ease) both}
+    .msg>:nth-child(2){animation-delay:.1s}.msg>:nth-child(3){animation-delay:.2s}.msg>:nth-child(4){animation-delay:.3s}.msg>:nth-child(5){animation-delay:.4s}.msg>:nth-child(6){animation-delay:.5s}
+    @keyframes up{from{opacity:0;transform:translateY(22px)}}
+    .logos{display:flex;align-items:center;gap:14px;margin-bottom:clamp(24px,5vh,48px)}
+    .logos img{height:52px;width:auto}
+    .logos i{width:1px;height:38px;background:var(--line)}
+
+    .tick{position:relative;width:76px;height:76px;margin-bottom:22px}
+    .tick::before{content:"";position:absolute;inset:-8px;border-radius:50%;border:1px solid var(--gold);opacity:0;animation:ring 2.4s 1s ease-out infinite}
+    @keyframes ring{0%{opacity:.8;transform:scale(.85)}100%{opacity:0;transform:scale(1.35)}}
+    .tick svg{width:100%;height:100%}
+    .tick circle{fill:var(--cocoa)}
+    .tick path{fill:none;stroke:var(--gold-l);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:draw .7s .5s ease forwards}
+    @keyframes draw{to{stroke-dashoffset:0}}
+
+    .kicker{font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+    h1{margin:6px 0 10px;font:700 clamp(32px,3.6vw,48px)/1.1 var(--ff);letter-spacing:-.01em;color:var(--cocoa)}
+    h1 em{font-style:italic;font-weight:300;color:var(--gold)}
+    .lead{color:var(--ink-2);margin-bottom:24px}
+
+    .steps{list-style:none;display:grid;gap:0;margin-bottom:28px;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:var(--paper);box-shadow:0 20px 40px -30px rgba(62,42,32,.5)}
+    .steps li{position:relative;display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;padding:10px 0}
+    .steps li+li{border-top:1px dashed var(--line)}
+    .steps i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--cream-2);color:var(--cocoa);font:600 13px var(--ff);font-style:normal}
+    .steps li:first-child i{background:var(--gold);color:var(--cocoa-3)}
+    .steps b{display:block;font-size:15px;font-weight:600;color:var(--cocoa);line-height:1.3}
+    .steps span{font-size:13px;color:var(--ink-2)}
+
+    .btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 18px;border-radius:99px;font-weight:600;font-size:14px;border:1.5px solid var(--cocoa);color:var(--cocoa);transition:transform .3s var(--ease),background .3s,color .3s,box-shadow .3s}
+    .btn svg{width:18px;height:18px;flex:none}
+    .btn:hover{transform:translateY(-2px);background:var(--cocoa);color:var(--cream)}
+    .btn--gold{grid-column:1/-1;border:0;background:linear-gradient(135deg,#F3DDAA,var(--gold) 55%,#A9803F);color:var(--cocoa-3);box-shadow:0 14px 28px -14px rgba(194,154,85,.9)}
+    .btn--gold:hover{background:linear-gradient(135deg,#F3DDAA,var(--gold) 55%,#A9803F);color:var(--cocoa-3);box-shadow:0 18px 34px -14px rgba(194,154,85,1)}
+    .btn--wa{border-color:#1F9D55;color:#1F9D55}
+    .btn--wa:hover{background:#1F9D55;color:#fff}
+    .note{margin-top:18px;font-size:12px;color:var(--ink-2)}
+
+    @media (max-width:900px){
       body{grid-template-columns:1fr;grid-template-rows:auto 1fr}
-      .media{height:34svh;min-height:200px}
-      .msg{align-items:center;text-align:center;padding:28px 20px 36px}
-      .logos{justify-content:center}
-      .logos img{height:44px}
-      .line{margin:14px auto}
-      .btns{width:100%;flex-direction:column}
-      .btn{width:100%}
-      .msg::before{width:220px;height:280px}
+      .media{height:24svh;min-height:170px}
+      .media__in{bottom:18px;left:20px;right:20px}
+      .media h2{font-size:34px;margin:8px 0 0}
+      .media__tag,.stats{display:none}
+      .msg{justify-content:flex-start;align-items:center;padding:18px 20px 28px}
+      .msg>*{max-width:520px}
+      .logos{margin-bottom:10px;justify-content:center}.logos img{height:32px!important}.logos i{height:26px}
+      .logos img{height:36px}
+      .tick{width:54px;height:54px;margin:0 auto 12px}
+      .msg>div:nth-child(3){text-align:center}
+      h1{font-size:30px}
+      .lead{font-size:14.5px;margin-bottom:16px}
+      .steps{padding:10px 16px;margin-bottom:18px}
+      .steps li{padding:8px 0}
+      .steps span{display:none}
+      .steps i{width:28px;height:28px;font-size:12px}.steps li{grid-template-columns:28px 1fr;align-items:center}
+      .note{display:none}
+      .tick{width:46px;height:46px}
+      h1{font-size:27px}
+    }
+    @media (min-width:901px) and (max-height:820px){
+      .logos{margin-bottom:18px}.logos img{height:42px}
+      .tick{width:58px;height:58px;margin-bottom:14px}
+      h1{font-size:clamp(28px,3vw,40px)}
+      .lead{margin-bottom:16px}
+      .steps{padding:10px 18px;margin-bottom:18px}.steps li{padding:7px 0}
+      .note{margin-top:10px}
+    }
+    @media (max-width:900px) and (max-height:700px){
+      .media{height:24svh;min-height:150px}
+      .steps span{display:none}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *,*::before{animation:none!important}
+      .tick path{stroke-dashoffset:0}
     }
   </style>
 </head>
 <body>
+  <aside class="media" aria-hidden="true">
+    <img src="assets/images/v2/hero-1-sm.webp" srcset="assets/images/v2/hero-1-sm.webp 1000w, assets/images/v2/hero-1.webp 2332w" sizes="(max-width:900px) 100vw, 52vw" width="2332" height="1075" alt="">
+    <span class="media__disc">Artist's impression</span>
+    <div class="media__in">
+      <span class="media__pre">Phase 2 · Birla Estates</span>
+      <h2>Birla <em>Punya</em></h2>
+      <p class="media__tag">Where heritage meets modernity</p>
+      <ul class="stats">
+        <li><b>2, 3 &amp; 4</b><span>BHK residences</span></li>
+        <li><b>0.3 km</b><span>Mangalwar Peth Metro</span></li>
+        <li><b>IGBC</b><span>Gold pre-certified</span></li>
+      </ul>
+    </div>
+  </aside>
+
   <main class="msg">
     <div class="logos"><img src="assets/images/brand/birla-punya-logo.webp" width="664" height="352" alt="Birla Punya by Birla Estates"><i></i><img src="assets/images/brand/aditya-birla-group.webp" width="270" height="300" alt="Aditya Birla Group"></div>
-    <svg class="tick" viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="36"/><path d="M22 37l10 10 19-21"/></svg>
-    <h1>Thank you<span id="nm"></span>! <em>We'll be in touch shortly.</em></h1>
-    <img class="line" src="assets/images/pattern/line-gold.webp" width="259" height="13" alt="" aria-hidden="true">
-    <p>Your enquiry for Birla Punya has reached us. Our relationship manager will call you with the price sheet, brochure and site-visit options.</p>
-    <div class="btns"><a class="btn btn--plum" href="index.html">Back to website</a><a class="btn" href="tel:+919096330038">Call us now</a></div>
+    <div class="tick"><svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="34"/><path d="M22 37l10 10 19-21"/></svg></div>
+    <div>
+      <p class="kicker">Enquiry received</p>
+      <h1>Thank you<span id="nm"></span>, <em>we'll be in touch.</em></h1>
+      <p class="lead">Your enquiry for Birla Punya, Central Pune has reached our team.</p>
+    </div>
+    <ol class="steps" aria-label="What happens next">
+      <li><i>1</i><div><b>A call from your relationship manager</b><span>Usually within a few working hours.</span></div></li>
+      <li><i>2</i><div><b>Price sheet &amp; brochure</b><span>Shared on your phone or WhatsApp.</span></div></li>
+      <li><i>3</i><div><b>Private site visit</b><span>Scheduled at a time that suits you.</span></div></li>
+    </ol>
+    <div class="btns">
+      <a class="btn btn--gold" href="index.html">Back to website</a>
+      <a class="btn" href="tel:+919096330038"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2Z"/></svg>Call now</a>
+      <a class="btn btn--wa" href="https://wa.me/919096330038?text=Hi%2C%20I%20just%20enquired%20about%20Birla%20Punya%2C%20Pune." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.2c0-.1-.2-.2-.4-.3Z"/></svg>WhatsApp</a>
+    </div>
+    <p class="note">Need it sooner? Call +91 90963 30038.</p>
   </main>
   <script>
     var n = new URLSearchParams(location.search).get('name');

@@ -9,7 +9,7 @@
   var SETTINGS = {
     phone: '+918080907434',
     phoneLabel: '+91 80809 07434',
-    rera: ''                       // MahaRERA no. — fill in when issued
+    rera: 'PR1261012602774'                       // MahaRERA no.
   };
   var IMG = 'assets/images/';
 
@@ -17,7 +17,9 @@
   var CONFIGS = [
     { type: '2 BHK', area: '728 – 1,248', price: '1.15 Cr*' },
     { type: '3 BHK', area: '1,232 – 2,463', price: '1.74 Cr*' },
-    { type: '4 BHK', area: '1,590 – 3,050', price: '2.40 Cr*' }
+    { type: '4 BHK', area: '1,590 – 3,050', price: '2.40 Cr*' },
+    { type: '4 BHK Luxury', area: '2,800 – 3,200', price: '' },
+    { type: '5 BHK Duplex', area: '5,000 – 6,000', price: '' }
   ];
   var PLANS = [
     { id: '2bhk-994', name: '2 BHK', area: '994' },
@@ -138,7 +140,7 @@
       '<span role="cell" class="fix__plans">' + plans.map(function (p) {
         return '<button type="button" class="fix__plan" data-enquire="Floor Plan — ' + esc(p.name + ' ' + p.area) + '"><img src="' + IMG + 'plans/' + p.id + '.webp" alt="" loading="lazy" decoding="async"><em>' + p.area + '</em></button>';
       }).join('') + '</span>' +
-      '<span role="cell" class="fix__price">₹' + esc(c.price) + '</span>' +
+      '<span role="cell" class="fix__price">' + (c.price ? '₹' + esc(c.price) : 'On request') + '</span>' +
       '<span role="cell"><button type="button" class="btn btn--ink btn--sm" data-enquire="Price — ' + esc(c.type) + '">Check price</button></span></div>';
   }).join(''));
   stagger('#fixBody');
