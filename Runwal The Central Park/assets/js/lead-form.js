@@ -209,28 +209,73 @@
     }, tracking);
 
     // 4. Show the loading state.
+    clearResult($form);
     $form.addClass('is-loading');
     $btn.html('<span class="spin" aria-hidden="true"></span>Submitting…').prop('disabled', true);
     $msg.text('Please wait a moment — sending your details.');
 
-    // 5. Send.
-    $.post(MAILER_URL, data, null, 'json')
-      .done(function (res) {
-        if (!res || !res.success) {
-          showError();
-          return;
-        }
-        onSuccess(name, source);
-      })
-      .fail(showError);
+    // 5. Send (no internet → fail fast; slow server → 20s timeout).
+    if (navigator.onLine === false) return showError('offline');
 
-    // Something went wrong: re-enable the button and show the phone number.
-    function showError() {
+    $.ajax({ url: MAILER_URL, type: 'POST', data: data, dataType: 'json', timeout: 20000 })
+      .done(function (res) {
+        if (!res || !res.success) return showError('server');
+        showSuccess($form, name, function () { onSuccess(name, source); });
+      })
+      .fail(function (xhr, status) {
+        showError(status === 'timeout' ? 'timeout' : (navigator.onLine === false ? 'offline' : 'server'));
+      });
+
+    function showError(kind) {
       $form.removeClass('is-loading');
       $btn.text(btnText).prop('disabled', false);
-      $msg.html('Could not send right now. Please try again or call <a href="tel:' + PHONE + '" style="text-decoration:underline">' + PHONE_LABEL + '</a>.');
+      $msg.text('');
+      var text = {
+        offline: ['You seem to be offline', 'Please check your internet connection and try again.'],
+        timeout: ['This is taking longer than usual', "Our server didn't respond in time. Please try again in a moment."],
+        server: ["We couldn't send your details", 'Something went wrong on our side. Please try again, or reach us directly.']
+      }[kind] || ['', ''];
+      var waText = 'Hi, I am ' + name + ' (' + check.phone + "). I'm interested in Runwal The Central Park. Please share details.";
+      var wa = 'https://wa.me/' + PHONE.replace(/\D/g, '') + '?text=' + encodeURIComponent(waText);
+      var $card = $(
+        '<div class="lf-result lf-result--err" role="alert">' +
+          '<span class="lf-result__icon" aria-hidden="true">!</span>' +
+          '<b class="lf-result__title"></b><p class="lf-result__text"></p>' +
+          '<div class="lf-result__actions">' +
+            '<button type="button" class="lf-btn lf-btn--primary" data-lf-retry>Try again</button>' +
+            '<a class="lf-btn" href="tel:' + PHONE + '">Call ' + PHONE_LABEL + '</a>' +
+            '<a class="lf-btn lf-btn--wa" href="' + wa + '" target="_blank" rel="noopener">WhatsApp us</a>' +
+          '</div>' +
+          '<button type="button" class="lf-result__x" data-lf-close aria-label="Close">×</button>' +
+        '</div>');
+      $card.find('.lf-result__title').text(text[0]);
+      $card.find('.lf-result__text').text(text[1]);
+      $form.append($card);
+      requestAnimationFrame(function () { $card.addClass('is-in'); });
+      $card.on('click', '[data-lf-close]', function () { clearResult($form); });
+      $card.on('click', '[data-lf-retry]', function () { clearResult($form); $form.trigger('submit'); });
     }
   });
+
+  /* Remove any success / error card from a form. */
+  function clearResult($form) { $form.find('.lf-result').remove(); }
+
+  /* Friendly confirmation shown briefly before going to the thank-you page. */
+  function showSuccess($form, name, then) {
+    $form.removeClass('is-loading');
+    var first = $.trim(name).split(' ')[0];
+    var $card = $(
+      '<div class="lf-result lf-result--ok" role="status" aria-live="polite">' +
+        '<span class="lf-result__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>' +
+        '<b class="lf-result__title"></b>' +
+        '<p class="lf-result__text">Your details are with us. Our relationship manager will call you shortly.</p>' +
+        '<span class="lf-result__bar"><i></i></span>' +
+      '</div>');
+    $card.find('.lf-result__title').text('Thank you' + (first ? ', ' + first : '') + '!');
+    $form.append($card);
+    requestAnimationFrame(function () { $card.addClass('is-in'); });
+    setTimeout(then, 1800);
+  }
 
   /* Remember the lead, fire tracking and go to the thank-you page. */
   function onSuccess(name, source) {
