@@ -1110,3 +1110,24 @@ table { border-collapse: collapse; width: 100%; }
 .ft__disc{line-height:1.55}
 .ft__bar{margin-top:14px;padding-top:12px}
 @media (max-width:900px){.ft{padding:26px 0 76px !important}}
+/* mobile: show banner key points as a compact 2x2 grid at the bottom of the banner */
+@media (max-width:900px){
+  .hero__bar{display:block !important;position:relative;inset:auto;bottom:auto !important;flex:none;z-index:3;animation:none;background:rgba(30,20,15,.95);backdrop-filter:none}
+  .hero__bar .wrap{width:100%;padding:0}
+  .hero__stats{grid-template-columns:1fr 1fr !important}
+  .hero__stats .hero__offer,.hero__stats .hero__offer:first-child{gap:9px;padding:9px 12px !important;border-left:1px solid rgba(227,196,137,.2) !important;border-top:1px solid rgba(227,196,137,.2)}
+  .hero__stats .hero__offer:nth-child(odd){border-left:0 !important}
+  .hero__stats .hero__offer:nth-child(-n+2){border-top:0}
+  .hero__stats .hero__offer > i{width:26px;font-size:10px;box-shadow:0 0 0 3px rgba(227,196,137,.14)}
+  .hero__stats .hero__offer b{font-size:16px !important}
+  .hero__stats .hero__offer span{font-size:8.5px !important;letter-spacing:.06em;margin-top:2px;white-space:normal}
+  .hero__in{padding-bottom:14px !important}
+}
+@media (min-width:601px) and (max-width:900px){.hero__stats{grid-template-columns:repeat(4,1fr) !important}.hero__stats .hero__offer{border-top:0 !important}.hero__stats .hero__offer:nth-child(n+2){border-left:1px solid rgba(227,196,137,.2) !important}}
+/* key points before the banner buttons on mobile/tablet; bottom bar desktop only */
+.hero__stats--m{display:none !important}
+@media (max-width:900px){
+  .hero__bar{display:none !important}
+  .hero__stats--m{display:grid !important;margin:0;border:1px solid rgba(227,196,137,.3);border-radius:14px;overflow:hidden;background:rgba(30,20,15,.6)}
+  .hero__in{padding-bottom:20px !important}
+}
