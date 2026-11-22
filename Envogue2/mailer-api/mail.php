@@ -159,13 +159,21 @@ $alt .= "\nReceived $date";
 // Send through Gmail SMTP using the app password
 $mail = new PHPMailer(true);
 try {
-    $mail->isSMTP();
-    $mail->Host       = "smtp.gmail.com";
-    $mail->SMTPAuth   = true;
-    $mail->Username   = $mailUser;
-    $mail->Password   = $mailerAppPassword;
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = 587;
+    // $mail->isSMTP();
+    // $mail->Host       = "smtp.gmail.com";
+    // $mail->SMTPAuth   = true;
+    // $mail->Username   = $mailUser;
+    // $mail->Password   = $mailerAppPassword;
+    // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    // $mail->Port       = 587;
+// =============for cpanel server=========================
+    $mail->Host        = "localhost";
+    $mail->SMTPAuth    = false;
+    $mail->SMTPSecure  = false;
+    $mail->SMTPAutoTLS = false;
+    $mail->Port        = 25;
+    $mail->Timeout     = 15;
+    
     $mail->CharSet    = "UTF-8";
 
     // Gmail requires the From address to be the authenticated account

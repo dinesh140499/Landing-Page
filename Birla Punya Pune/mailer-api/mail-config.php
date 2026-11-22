@@ -10,7 +10,8 @@ $to = "shiv.buzz123@gmail.com, akasar77@gmail.com";
 // Sender email shown in the "From" field.
 // With Gmail SMTP this must be the login account ($mailUser below)
 // or a "Send mail as" alias added in that Gmail account's settings.
-$from_email = "realtorsdealpune@gmail.com";
+// $from_email = "realtorsdealpune@gmail.com";
+$from_email = "no-reply@birla-punyapune.com";
 
 // Sender name shown in your inbox
 $from_name = "Birla Punya";
