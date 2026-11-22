@@ -167,6 +167,7 @@ try {
     // $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     // $mail->Port       = 587;
 // =============for cpanel server=========================
+    $mail->isSMTP();
     $mail->Host        = "localhost";
     $mail->SMTPAuth    = false;
     $mail->SMTPSecure  = false;
