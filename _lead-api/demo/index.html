@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo Project — Lead API test</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #F4F1EA; color: #222; }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 32px 16px; display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    h1 { grid-column: 1 / -1; margin: 0; color: #3B2C6B; }
+    .note { grid-column: 1 / -1; margin: 0; padding: 12px 14px; border-radius: 8px; background: #fff3cd; display: none; }
+    .card { background: #fff; border-radius: 12px; padding: 22px; box-shadow: 0 6px 24px rgba(0,0,0,.06); }
+    .card h2 { margin: 0 0 14px; font-size: 18px; }
+    input, textarea { width: 100%; padding: 11px 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px; font: inherit; }
+    label { display: flex; gap: 8px; font-size: 13px; margin-bottom: 12px; }
+    label input { width: auto; margin: 0; }
+    button { width: 100%; padding: 12px; border: 0; border-radius: 30px; background: #C29A55; color: #fff; font-weight: bold; font-size: 15px; cursor: pointer; }
+    button:disabled { opacity: .6; }
+    .form-msg { min-height: 1.2em; font-size: 13px; color: #3B2C6B; margin: 10px 0 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Demo Project</h1>
+    <p class="note" id="setup-note">Set <b>ENDPOINT</b> in <code>lead-api.js</code> first (see README), then submit a form.</p>
+
+    <!-- Form 1: banner -->
+    <form class="lead-form card" data-source="Banner Form" novalidate>
+      <h2>Banner form</h2>
+      <input type="text" name="name" placeholder="Full Name">
+      <input type="tel" name="phone" placeholder="Mobile Number">
+      <input type="email" name="email" placeholder="Email Address">
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <label><input type="checkbox" name="consent" checked> I agree to be contacted.</label>
+      <button type="submit">Get Price Sheet</button>
+      <p class="form-msg"></p>
+    </form>
+
+    <!-- Form 2: contact, with message + an extra custom field -->
+    <form class="lead-form card" data-source="Contact Form" novalidate>
+      <h2>Contact form</h2>
+      <input type="text" name="name" placeholder="Full Name">
+      <input type="tel" name="phone" placeholder="Mobile Number">
+      <input type="email" name="email" placeholder="Email Address">
+      <input type="text" name="Budget" placeholder="Budget (extra field → new column)">
+      <textarea name="message" rows="3" placeholder="Your Message"></textarea>
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+      <label><input type="checkbox" name="consent" checked> I agree to be contacted.</label>
+      <button type="submit">Send Enquiry</button>
+      <p class="form-msg"></p>
+    </form>
+  </div>
+
+  <!-- The only line a project needs -->
+  <script src="../lead-api.js" data-project="Demo Project" defer></script>
+  <script>
+    addEventListener('DOMContentLoaded', function () {
+      if (/PASTE_YOUR/.test(LeadAPI.config.endpoint)) document.getElementById('setup-note').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
